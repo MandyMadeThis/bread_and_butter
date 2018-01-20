@@ -1,0 +1,9 @@
+.shopify-section__announcement-bar,
+.shopify-section__header,
+.shopify-section__footer {
+  flex-shrink: 0;
+}
+
+.shopify-section__cart-related-products .section {
+  margin-top: 40px;
+}

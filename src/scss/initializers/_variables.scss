@@ -1,0 +1,85 @@
+///////////////////////
+//// BASE SETTINGS ////
+///////////////////////
+$base-font-size: 17px;
+$gutter: 25px;
+$container-width: 1200px;
+
+$mobile-nav-breakpoint: 1330px;
+
+//////////////////
+//// COLOURS ////
+/////////////////
+$black: #000;
+$grey-dark: #333333;
+$grey: #666666;
+$white: #FFF;
+$white-dark: #E2E2E2;
+$green: #4FC3CA;
+
+$error-color: #B91A0E;
+$warning-color: #ED9213;
+$success-color: #22CD73;
+$notice-color: #F5FCFF;
+
+$background: $white;
+$secondary-background: $white-dark;
+$heading-color: $black;
+$text-color: $grey-dark;
+$light-text-color: $white;
+$accent-color: $green;
+$border-color: $grey-dark;
+
+$primary-button-color: $white;
+$primary-button-background: $accent-color;
+$secondary-button-color: $white;
+$secondary-button-background: $black;
+
+$has-background-pattern: false;
+
+// LINK COLORS
+$base-link-color: $accent-color;
+$hover-link-color: saturate($accent-color, 15%);
+
+
+///////////////////////////////
+//// TYPEPOGRAPHY SETTINGS ////
+///////////////////////////////
+$font-mon: 'Montserrat', sans-serif;
+$light: 200;
+$norm: 400;
+$bold: 500;
+$base-line-height: 1;
+$headline-line-height: 1.3;
+$paragraph-line-height: 1.5;
+$heading-font: $font-mon;
+$text-font: $font-mon;
+$heading-font-weight: $norm;
+$slideshow-heading-font-weight: $light;
+$font-size-factor: $base-font-size;
+
+/////////////////////////////
+//// TRANSITION SETTINGS ////
+/////////////////////////////
+
+// GLOBAL TRANSITION DURATION
+$trans-dur: 0.2s;
+
+// EASING
+$base-ease: ease-in-out;
+$nice-ease: cubic-bezier(0.4, 0, 0.2, 1);
+$bounce-ease: cubic-bezier(0.45, -0.6, 0.605, 1.565);
+$base-trans: all $base-ease $trans-dur;
+$nice-trans: all $nice-ease $trans-dur;
+$border-trans: border-color $nice-ease $trans-dur;
+
+/////////////////
+//// PRODUCT ////
+/////////////////
+$product-features-color              : #ffffff;
+$product-features-background         : #141415;
+$product-on-sale-label-background    : #3f3fd7;
+$product-unavailable-label-background: #000000;
+
+
+$search-mode: "product";

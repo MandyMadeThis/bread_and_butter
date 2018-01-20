@@ -1,0 +1,22 @@
+/**
+ * RTE (THOSE ARE USED TO STYLE ELEMENTS SUCH AS PRODUCT DESCRIPTION...)
+ */
+
+.rte {
+  iframe {
+    max-width: 100%;
+  }
+
+  blockquote {
+    @include av-mq('handheld-and-up') {
+      font-size: 30px;
+      font-size: 1.66667rem;
+      line-height: 1.2;
+    }
+
+    @include av-mq('desk') {
+      font-size: 48px;
+      font-size: 2.66667rem;
+    }
+  }
+}

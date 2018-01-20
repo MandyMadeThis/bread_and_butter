@@ -1,0 +1,81 @@
+.shipping-estimator {
+  margin: 18px -25px 20px -25px;
+  padding: 22px 25px;
+  border-top: 1px solid $border-color;
+  border-bottom: 1px solid $border-color;
+}
+
+.shipping-estimator__title {
+  margin-bottom: 0;
+
+  svg {
+    float: right;
+    width: 16px;
+    height: 16px;
+    -webkit-transform: rotateZ(0deg);
+    transform: rotateZ(0deg);
+    transition: -webkit-transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
+  }
+}
+
+.shipping-estimator--active .shipping-estimator__title svg {
+  -webkit-transform: rotateZ(-180deg);
+  transform: rotateZ(-180deg);
+}
+
+.shipping-estimator__inner {
+  margin: 20px 0 4px 0;
+}
+
+.shipping-estimator__submit {
+  width: 100%;
+}
+
+.shipping-estimator__results {
+  margin-top: 25px;
+}
+
+@include av-mq('handheld-and-up') {
+  .shipping-estimator {
+    margin: 48px 0 0 0;
+    padding: 42px 0 0 0;
+    border-top: 1px solid $border-color;
+    border-bottom: none;
+  }
+
+  .shipping-estimator__inner {
+    margin: 25px 0 12px 0;
+  }
+
+  .shipping-estimator__form {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+
+  .shipping-estimator__form .form__control {
+    margin-bottom: 0;
+    margin-right: 10px;
+  }
+
+  .shipping-estimator__submit {
+    width: auto;
+    -webkit-flex: none;
+    -ms-flex: none;
+    flex: none;
+  }
+}
+
+@include av-mq('desk') {
+  .shipping-estimator__form .form__control {
+    margin-right: 30px;
+  }
+
+  .shipping-estimator__inner {
+    margin-bottom: 0;
+  }
+}

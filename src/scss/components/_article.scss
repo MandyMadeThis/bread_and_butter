@@ -1,0 +1,208 @@
+.article--full {
+  margin-bottom: 45px;
+
+  @include av-mq("lap-and-up") {
+    margin-bottom: 90px;
+
+    .article__image {
+      max-height: 500px;
+
+      @include av-mq("desk") {
+        max-height: 600px;
+      }
+
+      + .article__content {
+        margin: -115px 0 0 96px;
+      }
+    }
+  }
+}
+
+.article__meta {
+  display: block;
+  margin-bottom: 1.1em;
+}
+
+.article__meta-item {
+  display: inline-block;
+}
+
+.article__meta-item + .article__meta-item::before {
+  display: inline-block;
+  content: '|';
+  margin: 0 5px;
+  letter-spacing: 0;
+  color: $light-text-color;
+
+  @include av-mq("lap-and-up") {
+    margin: 0 15px;
+  }
+}
+
+.article__image {
+  width: 100%;
+  max-height: 350px;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.article__content {
+  position: relative;
+  background: $background;
+}
+
+.article__image + .article__content {
+  margin: -45px 0 0 20px;
+  padding: 15px 20px 0 20px;
+
+  @include av-mq("handheld-and-up") {
+    margin: -65px 0 0 30px;
+    padding: 20px 30px 0 30px;
+  }
+
+  @include av-mq("lap-and-up") {
+    margin: -75px 0 0 70px;
+    padding: 65px 70px 0 70px;
+  }
+}
+
+.article__title {
+  margin-bottom: 0.5em;
+}
+
+.article__excerpt {
+  margin-bottom: 1em;
+
+  @include av-mq("lap-and-up") {
+    margin-bottom: 1.9em;
+  }
+}
+
+.article__body {
+  padding-top: 1.2em;
+
+  @include av-mq("handheld-and-up") {
+    padding-left: 60px;
+  }
+
+  @include av-mq("lap-and-up") {
+    padding: 2.6em 0 0 0;
+  }
+
+
+  .share-buttons {
+    display: none;
+
+    @include av-mq("lap-and-up") {
+      display: inline-block;
+      position: -webkit-sticky;
+      position: sticky;
+      left: 0;
+      top: 0;
+      vertical-align: top;
+    }
+  }
+}
+
+.article__body-inner {
+  @include av-mq("lap-and-up") {
+    display: inline-block;
+    width: calc(100% - 96px);
+    padding: 0 140px 0 70px;
+  }
+
+  @include av-mq("desk") {
+    padding: 0 310px 0 140px;
+  }
+}
+
+.article__tags {
+  padding-top: 2em;
+
+  @include av-mq("lap-and-up") {
+    padding-top: 3em;
+  }
+}
+
+.article__read-more {
+  display: inline-block;
+}
+
+.articles-list__item:not(:last-child) {
+  margin-bottom: 50px;
+
+  @include av-mq('desk') {
+    margin-bottom: 74px; 
+  }
+}
+
+.article-comments {
+  max-width: 550px;
+  margin: 0 auto;
+  padding-top: 35px;
+  border-top: 1px solid $border-color;
+
+  @include av-mq("lap-and-up") {
+    max-width: none;
+    padding-top: 65px;
+  }
+}
+
+.article-comments__list {
+  margin: 15px 0 34px 0;
+
+  @include av-mq("lap-and-up") {
+    margin-bottom: 0;
+    margin-top: 40px;
+  }
+
+  @include av-mq("desk") {
+    margin-right: 50px;
+  }
+}
+
+.article-comment {
+  
+  display: flex;
+  padding: 18px 0 25px 0;
+  border-bottom: 1px solid $border-color;
+
+  &:first-child {
+    padding-top: 0;
+  }
+}
+
+.article-comment__inner {
+  margin-top: 6px;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+
+.article-comment__avatar {
+  margin-right: 18px;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+}
+
+.article-comment__content {
+  font-size: 0.9em;
+}
+
+.article-comment__meta {
+  font-size: 0.8em;
+  color: $light-text-color;
+}
+
+.article-comment__author {
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.article-comment__time {
+  float: right;
+}

@@ -1,0 +1,84 @@
+.styled-select {
+  position: relative;
+  font-size: 13px;
+  font-size: 0.72222rem;
+  color: $heading-color;
+}
+
+.styled-select svg {
+  position: absolute;
+  top: calc(50% - 5px);
+  right: 18px;
+  width: 9px;
+  height: 9px;
+  line-height: normal;
+  pointer-events: none;
+  fill: currentColor;
+}
+
+.styled-select select {
+  /* Disable built-in styles */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  display: inline-block;
+  width: 100%;
+  height: 48px;
+  padding-left: 18px;
+  padding-right: 65px;
+  border: 1px solid $border-color;
+  border-radius: 0;
+  background: $background;
+  font-size: 0.9em;
+  color: inherit;
+  cursor: pointer;
+  text-transform: uppercase;
+  line-height: normal;
+  letter-spacing: 0.8px;
+
+  &:active, &:focus {
+    border-color: $accent-color;
+    outline: none;
+  }
+
+  /* Remove the ugly blue background on IE when a value is selected */
+  &:focus::-ms-value {
+    background: $background;
+    color: $heading-color;
+  }
+}
+
+.ie9 .styled-select svg {
+  display: none;
+}
+
+.ie9 .styled-select select {
+  padding-right: 0;
+}
+
+.styled-select--secondary select {
+  background: $secondary-background;
+  border-color: $secondary-background;
+}
+
+/* Allow to remove the ugly dashes when selecting an option in Firefox */
+select:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 $heading-color;
+}
+
+/* Disable default styles for IE10+ */
+select::-ms-expand {
+  display: none;
+}
+
+@include av-mq('handheld-and-up') {
+  .styled-select {
+    font-size: 14px;
+    font-size: 0.77778rem;
+  }
+
+  .styled-select select {
+    height: 53px;
+  }
+}

@@ -1,0 +1,47 @@
+{%- if section.settings.show_announcement -%}
+  <aside class="announcement-bar">
+    <div class="container">
+      <p class="announcement-bar__content">{{ section.settings.announcement_text | escape }}</p>
+    </div>
+  </aside>
+{%- endif -%}
+
+<style>
+  .announcement-bar {
+    color: {{ section.settings.announcement_color }};
+    background: {{ section.settings.announcement_background }};
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Announcement bar",
+  "class": "shopify-section__announcement-bar",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_announcement",
+      "label": "Enable announcement",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "announcement_text",
+      "label": "Announcement text",
+      "default": "Announce something here"
+    },
+    {
+      "type": "color",
+      "id": "announcement_color",
+      "label": "Text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "announcement_background",
+      "label": "Background",
+      "default": "#0c0c0d"
+    }
+  ]
+}
+{% endschema %}

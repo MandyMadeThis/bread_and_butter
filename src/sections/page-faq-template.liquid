@@ -1,0 +1,82 @@
+<div class="faq page__content-wrapper">
+  <div class="container">
+    <div class="page__header">
+      <h1 class="page__title h1">{{ page.title }}</h1>
+    </div>
+
+    <div class="box box--shrinked">
+      <div class="box__content box__content--large-padding">
+        {%- assign expand_questions = section.settings.expand_questions -%}
+
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'separator' -%}
+              <h2 class="faq__separator h4" {{ block.shopify_attributes }}>{{ block.settings.title | escape }}</h2>
+
+            {%- when 'question' -%}
+              <div class="faq__item {% unless expand_questions %}faq__item--expandable{% endunless %}" {{ block.shopify_attributes }}>
+                <h3 class="faq__question h5 {% unless expand_questions %}link{% endunless %}">{{ block.settings.title }}</h3>
+                <div class="faq__answer rte">
+                  {{ block.settings.answer }}
+                </div>
+              </div>
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "class": "shopify-section__faq",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "expand_questions",
+      "label": "Expand all questions by default",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "separator",
+      "name": "Section separator",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading"
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "separator",
+        "settings": {
+          "title": "General"
+        }
+      }
+    ]
+  }
+}
+{% endschema %}

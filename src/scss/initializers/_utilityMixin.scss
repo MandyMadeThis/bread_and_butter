@@ -1,0 +1,79 @@
+$sizes: (
+  none: '0',
+  xxsmall: '5px',
+  xsmall: '10px',
+  small: '20px',
+  medium: '40px',
+  large: '60px',
+  xlarge: '80px',
+  xxlarge: '140px'
+);
+
+@function capitalize($string) {
+  @return to-upper-case(str-slice($string, 1, 1)) + str-slice($string, 2);
+}
+
+@mixin utility($property, $direction, $size, $breakpoint: '') {
+  $pixelValue: #{(map-get($sizes, $size))};
+  $classDirection: capitalize($direction);
+  $classSize: capitalize($size);
+
+  @if $direction == "all" {
+    @if $breakpoint != "" {
+      @media #{(map-get($breakpoints, $breakpoint))} {
+        .u-#{$property}#{$classDirection}#{$classSize}--#{$breakpoint} {
+          #{$property}: $pixelValue;
+        }
+      }
+    } @else {
+      .u-#{$property}#{$classDirection}#{$classSize} {
+        #{$property}: $pixelValue;
+      }
+    }
+  } @else if $direction == "vertical" {
+    @if $breakpoint != "" {
+      @media #{(map-get($breakpoints, $breakpoint))} {
+        .u-#{$property}#{$classDirection}#{$classSize}--#{$breakpoint} {
+          #{$property}-top: $pixelValue;
+          #{$property}-bottom: $pixelValue;
+        }
+      }
+    } @else {
+      .u-#{$property}#{$classDirection}#{$classSize} {
+        #{$property}-top: $pixelValue;
+        #{$property}-bottom: $pixelValue;
+      }
+    }
+  } @else if $direction == "horizontal" {
+    @if $breakpoint != "" {
+      @media #{(map-get($breakpoints, $breakpoint))} {
+        .u-#{$property}#{$classDirection}#{$classSize}--#{$breakpoint} {
+          #{$property}-right: $pixelValue;
+          #{$property}-left: $pixelValue;
+        }
+      }
+    } @else {
+      .u-#{$property}#{$classDirection}#{$classSize} {
+        #{$property}-right: $pixelValue;
+        #{$property}-left: $pixelValue;
+      }
+    }
+  } @else {
+    @if $breakpoint != "" {
+      @media #{(map-get($breakpoints, $breakpoint))} {
+        .u-#{$property}#{$classDirection}#{$classSize}--#{$breakpoint} {
+          #{$property}-#{$direction}: $pixelValue;
+        }
+      }
+    } @else {
+      .u-#{$property}#{$classDirection}#{$classSize} {
+        #{$property}-#{$direction}: $pixelValue;
+      }
+    }
+  }
+}
+
+// Here's how to use it:
+// @include utility(padding, horizontal, medium, 'portable');
+
+@include utility(padding, vertical, xxlarge);//.u-paddingVerticalXxlarge

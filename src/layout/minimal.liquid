@@ -1,0 +1,67 @@
+<!doctype html>
+
+<!--[if IE 9 ]><html class="no-js csscalc no-flexbox ie9" lang="{{ shop.locale }}"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="{{ shop.locale }}"><!--<![endif]-->
+  <head>
+    <meta charset="utf-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, user-scalable=0">
+
+    <title>{{ shop.name }}</title>
+
+    {%- if page_description -%}
+      <meta name="description" content="{{ page_description | escape }}">
+    {%- endif -%}
+
+    <link rel="canonical" href="{{ canonical_url }}">
+
+    {%- comment -%} We preconnect of two popular domains (Shopify CDN and Google Font) to speed up performance {%- endcomment -%}
+    <link rel="preconnect" href="//cdn.shopify.com" crossorigin>
+    <link rel="preconnect" href="//fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,400,400i,500" rel="stylesheet">
+    
+    {%- include 'favicon' -%}
+
+    {%- include 'social-meta-tags' -%}
+    
+    {{ 'style.css' | asset_url | stylesheet_tag }}
+
+    {{ content_for_header }}
+
+    {{ '//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js' | script_tag }}
+    {{ 'modernizr.min.js' | asset_url | script_tag }}
+
+    <script>
+      // This exposes several variables to the global scope, to be used in scripts
+      window.shop = {
+        template: {{ template | json }},
+        currentPage: {{ current_page }},
+        shopCurrency: {{ shop.currency | json }},
+        moneyFormat: {{ shop.money_format | json }},
+        moneyWithCurrencyFormat: {{ shop.money_with_currency_format | json }},
+        collectionSortBy: {{ collection.sort_by | default: collection.default_sort_by | json }}
+      };
+    </script>
+  </head>
+
+  {%- assign template_handle = template | replace: '.', ' ' | truncatewords: 1, '' | handle | replace: '_', '-' -%}
+
+  <body class="trademark--v1 template-{{ template_handle }} {% if page.template_suffix != blank %}template-{{ template_handle }}-{{ page.template_suffix }}{% endif %}">
+    {%- include 'svg-icons' -%}
+
+    <div class="page__container">
+      {%- section 'header' -%}
+
+      <main id="main" class="main {% if force_secondary_background %}main--secondary{% endif %}" role="main">
+        {{ content_for_layout }}
+      </main>
+    </div>
+
+    {{ 'libs.js' | asset_url | script_tag }}
+    {{ 'script.js' | asset_url | script_tag }}
+
+    <!--[if IE 9]>
+      {{ 'polyfills-ie9.js' | asset_url | script_tag }}
+    <![endif]-->
+  </body>
+</html>

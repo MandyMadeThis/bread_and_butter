@@ -1,0 +1,48 @@
+// Hide only visually, but have it available for screen readers:
+// https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+.u-accessible {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap; /* 1 */
+}
+
+.u-visuallyHidden {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+}
+
+// Typography Utilities
+.u-italic { font-style: italic !important; }
+.u-bold { font-weight: 600 !important; }
+
+// Layout Helpers
+.u-block { display: block !important; }
+.u-inlineBlock { display: inline-block !important; }
+.u-center { margin-right: auto !important; margin-left: auto !important; }
+.u-alignCenter { text-align: center !important; }
+.u-alignRight { text-align: right !important; }
+.u-alignLeft { text-align: left !important; }
+.u-verticalAlignMiddle { vertical-align: middle !important; }
+.u-autoWidth { width: auto !important; }
+.u-widthFull { width: 100% !important; }
+.u-relative {position: relative;}
+
+// Flexbox Utilities
+.u-flex { display: flex; }
+.u-flexJustifyContentBetween { justify-content: space-between !important; }
+.u-flexAlignContentBetween { align-content: space-between !important; }
+
+// Hide Stuff
+.u-hide { display: none !important; }

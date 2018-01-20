@@ -1,0 +1,46 @@
+<section class="section section-{{ section.id }} promotion" {% if section.settings.image %}style="background-image: url({{ section.settings.image | img_url: '1200x' }})" {% endif %}>
+  {%- if section.settings.image -%}
+    {%- assign overlay_color = section.settings.overlay_color | hex_to_rgba: 0.6 -%}
+  {%- else -%}
+    {%- assign overlay_color = section.settings.overlay_color -%}
+  {%- endif -%}
+
+  <div class="promotion__overlay" style="background-color: {{ overlay_color }}"></div>
+
+  <div class="container">
+    <p class="promotion__text h3 text--respect-break">{{ section.settings.title | escape }}</p>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Promotion",
+  "class": "shopify-section__promotion",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background image",
+      "info": "1200 x 400px .jpg recommended"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Overlay color",
+      "default": "#000000"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Text",
+      "default": "Use a short, catchy sentence to showcase your store."
+    }
+  ],
+  "presets": [
+    {
+      "category": "Image",
+      "name": "Image with text overlay"
+    }
+  ]
+}
+{% endschema %}

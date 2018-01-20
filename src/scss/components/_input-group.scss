@@ -1,0 +1,72 @@
+// INPUT GROUP (ALLOWS TO HAVE AN INPUT AND A SUBMIT ATTACHED)
+
+
+.input-group {
+  
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+
+.input-group__field {
+  display: inline-block;
+  border: none;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  min-width: 0; /* This is necessary per new spec of flexbox: https://bugzilla.mozilla.org/show_bug.cgi?id=1088586 */
+}
+
+.input-group__submit {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  font-size: 14px;
+  font-size: 0.77778rem;
+
+  svg {
+    margin: 0;
+  }
+}
+
+.input-group__field--secondary {
+  background: $secondary-background;
+  color: $heading-color;
+}
+
+.ie9 .input-group {
+  display: inline-block;
+}
+
+.ie9 .input-group__field {
+  width: auto;
+}
+
+@include av-mq('handheld-and-up') {
+  .input-group {
+    width: auto;
+  }
+
+  .input-group__field--expand {
+    min-width: 225px;
+  }
+
+  .input-group__submit {
+    -webkit-flex-shrink: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+  }
+}
+
+@include av-mq('lap-and-up') {
+  .input-group__submit {
+    font-size: 16px;
+    font-size: 0.88889rem;
+  }
+}
+
+@include av-mq('widescreen') {
+  .input-group__field--expand {
+    min-width: 415px;
+  }
+}

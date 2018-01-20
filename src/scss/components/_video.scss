@@ -1,0 +1,16 @@
+.video-wrapper,
+.video-container {
+  height: 0;
+  padding-bottom: 56.25%;
+  position: relative;
+
+  iframe,
+  embed,
+  object {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
