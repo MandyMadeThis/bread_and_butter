@@ -776,14 +776,6 @@
       $(this).removeClass('header__link--focused');
     });
 
-    // Add a listener to check if the main nav can fit and init it (only when the logo is positioned in the center)
-    if (!this.mainNav.hasClass('header__main-nav--stretched')) {
-      this.mainNavWidth = Math.ceil(this.mainNav.width() + 35);
-      this._verifyOverlap();
-
-      $(window).on('resize.trademarkMainNav', $.proxy(this._verifyOverlap, this));
-    }
-
     // We need to handle the overlap
     this.mainNav.find('.nav-dropdown--first').on('mouseenter', function() {
       var windowWidth = window.innerWidth,

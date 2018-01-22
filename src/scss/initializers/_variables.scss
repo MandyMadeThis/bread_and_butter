@@ -27,19 +27,19 @@ $secondary-background: $white-dark;
 $heading-color: $black;
 $text-color: $grey-dark;
 $light-text-color: $white;
-$accent-color: $green;
+$accent: $green;
 $border-color: $grey-dark;
 
 $primary-button-color: $white;
-$primary-button-background: $accent-color;
+$primary-button-background: $accent;
 $secondary-button-color: $white;
 $secondary-button-background: $black;
 
 $has-background-pattern: false;
 
 // LINK COLORS
-$base-link-color: $accent-color;
-$hover-link-color: saturate($accent-color, 15%);
+$base-link-color: $accent;
+$hover-link-color: saturate($accent, 15%);
 
 
 ///////////////////////////////

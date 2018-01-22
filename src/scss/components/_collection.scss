@@ -8,7 +8,7 @@
   min-height: 150px;
   width: 100%;
   text-align: center;
-  background-color: $accent-color;
+  background-color: $accent;
   overflow: hidden;
 
   &::before {
@@ -28,7 +28,7 @@
   filter: grayscale(100%);
   font-family: 'object-fit: cover; object-position: center center;'; /* for polyfilling IE */
 
-  @if lightness($accent-color) > 30 {
+  @if lightness($accent) > 30 {
     mix-blend-mode: multiply;
   } @else {
     mix-blend-mode: screen;
@@ -151,7 +151,7 @@
   left: 0;
   bottom: 0;
   width: 100%;
-  background: rgba($accent-color, 0.9);
+  background: rgba($accent, 0.9);
   overflow: hidden;
   text-align: left;
   transition: background 0.25s ease-in-out;
@@ -164,10 +164,10 @@
 
 .collection-item__button {
   background: $background;
-  color: $accent-color;
+  color: $accent;
 
   &:hover {
-    background: darken($accent-color, 20%);
+    background: darken($accent, 20%);
     color: $background;
   }
 }
@@ -182,7 +182,7 @@
 }
 
 .collection-item--hovered .collection-item__info {
-  background: $accent-color;
+  background: $accent;
 }
 
 @include av-mq('thumb') {

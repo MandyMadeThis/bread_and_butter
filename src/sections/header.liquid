@@ -37,43 +37,45 @@
               <span class="header__logo-text">{{ shop.name }}</span>
           </a>
         </h1>
-        {%- include 'header-desktop-nav' -%}
 
-        <nav class="header__secondary-nav">
-          <ul class="header__links list--unstyled">
-            {%- if settings.currency_conversion_enabled -%}
+        <div class="header__nav-wrapper">
+          {%- include 'header-desktop-nav' -%}
+          <nav class="header__secondary-nav">
+            <ul class="header__links list--unstyled">
+              {%- if settings.currency_conversion_enabled -%}
+                <li class="header__link hidden-pocket">
+                  {%- include 'currency-selector' -%}
+                </li>
+              {%- endif -%}
+
+              {%- if shop.customer_accounts_enabled -%}
+                <li class="header__link hidden-pocket">
+                  {%- if customer -%}
+                    <a href="/account" class="link">{{ 'layout.header.account' | t }}</a>
+                  {%- else -%}
+                    <a href="/account/login" class="link">{{ 'layout.header.login' | t }}</a>
+                  {%- endif -%}
+                </li>
+              {%- endif -%}
+
               <li class="header__link hidden-pocket">
-                {%- include 'currency-selector' -%}
+                <a href="/cart" class="header__cart-count-wrapper link" data-action="toggle-mini-cart">
+                  {{ 'layout.header.cart' | t }}
+                  <span class="header__cart-count">{{ cart.item_count }}</span>
+                </a>
               </li>
-            {%- endif -%}
-
-            {%- if shop.customer_accounts_enabled -%}
-              <li class="header__link hidden-pocket">
-                {%- if customer -%}
-                  <a href="/account" class="link">{{ 'layout.header.account' | t }}</a>
-                {%- else -%}
-                  <a href="/account/login" class="link">{{ 'layout.header.login' | t }}</a>
-                {%- endif -%}
+              <li class="header__link">
+                <a href="/search" class="link" aria-label="{{ 'layout.header.search' | t }}" data-action="open-search">{%- include 'icon' with 'search' -%}</a>
               </li>
-            {%- endif -%}
-
-            <li class="header__link hidden-pocket">
-              <a href="/cart" class="header__cart-count-wrapper link" data-action="toggle-mini-cart">
-                {{ 'layout.header.cart' | t }}
-                <span class="header__cart-count">{{ cart.item_count }}</span>
-              </a>
-            </li>
-            <li class="header__link">
-              <a href="/search" class="link" aria-label="{{ 'layout.header.search' | t }}" data-action="open-search">{%- include 'icon' with 'search' -%}</a>
-            </li>
-            <li class="header__link hidden-lap-and-up">
-              <a href="/cart" aria-label="{{ 'layout.header.cart' | t }}" data-action="toggle-mini-cart">
-                {%- include 'icon' with 'cart' -%}
-                <span class="header__cart-count">{{ cart.item_count }}</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
+              <li class="header__link hidden-lap-and-up">
+                <a href="/cart" aria-label="{{ 'layout.header.cart' | t }}" data-action="toggle-mini-cart">
+                  {%- include 'icon' with 'cart' -%}
+                  <span class="header__cart-count">{{ cart.item_count }}</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
       </div>
     </div>
   </header>

@@ -12,24 +12,24 @@ body {
 
 a:not(.button),
 .link {
-  color: $accent-color;
+  color: $accent;
   transition: all 0.25s ease-in-out;
 
   &:hover,
   &:focus {
-    color: $accent-color;
+    color: $accent;
   }
 }
 
 .link:hover {
-  color: $accent-color;
+  color: $accent;
 }
 
 .link--primary {
-  color: $accent-color;
+  color: $accent;
 
   &:hover {
-    color: darken($accent-color, 15%);
+    color: darken($accent, 15%);
   }
 }
 
@@ -38,7 +38,7 @@ a:not(.button),
 
   &:hover,
   &:focus {
-    color: $accent-color;
+    color: $accent;
   }
 }
 

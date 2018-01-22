@@ -9,11 +9,13 @@
 
   {%- assign mega_nav_names = mega_nav_names | downcase | split: ',' | compact -%}
 
-  <nav class="header__main-nav header__main-nav--stretched">
+  <nav class="header__main-nav">
     <ul class="header__links list--unstyled">
       {%- for link in main_menu.links -%}
         <li class="header__link {% if link.links != blank %}header__link--need-extra-space{% endif %}" {% if link.links != blank %}aria-haspopup="true"{% endif %} tabindex>
-          <a href="{{ link.url }}" class="link">{{- link.title | escape -}} {% if link.links != blank %}{% include 'icon' with 'dropdown-arrow' %}{% endif %}</a>
+          <a href="{{ link.url }}" class="header__link-anchor{% if link.active %} header__link-current {% endif %}"">
+            <span class="header__link-underline">{{- link.title | escape -}} {% if link.links != blank %}{% include 'icon' with 'dropdown-arrow' %}{% endif %}</span>
+          </a>
 
           {%- if link.links != blank -%}
             {%- assign downcased_link_title = link.title | downcase -%}
