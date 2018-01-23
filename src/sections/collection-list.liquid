@@ -1,44 +1,36 @@
 <section class="section section-{{ section.id }}">
   <div class="container">
     {%- if section.settings.title != blank -%}
-      <h2 class="section__title h3">{{ section.settings.title | escape }}</h2>
+      <div class="headingDecorative">
+        <h2 class="headingDecorative-heading">{{ section.settings.title | escape }}</h2>
+      </div>
     {%- endif -%}
-
-    <div class="list-collections grid grid--large grid--center" data-slides-count="{{ section.blocks.size }}">
-      {%- assign grid_items_per_row = section.settings.grid_items_per_row -%}
-
+    
+    <div class="container container--flex list-collections" data-slides-count="{{ section.blocks.size }}">
       {%- for block in section.blocks -%}
-        {%- capture current -%}{%- cycle 1, 2, 3, 4, 5, 6 -%}{%- endcapture -%}
-
         {%- assign collection = collections[block.settings.collection] -%}
-
+        
         {%- unless collection.empty? -%}
-          <div class="grid__cell 1/2--handheld-and-up 1/{{ grid_items_per_row }}--desk" {{ block.shopify_attributes }} data-slide-index="{{ forloop.index0 }}">
-            {%- include 'collection-item', collection: collection, grid_items_per_row: grid_items_per_row, show_description: section.settings.show_description -%}
-          </div>
+          {%- assign collection_image = collection.image | default: collection.products.first.featured_image -%}
+
+          <a href="{{ collection.url }}" class="imageBox collection-item" data-slide-index="{{ forloop.index0 }}">
+            <div class="imageBox-inner">
+              <img src="{{ collection_image | img_url: '500x500', crop: 'center' }}" alt="{{ collection_image.alt }}" />
+              <div class="imageBox-textWrapper">
+                <h3>{{ collection.title }}</h3>
+              </div>
+            </div>
+          </a>
         {%- else -%}
-          <div class="grid__cell 1/2--handheld-and-up 1/{{ grid_items_per_row }}--desk" {{ block.shopify_attributes }} data-slide-index="{{ forloop.index0 }}">
-            <a class="collection-item">
-              <div class="collection-item__placeholder">
-                {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+          <a href="#" class="imageBox collection-item" data-slide-index="{{ forloop.index0 }}">
+            <div class="imageBox-inner">
+              <img src="https://s-media-cache-ak0.pinimg.com/originals/88/ce/8c/88ce8c8bbe3262b3438f65f0f0e1c313.jpg" alt="placeholder image" />
+              <div class="imageBox-textWrapper">
+                <h3>Collection Name</h3>
               </div>
-
-              <div class="collection-item__info">
-                <h3 class="collection-item__title h4">{{ 'home_page.onboarding.collection_title' | t }}</h3>
-
-                <div class="collection-item__bottom">
-                  {%- if section.settings.show_description -%}
-                    <p class="collection-item__description">{{ 'home_page.onboarding.collection_description' | t }}</p>
-                  {%- endif -%}
-
-                  <button class="collection-item__button button">{{ 'home_page.onboarding.collection_see_more' | t }}</button>
-                </div>
-              </div>
-            </a>
-          </div>
+            </div>
+          </a>
         {%- endunless -%}
-      {%- else -%}
-
       {%- endfor -%}
     </div>
   </div>
@@ -55,21 +47,6 @@
       "id": "title",
       "label": "Heading",
       "default": "Collection list"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_description",
-      "label": "Show collections' description excerpt",
-      "default": true
-    },
-    {
-      "type": "range",
-      "id": "grid_items_per_row",
-      "min": 2,
-      "max": 4,
-      "step": 1,
-      "label": "Collections per row (desktop)",
-      "default": 3
     }
   ],
   "blocks": [
@@ -91,6 +68,9 @@
       "name": "Collection list",
       "settings": {},
       "blocks": [
+        {
+          "type": "collection"
+        },
         {
           "type": "collection"
         },

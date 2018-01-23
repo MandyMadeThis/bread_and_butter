@@ -6,13 +6,6 @@
   </aside>
 {%- endif -%}
 
-<style>
-  .announcement-bar {
-    color: {{ section.settings.announcement_color }};
-    background: {{ section.settings.announcement_background }};
-  }
-</style>
-
 {% schema %}
 {
   "name": "Announcement bar",
@@ -29,18 +22,6 @@
       "id": "announcement_text",
       "label": "Announcement text",
       "default": "Announce something here"
-    },
-    {
-      "type": "color",
-      "id": "announcement_color",
-      "label": "Text",
-      "default": "#ffffff"
-    },
-    {
-      "type": "color",
-      "id": "announcement_background",
-      "label": "Background",
-      "default": "#0c0c0d"
     }
   ]
 }

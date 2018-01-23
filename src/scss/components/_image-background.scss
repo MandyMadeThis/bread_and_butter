@@ -1,0 +1,33 @@
+// Text & Image Block
+.image-background {
+  display: table;
+  position: relative;
+  table-layout: fixed;
+  padding: 25px 30px;
+  height: 230px;
+  width: 100%;
+  background-size: cover !important;
+  background-position: center center;
+}
+
+.image-background__content {
+  position: relative;
+  display: table-cell;
+  vertical-align: middle;
+  width: 100%;
+}
+
+@include av-mq("handheld-and-up") {
+  .image-background {
+    height: 350px;
+  }
+}
+
+
+@include av-mq("desk") {
+  .image-background {
+    height: 400px;
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+}

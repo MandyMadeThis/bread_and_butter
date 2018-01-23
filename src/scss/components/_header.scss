@@ -191,19 +191,15 @@
   padding: 10px;
   display: block;
 
+  &:hover .header__cart-count {
+    transform: scale(1.15);
+  }
+
   .header__cart-count {
     transform: scale(1);
     transition: transform 0.2s ease-in-out;
-
-    &:hover & {
-      transform: scale(1.15);
-    }
   }
 }
-
-// .header__cart-count-wrapper:hover .header__cart-count {
-//   transform: scale(1.15);
-// }
 
 .header__password {
   position: absolute;

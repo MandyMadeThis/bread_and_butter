@@ -20,7 +20,7 @@
     {%- comment -%} We preconnect of two popular domains (Shopify CDN and Google Font) to speed up performance {%- endcomment -%}
     <link rel="preconnect" href="//cdn.shopify.com" crossorigin>
     <link rel="preconnect" href="//fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,400,400i,500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500" rel="stylesheet">
 
     {%- include 'favicon' -%}
 
@@ -78,14 +78,17 @@
     <div class="page__container {% if force_secondary_background %}page__container--secondary{% endif %}">
       
       {%- section 'announcement' -%}
-
       {%- section 'header' -%}
+      {% unless template == 'page.projects' or template == 'article' %}
+        {%- section 'hero' -%} 
+      {% endunless %}
+      
+      {%- section 'projects-slideshow' -%} 
 
       <main id="main" class="main" role="main">
         {{ content_for_layout }}
       </main>
 
-      {%- section 'newsletter' -%}
       {%- section 'footer' -%}
     </div>
 

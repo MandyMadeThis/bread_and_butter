@@ -1,5 +1,5 @@
-<div class="slideshow-section {% if section.settings.type == 'dual' %}slideshow-section--dual{% else %}slideshow-section--fs{% endif %} section section-{{ section.id }}" data-slideshow-type="{{ section.settings.type }}">
-  {%- if section.settings.type == 'dual' -%}
+{% if template == 'page.projects' %}
+  <div class="slideshow-section slideshow-section--dual section section-{{ section.id }}" data-slideshow-type="dual">
     <div class="container">
       <div class="dual-slideshow"
            data-autoplay="{% if section.settings.autoplay and section.blocks.size > 1 %}true{% else %}false{% endif %}"
@@ -107,84 +107,15 @@
         </div>
       </div>
     </div>
-  {%- else -%}
-    <div class="fs-slideshow">
-      <div class="fs-slideshow__slides"
-           data-autoplay="{% if section.settings.autoplay and section.blocks.size > 1 %}true{% else %}false{% endif %}"
-           data-cycle-speed="{{ section.settings.cycle_speed | times: 1000 }}">
-        {%- for block in section.blocks -%}
-          {%- if block.type == 'image' -%}
-            <div class="fs-slideshow__slide" {{ block.shopify_attributes }} {% unless forloop.first %}style="display: none"{% endunless %} data-slide-index="{{ forloop.index0 }}">
-              {%- if block.settings.image -%}
-                <img class="fs-slideshow__image"
-                  src="{{ block.settings.image | img_url: '1600x800', format: 'pjpg' }}"
-                  srcset="{{ block.settings.image.src | img_url: '800x400', format: 'pjpg' }} 800w, {{ block.settings.image.src | img_url: '1600x800', format: 'pjpg' }} 1600w"
-                  alt="{{ block.settings.image.alt | escape }}">
-              {%- else -%}
-                {%- capture image_name -%}lifestyle-{% cycle 'anchor': '1', '2' %}{%- endcapture -%}
-                {{ image_name | placeholder_svg_tag: 'fs-slideshow__image fs-slideshow__image--placeholder' }}
-              {%- endif -%}
-
-              <div class="fs-slideshow__cover fs-slideshow__cover--{{ block.settings.position }}">
-                <div class="fs-slideshow__content">
-                  {%- if block.settings.heading != blank -%}
-                    <h2 class="fs-slideshow__heading">{{ block.settings.heading | escape }}</h2>
-                  {%- endif -%}
-
-                  {%- if block.settings.button_text != blank -%}
-                    <a href="{{ block.settings.link }}" class="fs-slideshow__button button button--primary">{{ block.settings.button_text }}</a>
-                  {%- endif -%}
-                </div>
-              </div>
-            </div>
-          {%- else -%}
-            <div class="fs-slideshow__slide" {{ block.shopify_attributes }} {% unless forloop.first %}style="display: none"{% endunless %} data-slide-index="{{ forloop.index0 }}">
-              <div class="fs-slideshow__plyr-container">
-                <div class="plyr-video" data-type="{{ block.settings.video_url.type }}" data-video-id="{{ block.settings.video_url.id }}"></div>
-              </div>
-            </div>
-          {%- endif -%}
-        {%- endfor -%}
-      </div>
-
-      {%- if section.blocks.size > 1 -%}
-        <div class="fs-slideshow__slide-count hidden-thumb">
-          <div class="container">
-            <span class="fs-slideshow__current-slide">1</span>
-            <span class="fs-slideshow__total-slides">/ {{ section.blocks.size }}</span>
-          </div>
-        </div>
-
-        <span class="fs-slideshow__progress-bar">
-          <span class="fs-slideshow__progress-bar-advancement" style="width: {{ 100 | divided_by: section.blocks.size }}%"></span>
-        </span>
-      {%- endif -%}
-    </div>
-  {%- endif -%}
-</div>
+  </div>
+{% endif %}
 
 {% schema %}
 {
-  "name": "Slideshow",
+  "name": "Projects Slideshow",
   "class": "shopify-section__slideshow",
   "max_blocks": 5,
   "settings": [
-    {
-      "type": "select",
-      "id": "type",
-      "label": "Layout",
-      "options": [
-        {
-          "value": "dual",
-          "label": "Reveal next slide"
-        },
-        {
-          "value": "full_width",
-          "label": "Full width"
-        }
-      ],
-      "default": "dual"
-    },
     {
       "type": "checkbox",
       "id": "autoplay",

@@ -1,7 +1,6 @@
 /**
  * Plugin to handle the header search
  */
-
 (function ($) {
 
   'use strict';
@@ -246,16 +245,17 @@
     });
   };
 }(jQuery));
+
+
 /**
  * Plugin to handle home slideshow
  */
-
 (function ($) {
 
   'use strict';
 
   var pluginName = 'trademarkHomeSlideshow',
-    namespace = 'plugin_' + pluginName;
+      namespace = 'plugin_' + pluginName;
 
   /**
    * The Plugin constructor
@@ -556,10 +556,11 @@
     });
   };
 }(jQuery));
+
+
 /**
  * Plugin to handle Instagram
  */
-
 (function ($) {
 
   'use strict';
@@ -749,6 +750,7 @@
     });
   };
 }(jQuery));
+
 /**
  * Plugin to handle the main nav
  */
@@ -842,10 +844,10 @@
     });
   };
 }(jQuery));
+
 /**
  * Plugin to handle the mini-cart
  */
-
 (function ($) {
 
   'use strict';
@@ -1086,12 +1088,11 @@
     });
   };
 }(jQuery));
+
 /**
  * Plugin to handle the mobile sidebar
  */
-
 (function ($) {
-
   'use strict';
 
   var pluginName = 'trademarkMobileSidebar',
@@ -1269,10 +1270,10 @@
     });
   };
 }(jQuery));
+
 /**
  * Plugin to handle product update
  */
-
 (function ($) {
 
   'use strict';
@@ -1734,10 +1735,10 @@
     });
   };
 }(jQuery));
+
 /**
  * Plugin to handle tabs
  */
-
 (function ($) {
 
   'use strict';
@@ -1822,17 +1823,16 @@
     });
   };
 }(jQuery));
+
+
 var router = new RouterRouter();
 
 router.route('*all', function() {
   var bodyElement = $('body');
 
   /**
-   * -------------------------
    * STICKY HEADER POLYFILL AND HEADER SIZE
-   * -------------------------
    */
-
   (function() {
     var headerSection = $('.shopify-section__header');
 
@@ -1849,11 +1849,8 @@ router.route('*all', function() {
   }());
 
   /**
-   * -------------------------
    * MOBILE/TABLET NAVIGATION
-   * -------------------------
    */
-
   (function() {
     $('.sidebar-nav').trademarkMobileSidebar();
 
@@ -2137,15 +2134,13 @@ router.route('*all', function() {
     });
   }());
 });
+
 router.route('blogs/*blog/*article', function() {
   objectFitImages(); // This is a polyfill for object-fit in IE
 
   /**
-   * -------------------------
    * STICKY SHARE BUTTONS
-   * -------------------------
    */
-
   (function() {
     var header = $('#shopify-section-header'),
       shareButtons = $('.article__body .share-buttons');
@@ -2159,11 +2154,8 @@ router.route('blogs/*blog', function() {
 });
 router.route('cart', function() {
   /**
-   * -------------------------
    * CART NOTE
-   * -------------------------
    */
-
   $('.cart__note').on('change', function() {
     $.ajax({
       method: 'POST',
@@ -2176,11 +2168,8 @@ router.route('cart', function() {
   });
 
   /**
-   * -------------------------
    * SHIPPING ESTIMATOR
-   * -------------------------
    */
-
   (function() {
     var initShippingEstimator = function() {
       var shippingEstimator = $('.shipping-estimator');
@@ -2269,11 +2258,8 @@ router.route('cart', function() {
   }());
 
   /**
-   * -------------------------
    * RECOMMENDED PRODUCTS
-   * -------------------------
    */
-
   (function() {
     var initProducts = function(domElement) {
       if (domElement.length === 0) {
@@ -2327,11 +2313,8 @@ router.route('collections/*type', function() {
   objectFitImages(); // This is a polyfill for object-fit in IE
 
   /**
-   * -------------------------
    * SORT BY AND SEARCH
-   * -------------------------
    */
-
   (function() {
     Shopify.queryParams = {};
 
@@ -2364,11 +2347,8 @@ router.route('collections/*type', function() {
   }());
 
   /**
-   * -------------------------
    * INSTAGRAM
-   * -------------------------
    */
-
   (function() {
     $('#instafeed').trademarkInstagram();
 
@@ -2381,12 +2361,10 @@ router.route('collections/*type', function() {
     });
   }());
 });
-/**
- * ----------------------------------------------------------------------------------------------------
- * GIFT CARDS
- * ----------------------------------------------------------------------------------------------------
- */
 
+/**
+ * GIFT CARDS
+ */
 router.route('gift_cards/*id', function() {
   (function() {
     var config = {
@@ -2430,11 +2408,8 @@ router.route('gift_cards/*id', function() {
 });
 router.route('', function() {
   /**
-   * -------------------------
    * SLIDESHOW
-   * -------------------------
    */
-
   (function() {
     objectFitImages(); // This is a polyfill for object-fit in IE
 
@@ -2457,7 +2432,6 @@ router.route('', function() {
       });
 
       // Setup video, if any
-
       var players = plyr.setup(slideshow.find('.plyr-video[data-type]'), {
           controls: ['play-large'],
           iconPrefix: 'icon-video'
@@ -2566,9 +2540,7 @@ router.route('', function() {
   }());
 
   /**
-   * -------------------------
    * FEATURED COLLECTIONS
-   * -------------------------
    */
 
   (function() {
@@ -2624,11 +2596,8 @@ router.route('', function() {
   }());
 
   /**
-   * -------------------------
    * FEATURED PRODUCTS
-   * -------------------------
    */
-
   (function() {
     var initProducts = function(domElement) {
       if (domElement.length === 0) {
@@ -2679,11 +2648,8 @@ router.route('', function() {
   }());
 
   /**
-   * -------------------------
    * INSTAGRAM
-   * -------------------------
    */
-
   (function() {
     $('#instafeed').trademarkInstagram();
 
@@ -2696,19 +2662,15 @@ router.route('', function() {
     });
   }());
 });
+
 /**
- * ----------------------------------------------------------------------------------------------------
  * LOGIN
- * ----------------------------------------------------------------------------------------------------
  */
-
 router.route('account/login', function() {
+  
   /**
-   * -------------------------
    * SWITCH TO RECOVER FORM
-   * -------------------------
    */
-
   (function() {
     var switchToRecoverForm = function() {
       $('#login-section, #recover-password-section').toggle();
@@ -2735,19 +2697,16 @@ router.route('password', function() {
     });
   })();
 });
+
 /**
- * ----------------------------------------------------------------------------------------------------
  * PRODUCT ROUTE
- * ----------------------------------------------------------------------------------------------------
  */
 
 var productRoute = function() {
+  
   /**
-   * -------------------------
    * PRODUCT SLIDESHOW
-   * -------------------------
    */
-
   (function() {
     var initProductSlideshow = function(domElement) {
       if (domElement.length === 0) {
@@ -2809,9 +2768,7 @@ var productRoute = function() {
   }());
 
   /**
-   * -------------------------
    * PRODUCT TABS
-   * -------------------------
    */
 
   (function() {
@@ -2835,9 +2792,7 @@ var productRoute = function() {
   }());
 
   /**
-   * -------------------------
    * RELATED PRODUCTS
-   * -------------------------
    */
 
   (function() {

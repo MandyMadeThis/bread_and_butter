@@ -1,47 +1,20 @@
-/**
- *Bread&Butter Theme is all about overlay applied over images. This code abstract away this through a convenient "apply-accent-overlay" class
- */
-
-%image-background-overlay {
-  content: '';
+.patterned-overlay {
   position: absolute;
-  left: 0;
   top: 0;
-  width: 100%;
-  height: 100%;
+  bottom: 0;
+  left: 0;
+  right: 0;
 
-  @if lightness($accent) > 30 {
-    background: rgba($accent, 0.65);
-  } @else {
-    background: rgba($accent, 0.45);
-  }
-}
-
-.accent-overlay {
-  position: relative;
-  color: $background;
-  background-size: cover;
-  background-position: center center;
-}
-
-@if lightness($accent) > 30 {
-  .accent-overlay {
-    background-blend-mode: multiply;
-    background-color: $accent !important;
-  }
-} @else {
-  .accent-overlay::before {
-    @extend %image-background-overlay;
-  }
-}
-
-/* Please note that ideally I'd use a pseudo-element here. Unfortunately IE9-11 does not handle well pseudo element that are child of table-cell (the height
-    100% does not work correctly). As a consequence, I decided to use a span instead */
-.no-backgroundblendmode .accent-overlay {
-  overflow: hidden;
-
-  &::before {
-    height: 2000px;
-    @extend %image-background-overlay;
+  &::after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    content: '';
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc4JyBoZWlnaHQ9JzgnPgogIDxyZWN0IHdpZHRoPSc4JyBoZWlnaHQ9JzgnIGZpbGw9J25vbmUnLz4KICA8cGF0aCBkPSdNMCAwTDggOFpNOCAwTDAgOFonIHN0cm9rZS13aWR0aD0nMC41JyBzdHJva2U9JyMwMDAnLz4KPC9zdmc+"); 
+    background-repeat: repeat;
+    opacity: 0.5;
+    z-index: 3;
   }
 }

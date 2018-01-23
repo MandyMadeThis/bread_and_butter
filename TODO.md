@@ -2,9 +2,6 @@ TODO:
 
 * Remove colours, typography, favicon, product grid, cart settings choices from codebase
 * Add code from codepen project to here:
-  * Typography/Font
-  * Nav bar
-  * Hero Block (create new section w/ Image upload)
   * Categories Image grid (from codepen)
   * Redesign Footer etc.
 
@@ -20,3 +17,6 @@ DONE:
 * Add google fonts to theme.liquid
 * Add favivcon image & link to project
 * test and run gulp
+* Typography/Font
+* Nav bar
+* Hero Block (create new section w/ Image upload)

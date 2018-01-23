@@ -1,8 +1,6 @@
 .collection__top {
   position: relative;
-  
   display: flex;
-  
   align-items: center;
   margin-bottom: 25px;
   min-height: 150px;
@@ -26,11 +24,14 @@
   object-position: center center;
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
-  font-family: 'object-fit: cover; object-position: center center;'; /* for polyfilling IE */
+  font-family: 'object-fit: cover; object-position: center center;';
+  /* for polyfilling IE */
 
   @if lightness($accent) > 30 {
     mix-blend-mode: multiply;
-  } @else {
+  }
+
+  @else {
     mix-blend-mode: screen;
   }
 }
@@ -52,14 +53,15 @@
   hyphens: auto;
 }
 
-@include av-mq('handheld') {
+@include av-mq("handheld") {
   .collection__info {
     padding-top: 90px;
     padding-bottom: 90px;
   }
 }
 
-@include av-mq('lap-and-up') {
+
+@include av-mq("lap-and-up") {
   .list-products--with-collection-image {
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -89,6 +91,7 @@
   }
 }
 
+
 /**
  * FILTERS
  */
@@ -106,7 +109,7 @@
   }
 }
 
-@include av-mq('handheld-and-up') {
+@include av-mq("handheld-and-up") {
   .collection__filters {
     margin-bottom: 50px;
   }
@@ -120,72 +123,13 @@
     }
   }
 }
+
+
 .list-collections {
   margin-bottom: -25px;
 }
 
-.collection-item {
-  position: relative;
-  display: block;
-  margin-bottom: 25px;
-  min-height: 385px;
-  background-size: cover;
-  background-position: center center;
-  color: $background;
-  transition: background-position 0.25s ease-in-out;
-  overflow-anchor: none;
-}
-
-.collection-item__placeholder {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: $background;
-}
-
-.collection-item__info {
-  position: absolute;
-  padding: 24px 26px 0 26px;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background: rgba($accent, 0.9);
-  overflow: hidden;
-  text-align: left;
-  transition: background 0.25s ease-in-out;
-}
-
-.collection-item__title {
-  margin: 0 0 24px 0;
-  color: $background;
-}
-
-.collection-item__button {
-  background: $background;
-  color: $accent;
-
-  &:hover {
-    background: darken($accent, 20%);
-    color: $background;
-  }
-}
-
-.collection-item__bottom {
-  display: none;
-  padding-bottom: 24px;
-}
-
-.collection-item--hovered {
-  background-position-y: -25px;
-}
-
-.collection-item--hovered .collection-item__info {
-  background: $accent;
-}
-
-@include av-mq('thumb') {
+@include av-mq("thumb") {
   .template-index .list-collections {
     margin: 0 -25px;
   }
@@ -200,31 +144,9 @@
   }
 }
 
-@include av-mq('lap-and-up') {
+
+@include av-mq("lap-and-up") {
   .list-collections {
     margin-bottom: -35px;
-  }
-
-  .collection-item {
-    min-height: 450px;
-    margin-bottom: 35px;
-  }
-
-  .collection-item__description {
-    margin-bottom: 26px;
-  }
-}
-
-@include av-mq('desk') {
-  .collection-item {
-    min-height: 550px;
-  }
-
-  .collection-item__info {
-    padding: 28px 50px 0 50px;
-  }
-
-  .collection-item__bottom {
-    padding-bottom: 38px;
   }
 }

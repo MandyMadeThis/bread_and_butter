@@ -1,17 +1,13 @@
+{% assign bgImage = section.settings.background_image | img_url: '500x500', crop: 'center' %}
+
 <section class="section section--positioned section-{{ section.id }}">
   <div class="container">
-    {%- if section.settings.background_image and section.settings.title_position == 'left' -%}
-      <img src="{{ section.settings.background_image | img_url: '800x800' }}"
-           alt="{{ section.settings.background_image.alt | escape }}"
-           class="image-below-box image-below-box--pull image-below-box--horizontal-ratio">
-    {%- endif -%}
-
     <div class="box box--with-image">
       {%- capture section_title -%}
-        <div class="box__image box__image--small image-background {% if section.settings.show_overlay %}accent-overlay{% endif %}">
+        <div class="box__image box__image--small image-background" style="background-image: url({{ bgImage }});">
           {%- if section.settings.title != blank -%}
             <div class="image-background__content">
-              <h2 class="image-background__title h1">{{ section.settings.title | escape }}</h2>
+              <h2 class="headingOverlay">{{ section.settings.title | escape }}</h2>
             </div>
           {%- endif -%}
         </div>
@@ -39,12 +35,6 @@
         {{ section_title }}
       {%- endif -%}
     </div>
-
-    {%- if section.settings.background_image and section.settings.title_position == 'right' -%}
-      <img src="{{ section.settings.background_image | img_url: '800x800' }}"
-           alt="{{ section.settings.background_image.alt | escape }}"
-           class="image-below-box image-below-box--pull image-below-box--horizontal-ratio">
-    {%- endif -%}
   </div>
 </section>
 
@@ -55,15 +45,15 @@
   "settings": [
     {
       "type": "image_picker",
-      "id": "image",
+      "id": "background_image",
       "label": "Image",
-      "info": "600 x 600px jpg recommended"
+      "info": "Recommended size .jpg: 500 x 500px"
     },
     {
       "type": "text",
       "id": "title",
       "label": "Heading",
-      "default": "Your title"
+      "default": "Your Title"
     },
     {
       "type": "select",
@@ -82,12 +72,6 @@
       "default": "left"
     },
     {
-      "type": "checkbox",
-      "id": "show_overlay",
-      "label": "Show accent tint on image",
-      "default": true
-    },
-    {
       "type": "richtext",
       "id": "content",
       "label": "Text",
@@ -102,18 +86,12 @@
       "type": "url",
       "id": "button_link",
       "label": "Button link"
-    },
-    {
-      "type": "image_picker",
-      "id": "background_image",
-      "label": "Secondary image",
-      "info": "800 x 800px png with transparency recommended - this will be displayed only on large screens."
     }
   ],
   "presets": [
     {
       "category": "Text",
-      "name": "Text with optional image"
+      "name": "Text with Image Block"
     }
   ]
 }
