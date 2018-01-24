@@ -1,7 +1,9 @@
 <section class="section section-{{ section.id }}">
   {%- if section.settings.title != blank -%}
     <div class="container">
-      <h2 class="section__title h3">{{ section.settings.title | escape }}</h2>
+      <div class="headingDecorative">
+        <h2 class="headingDecorative-heading">{{ section.settings.title | escape }}</h2>
+      </div>
     </div>
   {%- endif -%}
 
@@ -45,6 +47,11 @@
     </div>
   {%- else -%}
     <div id="instafeed" class="instagram-feed" data-access-token="{{ section.settings.access_token }}"></div>
+    <div class="instagram-follow_wraper">
+      <a href="{{ settings.social_instagram }}" class="link instagram-follow_link section__title h3" target="_blank">
+        {{ section.settings.follow_title | escape }} {%- include 'icon' with 'instagram', title: 'Instagram' -%}
+      </a>
+    </div>
   {%- endif -%}
 </section>
 
@@ -57,6 +64,12 @@
       "type": "text",
       "id": "title",
       "label": "Heading",
+      "default": "Instagram Feed"
+    },
+    {
+      "type": "text",
+      "id": "follow_title",
+      "label": "Follow Us Link Text",
       "default": "Follow us on Instagram"
     },
     {

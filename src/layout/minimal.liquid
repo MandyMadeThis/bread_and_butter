@@ -51,9 +51,11 @@
 
     <div class="page__container">
       {%- section 'header' -%}
+      
       {% unless template == 'page.projects' or template == 'article' %}
         {%- section 'hero' -%} 
       {% endunless %}
+
       {%- section 'projects-slideshow' -%} 
 
       <main id="main" class="main {% if force_secondary_background %}main--secondary{% endif %}" role="main">

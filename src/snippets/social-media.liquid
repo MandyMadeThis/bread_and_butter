@@ -35,21 +35,9 @@
     </li>
   {%- endif -%}
 
-  {%- if settings.social_tumblr != blank -%}
-    <li class="social-media__item">
-      <a href="{{ settings.social_tumblr }}" class="link link--secondary" target="_blank">{%- include 'icon' with 'tumblr', title: 'Tumblr' -%}</a>
-    </li>
-  {%- endif -%}
-
   {%- if settings.social_google_plus != blank -%}
     <li class="social-media__item">
       <a href="{{ settings.social_google_plus }}" class="link link--secondary" target="_blank">{%- include 'icon' with 'google-plus', title: 'Google+' -%}</a>
-    </li>
-  {%- endif -%}
-
-  {%- if settings.social_fancy != blank -%}
-    <li class="social-media__item">
-      <a href="{{ settings.social_fancy }}" class="link link--secondary" target="_blank">{%- include 'icon' with 'fancy', title: 'Fancy' -%}</a>
     </li>
   {%- endif -%}
 

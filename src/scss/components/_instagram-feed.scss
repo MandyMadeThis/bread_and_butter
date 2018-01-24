@@ -1,0 +1,326 @@
+.instagram-feed {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  margin-top: 30px;
+  font-size: 0;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.instagram-tile__info {
+  display: none;
+}
+
+.instagram-tile__image-wrapper {
+  display: block;
+  background-size: cover;
+  background-position: center center;
+  transition: none;
+  float: right;
+   /* this allows to prevent a white border to appears when the browser computes a half pixel width */
+}
+
+.instagram-follow_wraper {
+  margin-top: 30px;
+  &:hover {
+    .instagram-follow_link {
+      color: $accent;
+    }
+    
+    svg {
+      fill: currentColor;
+    }
+  }
+}
+
+.instagram-follow_link {
+  display: block;
+  padding: 10px;
+
+  svg {
+    position: relative;
+    top: -2px;
+  }
+}
+
+.instagram-tile__image-wrapper--placeholder {
+  background: #c4c4ca;
+  fill: #545353;
+}
+
+.instagram__tile-wrapper {
+  position: relative;
+  display: none;
+  vertical-align: middle;
+  white-space: normal;
+}
+
+.instagram__tile-wrapper-hidder {
+  position: relative;
+  overflow: hidden;
+}
+
+.instagram__tile-wrapper--featured .instagram-tile__info {
+  display: block;
+  font-size: 1rem;
+}
+
+.instagram-tile {
+  display: inline-block;
+  background: $background;
+}
+
+.instagram-tile--prev,
+.instagram-tile--next {
+  position: absolute;
+  left: 0;
+  top: 0;
+  visibility: hidden;
+  will-change: transform;
+}
+
+.instagram-tile--next {
+  transform: translateX(100%);
+}
+
+.instagram-tile--prev {
+  transform: translateX(-100%);
+}
+
+.instagram-tile__likes {
+  margin-bottom: 0;
+  font-weight: 600;
+  font-size: 0.9em;
+
+  svg {
+    margin-right: 8px;
+  }
+}
+
+.instagram-tile__button {
+  display: none;
+  position: absolute;
+  padding: 10px;
+  top: 50%;
+  -webkit-appearance: none;
+  background: transparent;
+  color: #ffffff;
+  font-size: 16px;
+  font-size: 0.88889rem;
+  border: none;
+  z-index: 2;
+  transform: translateY(-50%);
+}
+
+.instagram__tile-wrapper--featured .instagram-tile__button {
+  display: block;
+}
+
+.instagram-tile__button--prev {
+  left: -45px;
+}
+
+.instagram-tile__button--next {
+  right: -45px;
+}
+
+.instagram__tile-wrapper:not(.instagram__tile-wrapper--featured) .instagram-tile__image-wrapper {
+  pointer-events: none;
+}
+
+/* On pocket, laptop and small desktop devices we only display 3 images around the pivot */
+.instagram__tile-wrapper:nth-child(7),
+.instagram__tile-wrapper:nth-child(8),
+.instagram__tile-wrapper:nth-child(9) {
+  display: table-cell;
+}
+
+/*
+ * Animations
+ */
+
+.instagram-feed--animating-next .instagram-tile--next,
+.instagram-feed--animating-prev .instagram-tile--prev {
+  animation: instagramTileAnimation 0.35s ease-in-out forwards;
+  visibility: visible;
+  z-index: 1;
+}
+
+@include av-mq("thumb") {
+  .instagram__tile-wrapper,
+  .instagram-tile__image-wrapper {
+    width: 30%;
+    min-width: 30vw;
+    height: 30vw;
+  }
+
+  .instagram__tile-wrapper--featured {
+    width: 40%;
+    min-width: 40vw;
+  }
+
+  .instagram__tile-wrapper--featured .instagram-tile__image-wrapper {
+    width: 40vw;
+    height: 40vw;
+  }
+
+  .instagram__tile-wrapper--featured .instagram-tile__info {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 10px 0 0 15px;
+    color: #ffffff;
+  }
+
+  .instagram-tile__caption,
+  .instagram-tile__date {
+    display: none;
+  }
+}
+
+
+@include av-mq("handheld-and-up") {
+  /* Starting from handheld, we display the full tweet with description */
+  .instagram__tile-wrapper,
+  .instagram-tile__image-wrapper {
+    width: 20%;
+    min-width: 20vw;
+    height: 20vw;
+  }
+
+  .instagram__tile-wrapper--featured {
+    width: 60%;
+    min-width: 60vw;
+  }
+
+  .instagram__tile-wrapper--featured .instagram-tile__image-wrapper {
+    width: 30vw;
+    height: 30vw;
+  }
+
+  .instagram__tile-wrapper--featured .instagram-tile {
+    display: table;
+    table-layout: fixed;
+  }
+
+  .instagram__tile-wrapper--featured .instagram-tile__info {
+    display: table-cell;
+    width: 50%;
+    vertical-align: top;
+  }
+
+  .instagram-tile__info {
+    position: relative;
+  }
+
+  .instagram-tile__info-wrapper {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    justify-content: space-between;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 15px 20px;
+  }
+
+  .instagram-tile__likes {
+    color: $accent;
+    font-size: 18px;
+    font-size: 1rem;
+  }
+
+  .instagram-tile__caption {
+    margin-top: 10px;
+    font-size: 16px;
+    font-size: 0.88889rem;
+  }
+
+  .instagram-tile__date {
+    font-size: 12px;
+    font-size: 0.66667rem;
+  }
+
+  .instagram-tile__button {
+    font-size: 26px;
+    font-size: 1.44444rem;
+  }
+
+  .instagram-tile__button--prev {
+    left: -60px;
+  }
+
+  .instagram-tile__button--next {
+    right: -60px;
+  }
+}
+
+
+@include av-mq("desk") {
+  .instagram-feed {
+    margin-top: 46px;
+  }
+
+  .instagram-tile__info-wrapper {
+    padding: 26px 40px;
+  }
+
+  .instagram-tile__caption {
+    margin-top: 24px;
+  }
+}
+
+
+@include av-mq("widescreen") {
+  /* Starting wide screen we display 5 items */
+  .instagram__tile-wrapper:nth-child(6),
+  .instagram__tile-wrapper:nth-child(10) {
+    display: table-cell;
+  }
+
+  .instagram__tile-wrapper,
+  .instagram-tile__image-wrapper {
+    width: 15%;
+    min-width: 15vw;
+    height: 15vw;
+  }
+
+  .instagram__tile-wrapper--featured {
+    width: 40%;
+    min-width: 40vw;
+  }
+
+  .instagram__tile-wrapper--featured .instagram-tile__image-wrapper {
+    width: 20vw;
+    height: 20vw;
+  }
+}
+
+
+@include av-mq("ultra-widescreen") {
+  /* Starting ultra wide screen we display 7 items */
+  .instagram__tile-wrapper:nth-child(5),
+  .instagram__tile-wrapper:nth-child(11) {
+    display: table-cell;
+  }
+
+  .instagram__tile-wrapper,
+  .instagram-tile__image-wrapper {
+    width: 11%;
+    min-width: 11vw;
+    height: 11vw;
+  }
+
+  .instagram__tile-wrapper--featured {
+    width: 34%;
+    min-width: 34vw;
+  }
+
+  .instagram__tile-wrapper--featured .instagram-tile__image-wrapper {
+    width: 17vw;
+    height: 17vw;
+  }
+}

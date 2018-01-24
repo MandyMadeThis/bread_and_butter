@@ -2,6 +2,12 @@ module.exports = {
   name: 'Social media',
   settings: [
     {
+      "type": "image_picker",
+      "id": "share_image",
+      "label": "Share image",
+      "info": "This image is used when you share pages such as home page. For product, collection or article pages, the featured image will be used instead."
+    },
+    {
       type: 'header',
       content: 'Accounts'
     },
