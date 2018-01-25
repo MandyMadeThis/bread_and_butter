@@ -1,10 +1,7 @@
 TODO: 
+* Remove colours, typography, favicon, product grid, settings choices from codebase
 
-* Remove colours, typography, favicon, product grid, cart settings choices from codebase
-
-* Fix Slider on Project Page - why doesn't it work??!? (not initializing on other pages??)
-* Categories Image grid - Make Responsive
-* Hero - make responsive
+* Fix JS to initialize on all pages
 * Redesign Footer
 * Edit/Redesign template for articles - simple
 
@@ -25,3 +22,5 @@ DONE:
 * Hero Block (create new section w/ Image upload)
 * Categories Image grid (from codepen)
 * Add code from codepen project to here:
+* Categories Image grid - Make Responsive
+* Hero - make responsive

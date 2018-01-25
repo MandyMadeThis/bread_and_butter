@@ -23,6 +23,10 @@
   border: 0;
 }
 
+.u-background-color {
+  background-color: $secondary-background;
+}
+
 // Typography Utilities
 .u-italic { font-style: italic !important; }
 .u-bold { font-weight: 600 !important; }

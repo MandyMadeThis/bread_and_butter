@@ -44,6 +44,11 @@
   }
 }
 
+
+.header__logo {
+  padding: 10px;
+}
+
 .header__logo-text {
   display: none;
 }
@@ -188,7 +193,6 @@
 }
 
 .header__cart-count-wrapper {
-  padding: 10px;
   display: block;
 
   &:hover .header__cart-count {
@@ -217,6 +221,7 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    transform: scale(1.7);
   }
 
   .header__inner {
@@ -280,6 +285,7 @@
   .header__logo {
     margin-left: 0;
     margin-right: 55px;
+    transform: scale(1.7);
   }
 
   .header__main-nav {

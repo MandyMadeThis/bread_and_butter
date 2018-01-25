@@ -1,0 +1,36 @@
+.section {
+  margin: 40px 0 45px 0;
+}
+
+.section--positioned {
+  position: relative;
+}
+
+.template-index .section {
+  margin: 50px 0;
+}
+
+.section__title {
+  position: relative;
+  margin-bottom: 0.95em;
+  text-align: center;
+  letter-spacing: 2px;
+  z-index: 1;
+}
+
+@include av-mq("handheld-and-up") {
+  .template-index .section {
+    margin: 70px 0;
+  }
+}
+
+
+@include av-mq("desk") {
+  .section {
+    margin: 78px 0 88px 0;
+  }
+
+  .template-index .section {
+    margin: 120px 0;
+  }
+}

@@ -2,6 +2,10 @@
   @include background-cover;
   position: relative;
   height: 500px;
+
+  @include av-mq("thumb") {
+    height: 350px;
+  } 
 }
 
 .hero-card {
@@ -12,7 +16,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 10%;
+  width: 250px;
+  height: 250px;
   
   svg {
     position: absolute;

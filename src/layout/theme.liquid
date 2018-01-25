@@ -79,7 +79,7 @@
       {%- section 'announcement' -%}
       {%- section 'header' -%}
   
-      {% unless template == 'page.projects' or template == 'article' %}
+      {% unless template == 'page.projects' or template == 'article' or template contains 'product' %}
         {%- section 'hero' -%} 
       {% endunless %}
 
@@ -89,9 +89,9 @@
       <main id="main" class="main" role="main">
         {{ content_for_layout }}
       </main>
-      {% comment %} Sections appear on Projects & About pages {% endcomment %}
+      
+      {% comment %} Sections appear on Projects, About, and Product pages {% endcomment %}
       {%- section 'testimonials' -%}
-
       {% comment %} Sections appear Sitewide: {% endcomment %}
       {%- section 'instagram-feed' -%}
       {%- section 'footer' -%}

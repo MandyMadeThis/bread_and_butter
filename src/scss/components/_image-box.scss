@@ -3,18 +3,12 @@
   position: relative;
   display: block;
   overflow: hidden;
-  margin-right: $gutter;
-  margin-bottom: $gutter;
-  width: calc(25% - 18.75px);
-  padding-bottom: calc(25% - 18.75px);
-  height: 0;
   background: $white;
+  margin-right: 20px;
+  height: 100%;
 
-  &:nth-child(4n) {
-    margin-right: 0;
-  }
-
-  &:hover {
+  &:hover,
+  &:focus {
     h3 {
       opacity: 1;
       visibility: visible;
@@ -34,6 +28,35 @@
     .imageBox-textWrapper::after {
       opacity: 1;
       transform: scale(1);
+    }
+  }
+}
+
+@include av-mq("handheld-and-up") {
+  .imageBox {
+    margin-right: $gutter;
+    margin-bottom: $gutter;
+    height: 0;
+    width: calc(50% - 13px);
+    padding-bottom: calc(50% - 13px);
+
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
+  }
+}
+
+@include av-mq("lap-and-up") {
+  .imageBox {
+    width: calc(25% - 18.75px);
+    padding-bottom: calc(25% - 18.75px);
+
+    &:nth-child(4n) {
+      margin-right: 0;
+    }
+
+    &:nth-child(4n-2) {
+      margin-right: $gutter;
     }
   }
 }

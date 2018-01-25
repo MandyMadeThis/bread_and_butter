@@ -4,11 +4,6 @@
 
 .page__container--secondary .main {
   background: $secondary-background;
-
-  @if $has-background-pattern {
-    background-image: url($background-pattern);
-    background-repeat: repeat;
-  }
 }
 
 .no-scroll {
@@ -442,133 +437,6 @@
     padding-left: 38px;
   }
 }
-
-
-.box {
-  position: relative;
-  background: $background;
-  z-index: 1;
-}
-
-.box--secondary {
-  background: $secondary-background;
-}
-
-.box--shrinked {
-  max-width: 950px;
-  margin: 0 auto;
-}
-
-.box--mini {
-  max-width: 620px;
-  margin: 0 auto;
-}
-
-.box__separator {
-  margin: 0 auto 30px 0;
-  height: 4px;
-  width: 80px;
-  background: $secondary-background;
-  border: none;
-}
-
-.box__content {
-  padding: 25px;
-}
-
-.box__content--small-padding {
-  padding: 17px 25px;
-}
-
-.box__content--large-padding {
-  padding: 25px 30px 30px 30px;
-}
-
-.box__content--centered {
-  text-align: center;
-}
-
-.box__button-wrapper {
-  margin-top: 25px;
-}
-
-/**
- * This is an image that appears below the box
- */
-
-.image-below-box {
-  display: none;
-  position: absolute;
-  top: -40px;
-  left: 0;
-}
-
-.image-below-box--pull {
-  top: -80px;
-}
-
-.image-below-box--vertical-ratio {
-  max-height: 680px;
-}
-
-.image-below-box--horizontal-ratio {
-  max-height: 400px;
-}
-
-.box + .image-below-box {
-  left: auto;
-  right: 0;
-}
-
-@include av-mq("handheld-and-up") {
-  .box--with-image {
-    display: table;
-    table-layout: fixed;
-    width: 100%;
-  }
-
-  .box--with-image .box__image,
-  .box--with-image .box__content {
-    display: table-cell;
-    vertical-align: middle;
-    width: 50%;
-  }
-
-  .box--with-image .box__image--small {
-    width: 28%;
-  }
-
-  .box__content--large-padding {
-    padding: 35px 30px 40px 30px;
-  }
-}
-
-
-@include av-mq("desk") {
-  .box__content {
-    padding: 45px;
-  }
-
-  .box__content--small-padding {
-    padding: 22px 25px;
-  }
-
-  .box__content--large-padding {
-    padding: 50px 70px 55px 70px;
-  }
-
-  .box__button-wrapper {
-    margin-top: 40px;
-  }
-}
-
-
-@include av-mq("widescreen") {
-  .image-below-box {
-    display: block;
-  }
-}
-
 
 @-webkit-keyframes buttonLoadingSpinner {
   0% {
@@ -3069,45 +2937,6 @@
   }
 }
 
-
-.section {
-  margin: 40px 0 45px 0;
-}
-
-.section--positioned {
-  position: relative;
-}
-
-.template-index .section {
-  margin: 50px 0;
-}
-
-.section__title {
-  position: relative;
-  margin-bottom: 0.95em;
-  text-align: center;
-  letter-spacing: 2px;
-  z-index: 1;
-}
-
-@include av-mq("handheld-and-up") {
-  .template-index .section {
-    margin: 70px 0;
-  }
-}
-
-
-@include av-mq("desk") {
-  .section {
-    margin: 78px 0 88px 0;
-  }
-
-  .template-index .section {
-    margin: 120px 0;
-  }
-}
-
-
 @-webkit-keyframes tabsOpeningEffect {
   0% {
     opacity: 0;
@@ -3912,81 +3741,6 @@
   }
 }
 
-
-.testimonial {
-  padding: 25px 30px 25px 30px;
-  background: $background;
-  text-align: center;
-  font-size: 16px;
-  font-size: 0.88889rem;
-}
-
-.testimonial--has-image {
-  padding-top: 0 !important;
-}
-
-.testimonial__picture {
-  width: 90px;
-  margin: -45px auto 24px auto;
-  border-radius: 100%;
-  background: $background;
-}
-
-.testimonial__author {
-  font-weight: 600;
-  color: $heading-color;
-}
-
-@include av-mq("thumb") {
-  .testimonials__grid-item--spaced {
-    margin-top: 70px;
-
-    &:first-child {
-      margin-top: 45px;
-    }
-  }
-
-  .testimonials__grid-item:not(.testimonials__grid-item--spaced) + .testimonials__grid-item {
-    margin-top: 25px;
-  }
-}
-
-
-@include av-mq("handheld-and-up") {
-  .testimonials,
-  .testimonial {
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-  }
-
-  .testimonials {
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-  }
-
-  .testimonial {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-  }
-
-  .testimonials__grid-item {
-    margin-top: 0;
-  }
-
-  .testimonials__grid-item--spaced {
-    margin-top: 28px;
-  }
-}
-
-
-@include av-mq("lap-and-up") {
-  .testimonial {
-    padding: 45px 50px 45px 50px;
-  }
-}
 
 
 /**

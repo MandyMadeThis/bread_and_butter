@@ -4,14 +4,23 @@
 
 .announcement-bar {
   background-color: $black;
-  color: $white;
   padding: 6px 0;
-  font-size: 13px;
-  font-size: 0.66667rem;
-  font-weight: 300;
-  letter-spacing: 2px;
-  text-transform: uppercase;
   text-align: center;
   line-height: 1;
+
+  @include av-mq("lap-and-up") {
+    padding: 8px 0;
+  }
 }
 
+.announcement-bar__content {
+  color: $white;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  @include av-mq("lap-and-up") {
+    font-weight: 14px;
+  }
+}

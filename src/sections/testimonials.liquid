@@ -1,4 +1,4 @@
-{% if handle contains 'projects' or handle == 'about' %}
+{% if handle contains 'projects' or handle == 'about' or template contains 'product' %}
   <div class="shopify-section__testimonials" id="shopify-section-{{ section.id }}">
     <section class="section section-{{ section.id }}">
       <div class="container">
@@ -8,12 +8,17 @@
           </div>
         {%- endif -%}
 
-        <div class="testimonials grid grid--large grid--center">
+        <div class="testimonials">
           {%- for block in section.blocks -%}
-            <div class="testimonials__grid-item {% if block.settings.author_picture != blank %}testimonials__grid-item--spaced{% endif %} grid__cell 1/3--handheld-and-up" {{ block.shopify_attributes }}>
+            <div class="testimonials__item" {{ block.shopify_attributes }}>
               <div class="testimonial {% if block.settings.author_picture != blank %}testimonial--has-image{% endif %}">
                 {%- if block.settings.author_picture -%}
-                  <img src="{{ block.settings.author_picture | img_url: '160x160', crop: 'center' }}" alt="{{ block.settings.author_picture.alt | escape }}" class="testimonial__picture">
+                <div class="testimonial__picture">
+                  <div class="testimonial__picture-wrapper">
+                    <img src="{{ block.settings.author_picture | img_url: '160x160', crop: 'center' }}" alt="{{ block.settings.author_picture.alt | escape }}" class="testimonial__image">
+                  </div>
+                </div>
+                  
                 {%- endif -%}
 
                 {%- if block.settings.title != blank -%}

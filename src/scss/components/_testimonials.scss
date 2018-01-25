@@ -1,0 +1,75 @@
+.shopify-section__testimonials {
+  background-color: $secondary-background;
+}
+
+.section-testimonials {
+  margin: 0;
+  padding: 80px 0;
+}
+
+.testimonials {
+  @include av-mq("lap-and-up") {
+    justify-content: space-between;
+    margin-top: 80px;
+  }
+}
+
+.testimonials,
+.testimonial {
+  @include av-mq("lap-and-up") {
+    display: flex;
+  }
+}
+
+.testimonials__item {
+  margin-top: 80px;
+  background-color: $white;
+  border: $base-border;
+  box-shadow: 0 0 0 15px $white;
+
+  @include av-mq("lap-and-up") {
+    margin-top: 0;
+    max-width: 30%;
+  }
+}
+
+.testimonial {
+  text-align: center;
+  font-size: 14px;
+  padding: 25px 8%;
+
+  @include av-mq("lap-and-up") {
+    flex-direction: column;
+  }
+}
+
+.testimonial--has-image {
+  padding-top: 0 !important;
+}
+
+.testimonial__picture {
+  width: 90px;
+  margin: -49px auto 0;
+  transform-origin: 50% 50%;
+  overflow: hidden;
+  transform: rotate(46deg);
+}
+
+.testimonial__picture-wrapper {
+  transform: rotate(-45deg) scale(1.5);
+}
+
+.testimonial__image {
+  transform: scale(1);
+}
+
+.testimonial__author {
+  font-weight: 600;
+  color: $heading-color;
+  font-size: 13px;
+  margin-top: 40px;
+}
+
+.testimonial__content p {
+  font-size: 14px;
+}
