@@ -1,5 +1,5 @@
 /**
- * Plugin to handle the header search
+ * PLUGIN: HEADER SEARCH
  */
 (function ($) {
 
@@ -248,10 +248,9 @@
 
 
 /**
- * Plugin to handle home slideshow
+ * PLUGIN: SLIDESHOW
  */
 (function ($) {
-
   'use strict';
 
   var pluginName = 'trademarkHomeSlideshow',
@@ -559,10 +558,9 @@
 
 
 /**
- * Plugin to handle Instagram
+ * PLUGIN: INSTAGRAM
  */
 (function ($) {
-
   'use strict';
 
   var pluginName = 'trademarkInstagram',
@@ -752,9 +750,8 @@
 }(jQuery));
 
 /**
- * Plugin to handle the main nav
+ * PLUGIN: MAIN NAV
  */
-
 (function ($) {
 
   'use strict';
@@ -846,7 +843,7 @@
 }(jQuery));
 
 /**
- * Plugin to handle the mini-cart
+ * PLUGIN: MINI-CART
  */
 (function ($) {
 
@@ -1090,7 +1087,7 @@
 }(jQuery));
 
 /**
- * Plugin to handle the mobile sidebar
+ * PLUGIN: MOBILE SIDEBAR
  */
 (function ($) {
   'use strict';
@@ -1737,7 +1734,7 @@
 }(jQuery));
 
 /**
- * Plugin to handle tabs
+ * PLUGIN: TABS
  */
 (function ($) {
 
@@ -1827,12 +1824,12 @@
 
 var router = new RouterRouter();
 
+/**
+ * STICKY HEADER POLYFILL AND HEADER SIZE
+ */
 router.route('*all', function() {
   var bodyElement = $('body');
 
-  /**
-   * STICKY HEADER POLYFILL AND HEADER SIZE
-   */
   (function() {
     var headerSection = $('.shopify-section__header');
 
@@ -1864,11 +1861,8 @@ router.route('*all', function() {
   }());
 
   /**
-   * -------------------------
    * MAIN NAVIGATION (ACCESSIBILITY)
-   * -------------------------
    */
-
   (function() {
     $('.header__main-nav').trademarkMainNav();
 
@@ -1882,11 +1876,8 @@ router.route('*all', function() {
   }());
 
   /**
-   * -------------------------
    * MINI-CART
-   * -------------------------
    */
-
   (function() {
     {% if settings.cart_type == 'drawer' %}
       $('.mini-cart').trademarkMiniCart();
@@ -1902,12 +1893,9 @@ router.route('*all', function() {
   }());
 
   /**
-   * -------------------------
    * SEARCH
    * Note that search initialization must happen after mini-cart and sidebar, as it relies on the existence of those two
-   * -------------------------
    */
-
   (function() {
     $('.header-search').trademarkHeaderSearch();
 
@@ -1921,11 +1909,8 @@ router.route('*all', function() {
   }());
 
   /**
-   * -------------------------
    * RTE (FOR PAGE THAT CONTAINED USER DEFINED TEXT, WE DO SOME POST-PROCESSING
-   * -------------------------
    */
-
   (function() {
     // 1st: wrap tables
     $('.rte table').addClass('table').wrap('<div class="table-wrapper"></div>');
@@ -1949,11 +1934,8 @@ router.route('*all', function() {
   }());
 
   /**
-   * -------------------------
    * FEATURED COLLECTIONS
-   * -------------------------
    */
-
   (function() {
     if (!Modernizr.touchevents || Modernizr.mq('(min-width: 1024px)')) {
       bodyElement.on('mouseenter mouseleave', '.collection-item', function() {
@@ -1963,11 +1945,8 @@ router.route('*all', function() {
   }());
 
   /**
-   * -------------------------
    * TWITTER
-   * -------------------------
    */
-
   (function() {
     var initTwitter = function(domElement) {
       if (domElement.length === 0) {
@@ -2013,11 +1992,8 @@ router.route('*all', function() {
   }());
 
   /**
-   * -------------------------
    * MARKETING POPUP
-   * -------------------------
    */
-
   (function() {
     var popupModalInstance = null;
 
@@ -2061,11 +2037,8 @@ router.route('*all', function() {
   })();
 
   /**
-   * -------------------------
    * AUTOMATIC CURRENCY CONVERSION
-   * -------------------------
    */
-
   (function() {
     {% if settings.currency_conversion_enabled %}
       {% if settings.currency_conversion_money_format %}
@@ -2115,11 +2088,8 @@ router.route('*all', function() {
   })();
 
   /**
-   * -------------------------
    * FAQ PAGE (we can't know in advance the exact URLs, so those are handled here as well)
-   * -------------------------
    */
-
   (function() {
     bodyElement.on('click', '.faq__question', function() {
       $(this).next('.faq__answer').slideToggle(150);
@@ -2133,14 +2103,28 @@ router.route('*all', function() {
       $(event.target).find('.faq__answer').slideUp(150);
     });
   }());
-});
-
-router.route('blogs/*blog/*article', function() {
-  objectFitImages(); // This is a polyfill for object-fit in IE
 
   /**
-   * STICKY SHARE BUTTONS
+   * INSTAGRAM
    */
+  (function() {
+    $('#instafeed').trademarkInstagram();
+
+    $(document).on('shopify:section:unload', '#shopify-section-collection-template', function(event) {
+      $(event.target).find('#instafeed').data('plugin_trademarkInstagram').destroy();
+    });
+
+    $(document).on('shopify:section:load', '#shopify-section-collection-template', function(event) {
+      $(event.target).find('#instafeed').trademarkInstagram();
+    });
+  }());
+});
+
+/**
+ * STICKY SHARE BUTTONS
+ */
+router.route('blogs/*blog/*article', function() {
+  objectFitImages(); // This is a polyfill for object-fit in IE
   (function() {
     var header = $('#shopify-section-header'),
       shareButtons = $('.article__body .share-buttons');
@@ -2149,13 +2133,15 @@ router.route('blogs/*blog/*article', function() {
     shareButtons.Stickyfill();
   }());
 });
+
 router.route('blogs/*blog', function() {
   objectFitImages(); // This is a polyfill for object-fit in IE
 });
+
+/**
+ * CART NOTE
+ */
 router.route('cart', function() {
-  /**
-   * CART NOTE
-   */
   $('.cart__note').on('change', function() {
     $.ajax({
       method: 'POST',
@@ -2309,12 +2295,13 @@ router.route('cart', function() {
     });
   }());
 });
+
+/**
+ * SORT BY AND SEARCH
+ */
 router.route('collections/*type', function() {
   objectFitImages(); // This is a polyfill for object-fit in IE
 
-  /**
-   * SORT BY AND SEARCH
-   */
   (function() {
     Shopify.queryParams = {};
 
@@ -2343,21 +2330,6 @@ router.route('collections/*type', function() {
 
     $(document).on('shopify:section:load', function(event) {
       bindFilters();
-    });
-  }());
-
-  /**
-   * INSTAGRAM
-   */
-  (function() {
-    $('#instafeed').trademarkInstagram();
-
-    $(document).on('shopify:section:unload', '#shopify-section-collection-template', function(event) {
-      $(event.target).find('#instafeed').data('plugin_trademarkInstagram').destroy();
-    });
-
-    $(document).on('shopify:section:load', '#shopify-section-collection-template', function(event) {
-      $(event.target).find('#instafeed').trademarkInstagram();
     });
   }());
 });
@@ -2406,10 +2378,11 @@ router.route('gift_cards/*id', function() {
     }
   }());
 });
-router.route('', function() {
-  /**
-   * SLIDESHOW
-   */
+
+/**
+ * SLIDESHOW
+ */
+router.route('pages/projects', function() {
   (function() {
     objectFitImages(); // This is a polyfill for object-fit in IE
 
@@ -2680,6 +2653,10 @@ router.route('account/login', function() {
     }
   }());
 });
+
+/**
+ * Password Modal
+ */
 router.route('password', function() {
   (function() {
     var passwordModal = $('.password-popup');
@@ -2693,7 +2670,6 @@ router.route('password', function() {
 /**
  * PRODUCT ROUTE
  */
-
 var productRoute = function() {
   
   /**
@@ -2762,7 +2738,6 @@ var productRoute = function() {
   /**
    * PRODUCT TABS
    */
-
   (function() {
     var initProductTabs = function(domElement) {
       if (domElement.length === 0) {
@@ -2786,7 +2761,6 @@ var productRoute = function() {
   /**
    * RELATED PRODUCTS
    */
-
   (function() {
     var initProducts = function(domElement) {
       if (domElement.length === 0) {

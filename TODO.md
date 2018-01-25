@@ -4,7 +4,7 @@ TODO:
 * Fix JS to initialize on all pages
 * Redesign Footer
 * Edit/Redesign template for articles - simple
-
+* Add images to settings for Projects - add these to Meganav
 * Make template for Projects page - simple with link to commercial & residential projects(blogs)
 * Edit template for blogs(projects) - same as collection templates - squares with photo bg.
 
