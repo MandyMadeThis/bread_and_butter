@@ -1,3 +1,7 @@
+.section-instagram-feed .headingDecorative-heading {
+  background-color: $white;
+}
+
 .instagram-feed {
   display: table;
   table-layout: fixed;
@@ -59,6 +63,10 @@
 .instagram__tile-wrapper-hidder {
   position: relative;
   overflow: hidden;
+}
+
+.instagram__tile-wrapper--featured {
+  border: $base-border;
 }
 
 .instagram__tile-wrapper--featured .instagram-tile__info {
@@ -230,23 +238,22 @@
   .instagram-tile__likes {
     color: $accent;
     font-size: 18px;
-    font-size: 1rem;
   }
 
   .instagram-tile__caption {
     margin-top: 10px;
-    font-size: 16px;
-    font-size: 0.88889rem;
+    font-size: 13px;
+    font-weight: $bold;
   }
 
   .instagram-tile__date {
-    font-size: 12px;
-    font-size: 0.66667rem;
+    font-size: 9px;
+    color: $grey;
+    text-align: right;
   }
 
   .instagram-tile__button {
     font-size: 26px;
-    font-size: 1.44444rem;
   }
 
   .instagram-tile__button--prev {
@@ -258,6 +265,16 @@
   }
 }
 
+@media screen and (min-width: 560px) and (max-width: 700px) {
+  .instagram-tile__caption {
+    font-size: 12px;
+    margin-top: 0;
+  }
+
+  .instagram-tile__likes {
+    margin-bottom: 0 !important;
+  }
+}
 
 @include av-mq("desk") {
   .instagram-feed {

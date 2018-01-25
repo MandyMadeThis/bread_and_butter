@@ -2627,14 +2627,6 @@ router.route('', function() {
 
     initProducts($('.list-products'));
 
-    $(document).on('shopify:section:unload', '.shopify-section__featured-collection', function(event) {
-      $(event.target).find('.list-products').slick('unslick');
-    });
-
-    $(document).on('shopify:section:load', '.shopify-section__featured-collection', function(event) {
-      initProducts($(event.target).find('.list-products'));
-    });
-
     $(window).on('resize orientationChange', function() {
       if (window.innerWidth < 560) {
         // If not created yet, we create it

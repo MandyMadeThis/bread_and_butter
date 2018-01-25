@@ -47,7 +47,6 @@ $hover-link-color: saturate($accent, 15%);
 //// TYPEPOGRAPHY SETTINGS ////
 ///////////////////////////////
 $font-mon: 'Montserrat', sans-serif;
-$light: 200;
 $norm: 400;
 $bold: 500;
 $base-line-height: 1;
@@ -56,7 +55,7 @@ $paragraph-line-height: 1.5;
 $heading-font: $font-mon;
 $text-font: $font-mon;
 $heading-font-weight: $norm;
-$slideshow-heading-font-weight: $light;
+$slideshow-heading-font-weight: 500;
 $font-size-factor: $base-font-size;
 
 /////////////////////////////

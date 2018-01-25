@@ -20,10 +20,9 @@
     {%- comment -%} We preconnect of two popular domains (Shopify CDN and Google Font) to speed up performance {%- endcomment -%}
     <link rel="preconnect" href="//cdn.shopify.com" crossorigin>
     <link rel="preconnect" href="//fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500" rel="stylesheet">
 
     {%- include 'favicon' -%}
-
     {%- include 'social-meta-tags' -%}
 
     {{ 'style.css' | asset_url | stylesheet_tag }}
@@ -76,19 +75,25 @@
     <div class="page__overlay"></div>
 
     <div class="page__container {% if force_secondary_background %}page__container--secondary{% endif %}">
-      
+      {% comment %} Sections appear Sitewide: {% endcomment %}
       {%- section 'announcement' -%}
       {%- section 'header' -%}
+  
       {% unless template == 'page.projects' or template == 'article' %}
         {%- section 'hero' -%} 
       {% endunless %}
-      
-      {%- section 'projects-slideshow' -%} 
+
+      {% comment %} Sections appear on Projects page: {% endcomment %}
+      {%- section 'projects-slideshow' -%}
 
       <main id="main" class="main" role="main">
         {{ content_for_layout }}
       </main>
+      {% comment %} Sections appear on Projects & About pages {% endcomment %}
+      {%- section 'testimonials' -%}
 
+      {% comment %} Sections appear Sitewide: {% endcomment %}
+      {%- section 'instagram-feed' -%}
       {%- section 'footer' -%}
     </div>
 

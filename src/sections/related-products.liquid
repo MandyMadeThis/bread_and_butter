@@ -11,7 +11,9 @@
   <aside class="related-products">
     <div class="section">
       <div class="container">
-        <h2 class="section__title h3">{{ 'product.general.related_products' | t }}</h2>
+        <div class="headingDecorative">
+          <h2 class="headingDecorative-heading">{{ 'product.general.related_products' | t }}</h2>
+        </div>
 
         {%- assign products_count = collection.products.size -%}
 

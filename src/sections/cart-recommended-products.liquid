@@ -3,7 +3,9 @@
     <div class="section">
       <div class="container">
         {%- if section.settings.title != blank -%}
-          <h2 class="section__title h3">{{ section.settings.title | escape }}</h2>
+          <div class="headingDecorative">
+            <h2 class="headingDecorative-heading">{{ section.settings.title | escape }}</h2>
+          </div>
         {%- endif -%}
 
         <div class="list-products grid grid--large grid--center" data-slides-count="{{ section.blocks.size }}">

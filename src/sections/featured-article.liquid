@@ -10,7 +10,9 @@
 <section class="section section--positioned section-{{ section.id }}">
   <div class="container">
     {%- if section.settings.title != blank -%}
-      <h2 class="section__title h3">{{ section.settings.title | escape }}</h2>
+      <div class="headingDecorative">
+        <h2 class="headingDecorative-heading">{{ section.settings.title | escape }}</h2>
+      </div>
     {%- endif -%}
 
     {%- unless article.handle == blank -%}
