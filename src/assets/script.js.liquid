@@ -5,7 +5,7 @@
 
   'use strict';
 
-  var pluginName = 'trademarkHeaderSearch',
+  var pluginName = 'BandBHeaderSearch',
     namespace = 'plugin_' + pluginName;
 
   /**
@@ -22,8 +22,8 @@
     this.body = $('body');
     this.pageOverlay = $('.page__overlay');
 
-    this.sidebarNavInstance = $('.sidebar-nav').data('plugin_trademarkMobileSidebar');
-    this.miniCartInstance = $('.mini-cart').data('plugin_trademarkMiniCart');
+    this.sidebarNavInstance = $('.sidebar-nav').data('plugin_BandBMobileSidebar');
+    this.miniCartInstance = $('.mini-cart').data('plugin_BandBMiniCart');
 
     $('[data-action="open-search"]').on('click', $.proxy(this._openSearch, this));
     $('[data-action="close-search"]').on('click', $.proxy(this._closeSearch, this));
@@ -37,10 +37,10 @@
     $('[data-action="open-search"]').off('click');
     $('[data-action="close-search"]').off('click');
 
-    this.headerSearch.removeData('plugin_trademarkHeaderSearch');
+    this.headerSearch.removeData('plugin_BandBHeaderSearch');
     this.headerInput.off('keyup');
     this.headerSearchForm.off('submit');
-    this.body.off('.trademarkHeaderSearch');
+    this.body.off('.BandBHeaderSearch');
   };
 
   Plugin.prototype._openSearch = function(event) {
@@ -51,13 +51,13 @@
     if (this.sidebarNavInstance.state === 'opening' || this.sidebarNavInstance.state === 'opened') {
       this.sidebarNavInstance._toggleSidebar(event);
 
-      $(document).one('closed.trademarkMobileSidebar', function() {
+      $(document).one('closed.BandBMobileSidebar', function() {
         self._doOpenSearch();
       });
     } else if (undefined !== this.miniCartInstance && (this.miniCartInstance.state === 'opening' || this.miniCartInstance.state === 'opened')) {
       this.miniCartInstance._toggleMiniCart(event);
 
-      $(document).one('closed.trademarkMiniCart', function() {
+      $(document).one('closed.BandBMiniCart', function() {
         self._doOpenSearch();
       });
     } else {
@@ -71,7 +71,7 @@
     this.body.removeClass('no-scroll');
     this.pageOverlay.removeClass('page__overlay--open');
     this.headerSearch.removeClass('header-search--open');
-    this.body.off('.trademarkHeaderSearch');
+    this.body.off('.BandBHeaderSearch');
 
     event.preventDefault();
   };
@@ -87,13 +87,13 @@
       self._cursorFocus(self.headerInput);
     });
 
-    this.body.on('keyup.trademarkHeaderSearch', function(event) {
+    this.body.on('keyup.BandBHeaderSearch', function(event) {
       if (event.keyCode == 27) {
         self._closeSearch(event);
       }
     });
 
-    this.body.on('click.trademarkHeaderSearch', function(outsideEvent) {
+    this.body.on('click.BandBHeaderSearch', function(outsideEvent) {
       if (!$(outsideEvent.target).closest('#shopify-section-header').length) {
         self._closeSearch(outsideEvent);
       }
@@ -253,7 +253,7 @@
 (function ($) {
   'use strict';
 
-  var pluginName = 'trademarkHomeSlideshow',
+  var pluginName = 'BandBHomeSlideshow',
       namespace = 'plugin_' + pluginName;
 
   /**
@@ -317,7 +317,7 @@
       player.destroy();
     });
 
-    this.slideshow.removeData('plugin_trademarkHomeSlideshow');
+    this.slideshow.removeData('plugin_BandBHomeSlideshow');
   };
 
   /**
@@ -563,7 +563,7 @@
 (function ($) {
   'use strict';
 
-  var pluginName = 'trademarkInstagram',
+  var pluginName = 'BandBInstagram',
     namespace = 'plugin_' + pluginName;
 
   /**
@@ -599,7 +599,7 @@
   Plugin.prototype.destroy = function() {
     this.element.find('.instagram-tile__button').off('click');
     this.element.off('swipeleft swiperight');
-    this.element.removeData('plugin_trademarkInstagram');
+    this.element.removeData('plugin_BandBInstagram');
   };
 
   Plugin.prototype._imagesLoaded = function(results) {
@@ -756,7 +756,7 @@
 
   'use strict';
 
-  var pluginName = 'trademarkMainNav',
+  var pluginName = 'BandBMainNav',
     namespace = 'plugin_' + pluginName;
 
   /**
@@ -800,9 +800,9 @@
 
   Plugin.prototype.destroy = function() {
     this.mainNavLinks.off('focusin focusout');
-    this.mainNav.removeData('plugin_trademarkMainNav');
+    this.mainNav.removeData('plugin_BandBMainNav');
 
-    $(window).off('.trademarkMainNav');
+    $(window).off('.BandBMainNav');
   };
 
   Plugin.prototype._verifyOverlap = function() {
@@ -849,7 +849,7 @@
 
   'use strict';
 
-  var pluginName = 'trademarkMiniCart',
+  var pluginName = 'BandBMiniCart',
     namespace = 'plugin_' + pluginName;
 
   /**
@@ -871,7 +871,7 @@
     this.miniCart.on('click', '[data-action="remove-line-item"]', $.proxy(this._removeLine, this));
 
     $(document).on('theme:cart:updated', $.proxy(this._cartUpdated, this));
-    $(window).on('resize.trademarkMiniCart', $.proxy(this._computeMiniCartHeight, this));
+    $(window).on('resize.BandBMiniCart', $.proxy(this._computeMiniCartHeight, this));
 
     // We automatically re-render it a first time to solve a strange issue where adding a product in Ajax, going to Checkout and go back does not re-render
     // the very last version in Liquid
@@ -883,12 +883,12 @@
   }
 
   Plugin.prototype.destroy = function() {
-    this.miniCart.removeData('plugin_trademarkMiniCart');
+    this.miniCart.removeData('plugin_BandBMiniCart');
     this.miniCart.find('[data-action="remove-line-item"]').off('click');
-    this.body.off('.trademarkMiniCart');
+    this.body.off('.BandBMiniCart');
 
     $(document).off('theme:cart:updated');
-    $(window).off('.trademarkMiniCart');
+    $(window).off('.BandBMiniCart');
   };
 
   Plugin.prototype.getState = function() {
@@ -909,49 +909,49 @@
 
     if (this.miniCart.hasClass('mini-cart--open')) {
       // Before opening, we must check if the nav sidebar is open. If that's the case we first close it
-      var sidebarNavInstance = this.sidebarNav.data('plugin_trademarkMobileSidebar');
+      var sidebarNavInstance = this.sidebarNav.data('plugin_BandBMobileSidebar');
 
       if (sidebarNavInstance.state === 'opening' || sidebarNavInstance.state === 'opened') {
         sidebarNavInstance._toggleSidebar(event);
       }
 
       this.state = 'opening';
-      $(document).trigger('opening.trademarkMiniCart');
+      $(document).trigger('opening.BandBMiniCart');
 
       this.body.addClass('no-scroll');
       this.pageOverlay.addClass('page__overlay--open');
 
       if (!Modernizr.csstransitions) {
         this.state = 'opened';
-        $(document).trigger('opened.trademarkMiniCart');
+        $(document).trigger('opened.BandBMiniCart');
       }
 
       this.miniCart.one('transitionend', function() {
         self.miniCart.focus(); // Allows to give focus for better accessibility on keyboard
       });
 
-      this.body.on('keyup.trademarkMiniCart', function(outsideEvent) {
+      this.body.on('keyup.BandBMiniCart', function(outsideEvent) {
         if (outsideEvent.keyCode == 27) {
           self._toggleMiniCart(outsideEvent);
         }
       });
 
-      this.body.on('click.trademarkMiniCart', function(outsideEvent) {
+      this.body.on('click.BandBMiniCart', function(outsideEvent) {
         if (!$(outsideEvent.target).closest('#shopify-section-header').length) {
           self._toggleMiniCart(outsideEvent);
         }
       });
     } else {
       this.state = 'closing';
-      $(document).trigger('closing.trademarkMiniCart');
+      $(document).trigger('closing.BandBMiniCart');
 
       this.body.removeClass('no-scroll');
-      this.body.off('.trademarkMiniCart');
+      this.body.off('.BandBMiniCart');
       this.pageOverlay.removeClass('page__overlay--open');
 
       if (!Modernizr.csstransitions) {
         this.state = 'closed';
-        $(document).trigger('closed.trademarkMiniCart');
+        $(document).trigger('closed.BandBMiniCart');
       }
     }
 
@@ -1059,10 +1059,10 @@
 
     if (this.state === 'opening' || this.state === 'opened') {
       this.state = 'opened';
-      $(document).trigger('opened.trademarkMiniCart');
+      $(document).trigger('opened.BandBMiniCart');
     } else {
       this.state = 'closed';
-      $(document).trigger('closed.trademarkMiniCart');
+      $(document).trigger('closed.BandBMiniCart');
     }
   };
 
@@ -1092,7 +1092,7 @@
 (function ($) {
   'use strict';
 
-  var pluginName = 'trademarkMobileSidebar',
+  var pluginName = 'BandBMobileSidebar',
     namespace = 'plugin_' + pluginName;
 
   /**
@@ -1110,10 +1110,10 @@
     this.body = $('body');
     this.pageOverlay = $('.page__overlay');
 
-    this.headerNavToggle.on('click.trademarkMobileSidebar', $.proxy(this._toggleSidebar, this));
-    this.sidebarNav.find('[data-action="toggle-mobile-sub-menu"]').on('click.trademarkMobileSidebar', $.proxy(this._toggleSubMenu, this));
+    this.headerNavToggle.on('click.BandBMobileSidebar', $.proxy(this._toggleSidebar, this));
+    this.sidebarNav.find('[data-action="toggle-mobile-sub-menu"]').on('click.BandBMobileSidebar', $.proxy(this._toggleSubMenu, this));
 
-    $(window).on('resize.trademarkMobileSidebar', $.proxy(this._computeSidebarHeight, this));
+    $(window).on('resize.BandBMobileSidebar', $.proxy(this._computeSidebarHeight, this));
 
     if (Modernizr.csstransitions) {
       this.sidebarNav.on('transitionend', $.proxy(this._emitTransitionEvent, this));
@@ -1123,10 +1123,10 @@
   Plugin.prototype.destroy = function() {
     this.header.find('[data-action="toggle-mobile-sidebar"]').off('click');
     this.sidebarNav.find('[data-action="toggle-mobile-sub-menu"]').off('click');
-    this.body.off('.trademarkMobileSidebar');
-    $(window).off('.trademarkMobileSidebar');
+    this.body.off('.BandBMobileSidebar');
+    $(window).off('.BandBMobileSidebar');
 
-    this.sidebarNav.removeData('plugin_trademarkMobileSidebar');
+    this.sidebarNav.removeData('plugin_BandBMobileSidebar');
   };
 
   Plugin.prototype.getState = function() {
@@ -1146,19 +1146,19 @@
 
     if (this.sidebarNav.hasClass('sidebar-nav--open')) {
       // Before opening, we must check if the mini-cart is open. If that's the case we first close it
-      var miniCartInstance = this.miniCart.data('plugin_trademarkMiniCart');
+      var miniCartInstance = this.miniCart.data('plugin_BandBMiniCart');
 
       if (undefined !== miniCartInstance && (miniCartInstance.state === 'opening' || miniCartInstance.state === 'opened')) {
         miniCartInstance._toggleMiniCart(event);
       }
 
       this.state = 'opening';
-      $(document).trigger('opening.trademarkMobileSidebar');
+      $(document).trigger('opening.BandBMobileSidebar');
 
       this.body.addClass('no-scroll');
       this.pageOverlay.addClass('page__overlay--open');
 
-      this.body.on('click.trademarkMobileSidebar', function(outsideEvent) {
+      this.body.on('click.BandBMobileSidebar', function(outsideEvent) {
         if (!$(outsideEvent.target).closest('#shopify-section-header').length) {
           self._toggleSidebar(outsideEvent);
         }
@@ -1166,19 +1166,19 @@
 
       if (!Modernizr.csstransitions) {
         this.state = 'opened';
-        $(document).trigger('opened.trademarkMobileSidebar');
+        $(document).trigger('opened.BandBMobileSidebar');
       }
     } else {
       this.state = 'closing';
-      $(document).trigger('closing.trademarkMobileSidebar');
+      $(document).trigger('closing.BandBMobileSidebar');
 
       this.body.removeClass('no-scroll');
-      this.body.off('.trademarkMobileSidebar');
+      this.body.off('.BandBMobileSidebar');
       this.pageOverlay.removeClass('page__overlay--open');
 
       if (!Modernizr.csstransitions) {
         this.state = 'closed';
-        $(document).trigger('closed.trademarkMobileSidebar');
+        $(document).trigger('closed.BandBMobileSidebar');
       }
     }
 
@@ -1230,10 +1230,10 @@
 
     if (this.state === 'opening' || this.state === 'opened') {
       this.state = 'opened';
-      $(document).trigger('opened.trademarkMobileSidebar');
+      $(document).trigger('opened.BandBMobileSidebar');
     } else {
       this.state = 'closed';
-      $(document).trigger('closed.trademarkMobileSidebar');
+      $(document).trigger('closed.BandBMobileSidebar');
     }
   };
 
@@ -1275,7 +1275,7 @@
 
   'use strict';
 
-  var pluginName = 'trademarkProduct',
+  var pluginName = 'BandBProduct',
     namespace = 'plugin_' + pluginName;
 
   /**
@@ -1329,7 +1329,7 @@
     this.quantitySelector.find('[data-action="decrease-product-quantity"]').off('click');
     this.quantitySelector.find('[data-action="increase-product-quantity"]').off('click');
 
-    this.element.removeData('plugin_trademarkProduct');
+    this.element.removeData('plugin_BandBProduct');
   };
 
   /**
@@ -1740,7 +1740,7 @@
 
   'use strict';
 
-  var pluginName = 'trademarkTabs',
+  var pluginName = 'BandBTabs',
     namespace = 'plugin_' + pluginName;
 
   /**
@@ -1768,7 +1768,7 @@
   Plugin.prototype.destroy = function() {
     this.navItems.off('click');
 
-    this.element.removeData('plugin_trademarkTabs');
+    this.element.removeData('plugin_BandBTabs');
   };
 
   Plugin.prototype._changeTab = function(event) {
@@ -1849,14 +1849,14 @@ router.route('*all', function() {
    * MOBILE/TABLET NAVIGATION
    */
   (function() {
-    $('.sidebar-nav').trademarkMobileSidebar();
+    $('.sidebar-nav').BandBMobileSidebar();
 
     $(document).on('shopify:section:unload', '#shopify-section-header', function(event) {
-      $(event.target).find('.sidebar-nav').data('plugin_trademarkMobileSidebar').destroy();
+      $(event.target).find('.sidebar-nav').data('plugin_BandBMobileSidebar').destroy();
     });
 
     $(document).on('shopify:section:load', '#shopify-section-header', function(event) {
-      $(event.target).find('.sidebar-nav').trademarkMobileSidebar();
+      $(event.target).find('.sidebar-nav').BandBMobileSidebar();
     });
   }());
 
@@ -1864,14 +1864,14 @@ router.route('*all', function() {
    * MAIN NAVIGATION (ACCESSIBILITY)
    */
   (function() {
-    $('.header__main-nav').trademarkMainNav();
+    $('.header__main-nav').BandBMainNav();
 
     $(document).on('shopify:section:unload', '#shopify-section-header', function(event) {
-      $(event.target).find('.header__main-nav').data('plugin_trademarkMainNav').destroy();
+      $(event.target).find('.header__main-nav').data('plugin_BandBMainNav').destroy();
     });
 
     $(document).on('shopify:section:load', '#shopify-section-header', function(event) {
-      $(event.target).find('.header__main-nav').trademarkMainNav();
+      $(event.target).find('.header__main-nav').BandBMainNav();
     });
   }());
 
@@ -1880,14 +1880,14 @@ router.route('*all', function() {
    */
   (function() {
     {% if settings.cart_type == 'drawer' %}
-      $('.mini-cart').trademarkMiniCart();
+      $('.mini-cart').BandBMiniCart();
 
       $(document).on('shopify:section:unload', '#shopify-section-header', function(event) {
-        $(event.target).find('.mini-cart').data('plugin_trademarkMiniCart').destroy();
+        $(event.target).find('.mini-cart').data('plugin_BandBMiniCart').destroy();
       });
 
       $(document).on('shopify:section:load', '#shopify-section-header', function(event) {
-        $(event.target).find('.mini-cart').trademarkMiniCart();
+        $(event.target).find('.mini-cart').BandBMiniCart();
       });
     {% endif %}
   }());
@@ -1897,14 +1897,14 @@ router.route('*all', function() {
    * Note that search initialization must happen after mini-cart and sidebar, as it relies on the existence of those two
    */
   (function() {
-    $('.header-search').trademarkHeaderSearch();
+    $('.header-search').BandBHeaderSearch();
 
     $(document).on('shopify:section:unload', '#shopify-section-header', function(event) {
-      $(event.target).find('.header-search').data('plugin_trademarkHeaderSearch').destroy();
+      $(event.target).find('.header-search').data('plugin_BandBHeaderSearch').destroy();
     });
 
     $(document).on('shopify:section:load', '#shopify-section-header', function(event) {
-      $(event.target).find('.header-search').trademarkHeaderSearch();
+      $(event.target).find('.header-search').BandBHeaderSearch();
     });
   }());
 
@@ -2108,14 +2108,14 @@ router.route('*all', function() {
    * INSTAGRAM
    */
   (function() {
-    $('#instafeed').trademarkInstagram();
+    $('#instafeed').BandBInstagram();
 
     $(document).on('shopify:section:unload', '#shopify-section-collection-template', function(event) {
-      $(event.target).find('#instafeed').data('plugin_trademarkInstagram').destroy();
+      $(event.target).find('#instafeed').data('plugin_BandBInstagram').destroy();
     });
 
     $(document).on('shopify:section:load', '#shopify-section-collection-template', function(event) {
-      $(event.target).find('#instafeed').trademarkInstagram();
+      $(event.target).find('#instafeed').BandBInstagram();
     });
   }());
 });
@@ -2440,14 +2440,14 @@ router.route('pages/projects', function() {
       });
     };
 
-    // Trademark has two different slideshows: a "dual" one that is quite complex and a full-screen that is simpler to implement. When this change,
+    // BandB has two different slideshows: a "dual" one that is quite complex and a full-screen that is simpler to implement. When this change,
     // we either init one or the other
     $('.slideshow-section').each(function(index, item) {
       var slideshowSection = $(item),
         slideshowType = slideshowSection.attr('data-slideshow-type');
 
       if (slideshowType === 'dual') {
-        slideshowSection.find('.dual-slideshow').trademarkHomeSlideshow();
+        slideshowSection.find('.dual-slideshow').BandBHomeSlideshow();
       } else {
         initFullScreenSlideshow(slideshowSection.find('.fs-slideshow__slides'));
       }
@@ -2458,7 +2458,7 @@ router.route('pages/projects', function() {
 
       // If previous slideshow was dual, we have to delete the plugin completely (which will free the memory)
       if (slideshowSection.attr('data-slideshow-type') === 'dual') {
-        slideshowSection.find('.dual-slideshow').data('plugin_trademarkHomeSlideshow').destroy();
+        slideshowSection.find('.dual-slideshow').data('plugin_BandBHomeSlideshow').destroy();
       } else {
         // Otherwise, logic is a bit simpler and we just call slick to delete
         slideshowSection.find('.fs-slideshow__slides').slick('unslick');
@@ -2470,7 +2470,7 @@ router.route('pages/projects', function() {
 
       // If slideshow is dual we need to instantiate the whole plugin, otherwise setup is simpler
       if (slideshowSection.attr('data-slideshow-type') === 'dual') {
-        slideshowSection.find('.dual-slideshow').trademarkHomeSlideshow();
+        slideshowSection.find('.dual-slideshow').BandBHomeSlideshow();
       } else {
         var slideshow = slideshowSection.find('.fs-slideshow__slides');
 
@@ -2482,7 +2482,7 @@ router.route('pages/projects', function() {
       var slideshowSection = $(event.target).closest('.slideshow-section');
 
       if (slideshowSection.attr('data-slideshow-type') === 'dual') {
-        var slideshow = slideshowSection.find('.dual-slideshow').data('plugin_trademarkHomeSlideshow');
+        var slideshow = slideshowSection.find('.dual-slideshow').data('plugin_BandBHomeSlideshow');
 
         slideshow.pause();
         slideshow.goToSlide($(event.target).attr('data-slide-index'));
@@ -2501,7 +2501,7 @@ router.route('pages/projects', function() {
       var slideshowSection = $(event.target).closest('.slideshow-section');
 
       if (slideshowSection.attr('data-slideshow-type') === 'dual') {
-        slideshowSection.find('.dual-slideshow').data('plugin_trademarkHomeSlideshow').play();
+        slideshowSection.find('.dual-slideshow').data('plugin_BandBHomeSlideshow').play();
       } else {
         var slideshow = slideshowSection.find('.fs-slideshow__slides');
 
@@ -2616,14 +2616,14 @@ router.route('pages/projects', function() {
    * INSTAGRAM
    */
   (function() {
-    $('#instafeed').trademarkInstagram();
+    $('#instafeed').BandBInstagram();
 
     $(document).on('shopify:section:unload', '.shopify-section__instagram', function(event) {
-      $(event.target).find('#instafeed').data('plugin_trademarkInstagram').destroy();
+      $(event.target).find('#instafeed').data('plugin_BandBInstagram').destroy();
     });
 
     $(document).on('shopify:section:load', '.shopify-section__instagram', function(event) {
-      $(event.target).find('#instafeed').trademarkInstagram();
+      $(event.target).find('#instafeed').BandBInstagram();
     });
   }());
 });
@@ -2744,13 +2744,13 @@ var productRoute = function() {
         return;
       }
 
-      domElement.trademarkTabs();
+      domElement.BandBTabs();
     };
 
     initProductTabs($('.product__tabs'));
 
     $(document).on('shopify:section:unload', '#shopify-section-product-template', function(event) {
-      $(event.target).find('.product__tabs').data('plugin_trademarkTabs').destroy();
+      $(event.target).find('.product__tabs').data('plugin_BandBTabs').destroy();
     });
 
     $(document).on('shopify:section:load', '#shopify-section-product-template', function(event) {

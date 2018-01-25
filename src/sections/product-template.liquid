@@ -207,7 +207,7 @@
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     var initProduct = function(productElement) {
-      productElement.trademarkProduct({
+      productElement.BandBProduct({
         product: {{ product | json }},
         enableHistoryState: true,
         ajaxCart: (productElement.attr('data-ajax-cart') === 'true'),
@@ -219,7 +219,7 @@
     initProduct($('#product-{{ product.id }}'));
 
     $(document).on('shopify:section:unload', '#shopify-section-product-template', function(event) {
-      $(event.target).find('#product-{{ product.id }}').data('plugin_trademarkProduct').destroy();
+      $(event.target).find('#product-{{ product.id }}').data('plugin_BandBProduct').destroy();
     });
 
     $(document).on('shopify:section:load', '#shopify-section-product-template', function(event) {
@@ -304,7 +304,7 @@
     },
     {
       "type": "paragraph",
-      "content": "Trademark also allows you to add specific tabs for a given product only. [Learn more about this feature](http://support.maestrooo.com/article/83-product-adding-different-tabs-per-product)."
+      "content": "BandB also allows you to add specific tabs for a given product only. [Learn more about this feature](http://support.maestrooo.com/article/83-product-adding-different-tabs-per-product)."
     },
     {
       "type": "header",

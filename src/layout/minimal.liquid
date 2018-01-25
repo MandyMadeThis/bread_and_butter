@@ -46,7 +46,7 @@
 
   {%- assign template_handle = template | replace: '.', ' ' | truncatewords: 1, '' | handle | replace: '_', '-' -%}
 
-  <body class="trademark--v1 template-{{ template_handle }} {% if page.template_suffix != blank %}template-{{ template_handle }}-{{ page.template_suffix }}{% endif %}">
+  <body class="BandB--v1 template-{{ template_handle }} {% if page.template_suffix != blank %}template-{{ template_handle }}-{{ page.template_suffix }}{% endif %}">
     {%- include 'svg-icons' -%}
 
     <div class="page__container">
