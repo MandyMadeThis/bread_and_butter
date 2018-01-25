@@ -8,6 +8,7 @@ function req (module) {
 var exportsArray = [
   req('./partials/themeInfo'),
   req('./partials/socialMedia'),
+  req('./partials/projects'),
   req('./partials/cart'),
   req('./partials/search'),
   req('./partials/currencyConversion')
