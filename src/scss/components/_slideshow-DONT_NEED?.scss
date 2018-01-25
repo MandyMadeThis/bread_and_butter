@@ -1,0 +1,234 @@
+.slideshow-section--fs {
+  margin-top: 0 !important;
+}
+
+.fs-slideshow,
+.fs-slideshow__slide {
+  position: relative;
+}
+
+.fs-slideshow__cover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.fs-slideshow__cover--center {
+  text-align: center;
+}
+
+.fs-slideshow__cover--right {
+  text-align: right;
+}
+
+.fs-slideshow__content {
+  position: relative;
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 0 25px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.fs-slideshow__image {
+  display: block;
+  width: 100%;
+}
+
+.fs-slideshow__image--placeholder {
+  background: #cecece;
+  fill: #ababab;
+}
+
+.fs-slideshow__heading {
+  position: relative;
+  font-size: 26px;
+  font-size: 1.44444rem;
+  line-height: 1.2;
+  text-transform: none;
+  color: $accent;
+  font-weight: $slideshow-heading-font-weight;
+  font-family: $heading-font;
+}
+
+.fs-slideshow__progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.fs-slideshow__progress-bar-advancement {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: $accent;
+  transition: width 0.25s ease-in-out;
+}
+
+.fs-slideshow__slide-count {
+  position: absolute;
+  width: 100%;
+  bottom: 15px;
+  left: 0;
+  text-align: right;
+  color: $background;
+  font-weight: 600;
+  pointer-events: none;
+}
+
+.fs-slideshow__current-slide {
+  font-size: 34px;
+  font-size: 1.88889rem;
+}
+
+.fs-slideshow__total-slides {
+  font-size: 16px;
+  font-size: 0.88889rem;
+}
+
+.fs-slideshow__nav-button {
+  position: absolute;
+  top: 50%;
+  padding: 2px 6px 3px 6px;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  background: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7); /* We cannot use "transparent" as IE9-10 make the button unclickable */
+  color: $background;
+  border: none;
+  z-index: 1;
+  -webkit-appearance: none;
+
+  svg {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+.fs-slideshow__nav-prev {
+  left: 0;
+}
+
+.fs-slideshow__nav-next {
+  right: 0;
+}
+
+.fs-slideshow__plyr-container .plyr__play-large {
+  z-index: 1;
+}
+
+.fs-slideshow--video-playing .fs-slideshow__nav-button,
+.fs-slideshow--video-playing .fs-slideshow__slide-count {
+  display: none;
+}
+
+@include av-mq('thumb') {
+  .fs-slideshow__button {
+    padding: 12px 20px;
+  }
+
+  .fs-slideshow__image {
+    min-height: 215px;
+    object-fit: cover;
+    object-position: center center;
+  }
+}
+
+@include av-mq('handheld-and-up') {
+  .fs-slideshow__content {
+    max-width: 85%;
+  }
+
+  .fs-slideshow__heading {
+    font-size: 40px;
+    font-size: 2.22222rem;
+    max-width: 500px;
+  }
+
+  .fs-slideshow__cover--right .fs-slideshow__heading {
+    margin-left: auto;
+  }
+
+  .fs-slideshow__cover--center .fs-slideshow__heading {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .fs-slideshow__current-slide {
+    font-size: 40px;
+    font-size: 2.22222rem;
+  }
+
+  .fs-slideshow__total-slides {
+    font-size: 18px;
+    font-size: 1rem;
+  }
+
+  .fs-slideshow__progress-bar {
+    height: 5px;
+  }
+
+  .fs-slideshow__nav-button svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .fs-slideshow__nav-prev {
+    left: 12px;
+  }
+
+  .fs-slideshow__nav-next {
+    right: 12px;
+  }
+}
+
+@include av-mq('desk') {
+  .fs-slideshow__heading {
+    font-size: 66px;
+    font-size: 3.66667rem;
+  }
+
+  .fs-slideshow__current-slide {
+    font-size: 80px;
+    font-size: 4.44444rem;
+  }
+
+  .fs-slideshow__total-slides {
+    font-size: 20px;
+    font-size: 1.11111rem;
+  }
+
+  .fs-slideshow__nav-button svg {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@include av-mq('widescreen') {
+  .fs-slideshow__content {
+    max-width: 1000px;
+  }
+
+  .fs-slideshow__slide-count {
+    bottom: 50px;
+  }
+}
+
+@media (screen and min-width: 1540px) {
+  .fs-slideshow__nav-prev {
+    left: calc((100% - 1330px) / 2 - 85px);
+  }
+
+  .fs-slideshow__nav-next {
+    right: calc((100% - 1330px) / 2 - 85px);
+  }
+}
