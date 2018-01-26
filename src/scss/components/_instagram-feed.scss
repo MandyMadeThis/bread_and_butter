@@ -67,11 +67,11 @@
 
 .instagram__tile-wrapper--featured {
   border: $base-border;
-}
 
-.instagram__tile-wrapper--featured .instagram-tile__info {
-  display: block;
-  font-size: 1rem;
+  .instagram-tile__info {
+    display: block;
+    font-size: 1rem;
+  }
 }
 
 .instagram-tile {
@@ -114,8 +114,7 @@
   -webkit-appearance: none;
   background: transparent;
   color: #ffffff;
-  font-size: 16px;
-  font-size: 0.88889rem;
+  font-size: 36px;
   border: none;
   z-index: 2;
   transform: translateY(-50%);
@@ -135,6 +134,7 @@
 
 .instagram__tile-wrapper:not(.instagram__tile-wrapper--featured) .instagram-tile__image-wrapper {
   pointer-events: none;
+  filter: grayscale(90%);
 }
 
 /* On pocket, laptop and small desktop devices we only display 3 images around the pivot */
@@ -250,10 +250,6 @@
     font-size: 9px;
     color: $grey;
     text-align: right;
-  }
-
-  .instagram-tile__button {
-    font-size: 26px;
   }
 
   .instagram-tile__button--prev {

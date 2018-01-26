@@ -25,6 +25,12 @@ module.exports = {
     },
     {
       type: 'text',
+      id: 'social_twitter',
+      default: 'https://twitter.com/breadnbutterTO',
+      label: 'Twitter'
+    },
+    {
+      type: 'text',
       id: 'social_youtube',
       info: 'example: https://www.youtube.com/user/breadandbutter',
       label: 'YouTube'
@@ -40,12 +46,6 @@ module.exports = {
       id: 'social_google_plus',
       info: 'example: https://plus.google.com/+breadandbutter',
       label: 'Google Plus'
-    },
-    {
-      type: 'text',
-      id: 'social_twitter',
-      info: 'example: https://twitter.com/breadandbutter',
-      label: 'Twitter'
     },
     {
       type: 'text',

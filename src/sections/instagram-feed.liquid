@@ -10,7 +10,7 @@
   {%- if section.settings.access_token == blank -%}
     <div id="instafeed" class="instagram-feed">
       {%- for i in (1..15) -%}
-        <div class="instagram__tile-wrapper {% if forloop.index == 8 %}instagram__tile-wrapper--featured{% endif %}">
+        <div class="instagram__tile-wrapper{% if forloop.index == 8 %} instagram__tile-wrapper--featured{% endif %}">
           <button class="instagram-tile__button instagram-tile__button--prev">
             {% include 'icon' with 'arrow-left' %}
           </button>

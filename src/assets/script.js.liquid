@@ -2,7 +2,6 @@
  * PLUGIN: HEADER SEARCH
  */
 (function ($) {
-
   'use strict';
 
   var pluginName = 'BandBHeaderSearch',
@@ -245,7 +244,6 @@
     });
   };
 }(jQuery));
-
 
 /**
  * PLUGIN: SLIDESHOW
@@ -556,7 +554,6 @@
   };
 }(jQuery));
 
-
 /**
  * PLUGIN: INSTAGRAM
  */
@@ -753,7 +750,6 @@
  * PLUGIN: MAIN NAV
  */
 (function ($) {
-
   'use strict';
 
   var pluginName = 'BandBMainNav',
@@ -846,7 +842,6 @@
  * PLUGIN: MINI-CART
  */
 (function ($) {
-
   'use strict';
 
   var pluginName = 'BandBMiniCart',
@@ -1272,7 +1267,6 @@
  * Plugin to handle product update
  */
 (function ($) {
-
   'use strict';
 
   var pluginName = 'BandBProduct',
@@ -1737,7 +1731,6 @@
  * PLUGIN: TABS
  */
 (function ($) {
-
   'use strict';
 
   var pluginName = 'BandBTabs',
@@ -1825,7 +1818,7 @@
 var router = new RouterRouter();
 
 /**
- * STICKY HEADER POLYFILL AND HEADER SIZE
+ * ROUTER FOR ALL PAGES
  */
 router.route('*all', function() {
   var bodyElement = $('body');
@@ -2118,6 +2111,32 @@ router.route('*all', function() {
       $(event.target).find('#instafeed').BandBInstagram();
     });
   }());
+
+  (function() {
+    var initCollections = function(domElement) {
+      if (domElement.length === 0) {
+        return;
+      }
+
+      domElement.slick({
+        accessibility: false,
+        dots: true,
+        dotsClass: 'slider-dots',
+        arrows: false,
+        mobileFirst: true,
+        infinite: false,
+        centerMode: true,
+        centerPadding: '32px',
+        initialSlide: Math.ceil(domElement.attr('data-slides-count') / 2) - 1,
+        slidesToShow: 1,
+        responsive: [
+          {
+            breakpoint: 560,
+            settings: 'unslick'
+          }
+        ]
+      })
+    };
 });
 
 /**
@@ -2511,36 +2530,6 @@ router.route('pages/projects', function() {
       }
     });
   }());
-
-  /**
-   * FEATURED COLLECTIONS
-   */
-
-  (function() {
-    var initCollections = function(domElement) {
-      if (domElement.length === 0) {
-        return;
-      }
-
-      domElement.slick({
-        accessibility: false,
-        dots: true,
-        dotsClass: 'slider-dots',
-        arrows: false,
-        mobileFirst: true,
-        infinite: false,
-        centerMode: true,
-        centerPadding: '32px',
-        initialSlide: Math.ceil(domElement.attr('data-slides-count') / 2) - 1,
-        slidesToShow: 1,
-        responsive: [
-          {
-            breakpoint: 560,
-            settings: 'unslick'
-          }
-        ]
-      })
-    };
 
     initCollections($('.list-collections'));
 

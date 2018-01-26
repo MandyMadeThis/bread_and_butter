@@ -1,18 +1,62 @@
 .footer {
-  padding: 30px 0;
-  color: $heading-color;
+  background: $black;
+  color: $white;
+  font-size: 13px;
+  border: 25px solid $black;
+  box-shadow: inset 0px 0px 0px 2px $white;
+
+  p {
+    font-size: 13px;
+  }
+
+  a:hover {
+    color: $accent;
+  }
+}
+
+.footer__content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .footer__block {
-  margin-bottom: 25px;
+  padding: 40px 25px 25px;
+  width: 50%;
+
+  @include av-mq('lap-and-up') {
+    width: 25%;
+  }
+
+  .social-media {
+    padding: 6px 0;
+  }
+}
+
+
+@include av-mq('lap-and-up') {
+  .footer__block-large {
+    width: 30%;
+  }
+
+  .footer__block-small {
+    width: 20%;
+  }
+}
+
+.footer__title {
+  color: $white;
+  font-weight: $bold;
+  font-size: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid $accent;
+  display: inline-block;
 }
 
 .footer__text {
   margin-bottom: 1.35em;
-}
-
-.footer__block .social-media {
-  padding: 6px 0;
 }
 
 .footer__link:not(:last-child) {
@@ -20,15 +64,23 @@
 }
 
 .footer__copyright {
-  margin-top: 20px;
-  font-size: 13px;
-  font-size: 0.72222rem;
-  color: $light-text-color;
+  margin: 10px 0;
+  font-size: 11px;
   text-align: center;
+
+  @include av-mq('handheld-and-up') {
+    margin-top: 0;
+    text-align: left;
+  }
 }
 
 .footer__payment-methods {
   margin-top: 15px;
+
+  @include av-mq('handheld-and-up') {
+    float: right;
+    margin-top: -5px;
+  }
 }
 
 .footer__payment-method {
@@ -45,13 +97,11 @@
   }
 }
 
-/**
- * Tweet (this is only on the footer so we have the code here
- */
-
 .tweet {
   margin-top: 6px;
   contain: content;
+  background: $white;
+  color: $black;
 
   .link,
   .hashtag {
@@ -59,8 +109,8 @@
   }
 }
 
-.tweet__username {
-  margin: 0 0 20px -2px;
+p.tweet__username {
+  margin: 0 0 15px -2px;
   color: $accent;
   font-size: 0.85em;
 
@@ -69,10 +119,22 @@
   }
 }
 
+.icon-twitter {
+  fill: #1CA1F2;
+}
+
 .tweet__content {
   margin-bottom: 8px;
   overflow: hidden;
   text-overflow: ellipsis;
+
+  @include av-mq('handheld-and-up') {
+    margin-bottom: 15px;
+  }
+}
+
+.timeline-Tweet-text {
+  font-size: 11px;
 }
 
 .tweet__content .Emoji {
@@ -81,51 +143,6 @@
 
 .tweet__date {
   font-size: 10px;
-  font-size: 0.55556rem;
-}
-
-@include av-mq('handheld-and-up') {
-  .footer__block {
-    margin-bottom: 50px;
-  }
-
-  .footer__copyright {
-    margin-top: 0;
-    text-align: left;
-  }
-
-  .footer__payment-methods {
-    float: right;
-    margin-top: -5px;
-  }
-
-  .tweet {
-    margin-top: 0;
-  }
-
-  .tweet__username {
-    margin-bottom: 26px;
-  }
-
-  .tweet__content {
-    margin-bottom: 20px;
-    font-size: 0.9em;
-  }
-
-  .tweet__date {
-    font-size: 12px;
-    font-size: 0.66667rem;
-  }
-}
-
-@include av-mq('handheld') {
-  .footer {
-    padding: 40px 0;
-  }
-}
-
-@include av-mq('lap-and-up') {
-  .footer {
-    padding: 68px 0;
-  }
+  text-transform: uppercase;
+  text-align: right;
 }
