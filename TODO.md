@@ -1,8 +1,6 @@
 TODO: 
 * Remove colours, typography, favicon, product grid, settings choices from codebase
 
-* Add images to settings for Projects - add these to Meganav
-* Redesign Footer
 * Edit/Redesign template for articles - simple
 * Make template for Projects page - simple with link to commercial & residential projects(blogs)
 * Edit template for blogs(projects) - same as collection templates - squares with photo bg.
@@ -23,3 +21,5 @@ DONE:
 * Categories Image grid - Make Responsive
 * Hero - make responsive
 * Fix JS to initialize on all pages
+* Redesign Footer
+* Add images to settings for Projects - add these to Meganav

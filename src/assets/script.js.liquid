@@ -2092,15 +2092,18 @@ router.route('*all', function() {
    */
   (function() {
     bodyElement.on('click', '.faq__question', function() {
-      $(this).next('.faq__answer').slideToggle(150);
+      $(this).parent().find('.faq__answer').slideToggle(150);
+      $(this).parent().find('.icon-dropdown-arrow').toggleClass('open');
     });
 
     $(document).on('shopify:block:select', '#shopify-section-page-faq-template', function(event) {
       $(event.target).find('.faq__answer').slideDown(150);
+      $(event.target).find('.icon-dropdown-arrow').addClass('open');
     });
 
     $(document).on('shopify:block:deselect', '#shopify-section-page-faq-template', function(event) {
       $(event.target).find('.faq__answer').slideUp(150);
+      $(event.target).find('.icon-dropdown-arrow').removeClass('open');
     });
   }());
 

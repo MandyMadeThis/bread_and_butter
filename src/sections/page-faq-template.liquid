@@ -15,8 +15,7 @@
 
             {%- when 'question' -%}
               <div class="faq__item {% unless expand_questions %}faq__item--expandable{% endunless %}" {{ block.shopify_attributes }}>
-                <h3 class="faq__question h6{% unless expand_questions %} link{% endunless %}">{{ block.settings.title }}</h3>
-                {% include 'icon' with 'dropdown-arrow' %} 
+                <h3 class="faq__question h6{% unless expand_questions %} link{% endunless %}">{% include 'icon' with 'dropdown-arrow' %} {{ block.settings.title }}</h3>
                 <div class="faq__answer rte"> 
                   {{ block.settings.answer }}
                 </div>

@@ -1,6 +1,8 @@
 .faq {
   .box__content {
     text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
   }
 }
 
@@ -18,26 +20,43 @@
 
 .faq__separator {
   font-weight: $bold;
+  display: inline-block;
   margin-bottom: 20px;
 }
 
 .faq__separator:not(:first-child) {
-  margin-top: 1.2em;
+  padding-top: 40px;
+  margin-top: 20px;
+  border-top: $base-border;
 }
 
 .faq__question {
   margin-bottom: 0.2em;
   display: inline-block;
 
-  &.link:hover + .icon-dropdown-arrow {
+  &.link:hover + .icon-dropdown-arrow,
+  &.link:focus + .icon-dropdown-arrow {
     fill: $accent;
   }
 }
 
 .icon-dropdown-arrow {
   display: inline-block;
-  margin-left: 8px;
+  margin-right: 8px;
   width: 12px;
   position: relative;
   top: -1px;
+  transition: $nice-trans;
+
+  &.open {
+    transform: rotate(-180deg);
+  }
+}
+
+.faq__answer {
+  margin: 10px 0 40px;
+
+  p {
+    font-size: 14px;
+  }
 }
