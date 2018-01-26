@@ -4,19 +4,20 @@
       <h1 class="headingDecorative-heading">{{ page.title }}</h1>
     </div>
 
-    <div class="box box--shrinked">
+    <div class="box">
       <div class="box__content box__content--large-padding">
         {%- assign expand_questions = section.settings.expand_questions -%}
 
         {%- for block in section.blocks -%}
           {%- case block.type -%}
             {%- when 'separator' -%}
-              <h2 class="faq__separator h4" {{ block.shopify_attributes }}>{{ block.settings.title | escape }}</h2>
+              <h2 class="faq__separator h3" {{ block.shopify_attributes }}>{{ block.settings.title | escape }}</h2>
 
             {%- when 'question' -%}
               <div class="faq__item {% unless expand_questions %}faq__item--expandable{% endunless %}" {{ block.shopify_attributes }}>
-                <h3 class="faq__question h5 {% unless expand_questions %}link{% endunless %}">{{ block.settings.title }}</h3>
-                <div class="faq__answer rte">
+                <h3 class="faq__question h6{% unless expand_questions %} link{% endunless %}">{{ block.settings.title }}</h3>
+                {% include 'icon' with 'dropdown-arrow' %} 
+                <div class="faq__answer rte"> 
                   {{ block.settings.answer }}
                 </div>
               </div>

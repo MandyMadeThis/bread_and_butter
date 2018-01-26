@@ -2,6 +2,7 @@
  * PLUGIN: HEADER SEARCH
  */
 (function ($) {
+
   'use strict';
 
   var pluginName = 'BandBHeaderSearch',
@@ -244,6 +245,7 @@
     });
   };
 }(jQuery));
+
 
 /**
  * PLUGIN: SLIDESHOW
@@ -554,6 +556,7 @@
   };
 }(jQuery));
 
+
 /**
  * PLUGIN: INSTAGRAM
  */
@@ -750,6 +753,7 @@
  * PLUGIN: MAIN NAV
  */
 (function ($) {
+
   'use strict';
 
   var pluginName = 'BandBMainNav',
@@ -842,6 +846,7 @@
  * PLUGIN: MINI-CART
  */
 (function ($) {
+
   'use strict';
 
   var pluginName = 'BandBMiniCart',
@@ -1267,6 +1272,7 @@
  * Plugin to handle product update
  */
 (function ($) {
+
   'use strict';
 
   var pluginName = 'BandBProduct',
@@ -1731,6 +1737,7 @@
  * PLUGIN: TABS
  */
 (function ($) {
+
   'use strict';
 
   var pluginName = 'BandBTabs',
@@ -1818,7 +1825,7 @@
 var router = new RouterRouter();
 
 /**
- * ROUTER FOR ALL PAGES
+ * STICKY HEADER POLYFILL AND HEADER SIZE
  */
 router.route('*all', function() {
   var bodyElement = $('body');
@@ -2112,6 +2119,9 @@ router.route('*all', function() {
     });
   }());
 
+  /**
+   * FEATURED COLLECTIONS
+   */
   (function() {
     var initCollections = function(domElement) {
       if (domElement.length === 0) {
@@ -2137,6 +2147,33 @@ router.route('*all', function() {
         ]
       })
     };
+
+    initCollections($('.list-collections'));
+
+    $(document).on('shopify:section:unload', '.shopify-section__collection-list', function(event) {
+      $(event.target).find('.list-collections').slick('unslick');
+    });
+
+    $(document).on('shopify:section:load', '.shopify-section__collection-list', function(event) {
+      initCollections($(event.target).find('.list-collections'));
+    });
+
+    $(document).on('shopify:block:select', '.shopify-section__collection-list', function(event) {
+      $(event.target).closest('.list-collections').slick('slickGoTo', $(event.target).attr('data-slide-index'));
+    });
+
+    $(window).on('resize orientationChange', function() {
+      if (window.innerWidth < 560) {
+        // If not created yet, we create it
+        var slick = $('.list-collections');
+
+        if (slick.slick('getSlick').unslicked) {
+          initCollections(slick);
+        }
+      }
+    });
+  }());
+
 });
 
 /**
@@ -2526,32 +2563,6 @@ router.route('pages/projects', function() {
 
         if (slideshow.attr('data-autoplay') === 'true') {
           slideshow.slick('play');
-        }
-      }
-    });
-  }());
-
-    initCollections($('.list-collections'));
-
-    $(document).on('shopify:section:unload', '.shopify-section__collection-list', function(event) {
-      $(event.target).find('.list-collections').slick('unslick');
-    });
-
-    $(document).on('shopify:section:load', '.shopify-section__collection-list', function(event) {
-      initCollections($(event.target).find('.list-collections'));
-    });
-
-    $(document).on('shopify:block:select', '.shopify-section__collection-list', function(event) {
-      $(event.target).closest('.list-collections').slick('slickGoTo', $(event.target).attr('data-slide-index'));
-    });
-
-    $(window).on('resize orientationChange', function() {
-      if (window.innerWidth < 560) {
-        // If not created yet, we create it
-        var slick = $('.list-collections');
-
-        if (slick.slick('getSlick').unslicked) {
-          initCollections(slick);
         }
       }
     });

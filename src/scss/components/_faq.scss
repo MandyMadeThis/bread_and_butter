@@ -1,0 +1,43 @@
+.faq {
+  .box__content {
+    text-align: center;
+  }
+}
+
+.faq__item:not(:last-child) {
+  margin-bottom: 0.9em;
+}
+
+.faq__item--expandable {
+  cursor: pointer;
+}
+
+.faq__item--expandable .faq__answer {
+  display: none;
+}
+
+.faq__separator {
+  font-weight: $bold;
+  margin-bottom: 20px;
+}
+
+.faq__separator:not(:first-child) {
+  margin-top: 1.2em;
+}
+
+.faq__question {
+  margin-bottom: 0.2em;
+  display: inline-block;
+
+  &.link:hover + .icon-dropdown-arrow {
+    fill: $accent;
+  }
+}
+
+.icon-dropdown-arrow {
+  display: inline-block;
+  margin-left: 8px;
+  width: 12px;
+  position: relative;
+  top: -1px;
+}

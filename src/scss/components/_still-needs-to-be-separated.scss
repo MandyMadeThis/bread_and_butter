@@ -3649,32 +3649,3 @@
 .product-item--article .product-item__image {
   width: 100%;
 }
-
-/**
- * FAQ
- */
-
-.faq__item:not(:last-child) {
-  margin-bottom: 0.9em;
-}
-
-.faq__item--expandable {
-  cursor: pointer;
-}
-
-.faq__item--expandable .faq__answer {
-  display: none;
-}
-
-.faq__separator:not(:first-child) {
-  margin-top: 1.2em;
-}
-
-.faq__question {
-  margin-bottom: 0.2em;
-}
-
-.faq__question::before {
-  content: '\2022';
-  margin-right: 12px;
-}
