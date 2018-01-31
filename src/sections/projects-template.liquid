@@ -1,0 +1,49 @@
+{%- assign force_secondary_background = true -%}
+
+{%- if section.blocks.size > 0 -%}
+  <div class="container container--flex projectsPage--projectsWrapper">
+    {%- for block in section.blocks -%}
+    {% assign blog = blogs[block.settings.project_blog] %}
+      <a href="{{ blog.url }}" class="imageBox">
+        <div class="imageBox-inner">
+          <img src="{{ block.settings.project_img.src | img_url: '500x500', crop: 'center' }}" alt="{{ block.settings.project_img.alt }}" />
+          <div class="imageBox-textWrapper">
+            <h3>{{ blog.title }}</h3>
+          </div>
+        </div>
+      </a>
+    {%- endfor -%}
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Project Collections",
+  "max_blocks": 3,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Pick 3 of your blogs to use as 'Project Collections'. Choose a main image for each."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "project_collection",
+      "name": "Project Collection",
+      "settings": [
+        {
+          "type": "blog",
+          "label": "Project Collection (blog)",
+          "id": "project_blog"
+        },
+        {
+          "type": "image_picker",
+          "id": "project_img",
+          "label": "Project Collection Image",
+          "info": "Recommended Size: 1920px X 1280px"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -82,16 +82,19 @@
       {% unless template == 'page.projects' or template == 'article' or template contains 'product' %}
         {%- section 'hero' -%} 
       {% endunless %}
-
-      {% comment %} Sections appear on Projects page: {% endcomment %}
-      {%- section 'projects-slideshow' -%}
+      
+      {% if template == 'page.projects' %}
+        {%- section 'projects-slideshow' -%}
+      {% endif %}
 
       <main id="main" class="main" role="main">
         {{ content_for_layout }}
       </main>
       
-      {% comment %} Sections appear on Projects, About, and Product pages {% endcomment %}
-      {%- section 'testimonials' -%}
+      {% if handle contains 'projects' or handle == 'about' or template contains 'product' %}
+        {%- section 'testimonials' -%}
+      {% endif %}
+      
       {% comment %} Sections appear Sitewide: {% endcomment %}
       {%- section 'instagram-feed' -%}
       {%- section 'footer' -%}

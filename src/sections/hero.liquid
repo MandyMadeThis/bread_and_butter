@@ -4,9 +4,9 @@
 {% elsif handle contains 'contact' %}
   {% assign heroImg = section.settings.hero_image_contact %}
 {% elsif handle contains 'commercial-projects' %}
-  {% assign heroImg = settings.projects_img_commercial %}
+  {% assign heroImg = settings.projects_img_2 %}
 {% elsif handle contains 'residential-projects' %}
-  {% assign heroImg = settings.projects_img_residential %}
+  {% assign heroImg = settings.projects_img_3 %}
 {% endif %}
 
 <div class="hero" style="background-image: url({{ heroImg | img_url: '1920x500', crop: 'center' }});">

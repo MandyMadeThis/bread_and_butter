@@ -1,15 +1,19 @@
 {%- assign force_secondary_background = true -%}
+{% assign s = settings %}
 
 <div class="page__content-wrapper">
   <div class="container">
     <div class="headingDecorative">
       <h1 class="headingDecorative-heading">{{ page.title }}</h1>
     </div>
-
+  </div>
+  <div class="container u-background-white">
     <div class="box box--shrinked">
       <div class="box__content box__content--large-padding rte">
         {{ page.content }}
       </div>
     </div>
   </div>
+
+  {% section 'projects-template' %}
 </div>

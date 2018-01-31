@@ -1,41 +1,39 @@
-{% if handle contains 'projects' or handle == 'about' or template contains 'product' %}
-  <div class="shopify-section__testimonials" id="shopify-section-{{ section.id }}">
-    <section class="section section-{{ section.id }}">
-      <div class="container">
-        {%- if section.settings.title != blank -%}
-          <div class="headingDecorative">
-            <h2 class="headingDecorative-heading">{{ section.settings.title | escape }}</h2>
-          </div>
-        {%- endif -%}
+<div class="shopify-section__testimonials" id="shopify-section-{{ section.id }}">
+  <section class="section section-{{ section.id }}">
+    <div class="container">
+      {%- if section.settings.title != blank -%}
+        <div class="headingDecorative">
+          <h2 class="headingDecorative-heading">{{ section.settings.title | escape }}</h2>
+        </div>
+      {%- endif -%}
 
-        <div class="testimonials">
-          {%- for block in section.blocks -%}
-            <div class="testimonials__item" {{ block.shopify_attributes }}>
-              <div class="testimonial {% if block.settings.author_picture != blank %}testimonial--has-image{% endif %}">
-                {%- if block.settings.author_picture -%}
-                <div class="testimonial__picture">
-                  <div class="testimonial__picture-wrapper">
-                    <img src="{{ block.settings.author_picture | img_url: '160x160', crop: 'center' }}" alt="{{ block.settings.author_picture.alt | escape }}" class="testimonial__image">
-                  </div>
-                </div>
-                  
-                {%- endif -%}
-
-                {%- if block.settings.title != blank -%}
-                  <p class="testimonial__author">{{ block.settings.title | escape }}</p>
-                {%- endif -%}
-
-                <div class="testimonial__content">
-                  {{ block.settings.quote }}
+      <div class="testimonials">
+        {%- for block in section.blocks -%}
+          <div class="testimonials__item" {{ block.shopify_attributes }}>
+            <div class="testimonial {% if block.settings.author_picture != blank %}testimonial--has-image{% endif %}">
+              {%- if block.settings.author_picture -%}
+              <div class="testimonial__picture">
+                <div class="testimonial__picture-wrapper">
+                  <img src="{{ block.settings.author_picture | img_url: '160x160', crop: 'center' }}" alt="{{ block.settings.author_picture.alt | escape }}" class="testimonial__image">
                 </div>
               </div>
+                
+              {%- endif -%}
+
+              {%- if block.settings.title != blank -%}
+                <p class="testimonial__author">{{ block.settings.title | escape }}</p>
+              {%- endif -%}
+
+              <div class="testimonial__content">
+                {{ block.settings.quote }}
+              </div>
             </div>
-          {%- endfor -%}
-        </div>
+          </div>
+        {%- endfor -%}
       </div>
-    </section>
-  </div>
-{% endif %}
+    </div>
+  </section>
+</div>
 
 {% schema %}
 {

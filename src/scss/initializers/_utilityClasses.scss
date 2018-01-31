@@ -23,9 +23,9 @@
   border: 0;
 }
 
-.u-background-color {
-  background-color: $secondary-background;
-}
+.u-background-color { background-color: $secondary-background; }
+.u-background-white { background-color: $white; }
+.u-background-black { background-color: $black; }
 
 // Typography Utilities
 .u-italic { font-style: italic !important; }

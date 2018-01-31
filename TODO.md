@@ -2,9 +2,9 @@ TODO:
 * Remove colours, typography, favicon, product grid, settings choices from codebase
 
 * Edit/Redesign template for articles - simple
-* Make template for Projects page - simple with link to commercial & residential projects(blogs)
-* Edit template for blogs(projects) - same as collection templates - squares with photo bg.
+* Edit template for blogs(projects) landing - same as collection templates - squares with photo bg.
 * Edit product templates - If they have a certain tag, they'll get an "inquire" button/form, if not, regular sale
+* Edit Contact form/page
 
 * Continue Breaking down the theme.scss file (add undone brokendown code to one single .scss file for now)
 
@@ -23,3 +23,4 @@ DONE:
 * Fix JS to initialize on all pages
 * Redesign Footer
 * Add images to settings for Projects - add these to Meganav
+* Fix project slider to include article featured image as slide image, when article is chosen.
