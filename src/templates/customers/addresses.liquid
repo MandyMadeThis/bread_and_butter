@@ -1,9 +1,8 @@
 <div class="page__content-wrapper">
+  <div class="headingDecorative">
+    <h1 class="headingDecorative-heading">{{ 'customer.addresses.title' | t }}</h1>
+  </div>
   <div class="container">
-    <header class="headingDecorative">
-      <h1 class="headingDecorative-heading">{{ 'customer.addresses.title' | t }}</h1>
-    </header>
-
     {%- if customer.addresses_count > 0 -%}
       {%- paginate customer.addresses by 6 -%}
         <div class="customer-addresses grid grid--large grid--center">

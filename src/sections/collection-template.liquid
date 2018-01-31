@@ -140,10 +140,8 @@ We have some elements that are at two different places in mobile and desktop. In
 {%- if section.settings.show_instagram -%}
   <section class="section section__instagram">
     {%- if section.settings.instagram_title != blank -%}
-      <div class="container">
-        <div class="headingDecorative">
-          <h2 class="headingDecorative-heading">{{ section.settings.title | escape }}</h2>
-        </div>
+      <div class="headingDecorative">
+        <h2 class="headingDecorative-heading">{{ section.settings.title | escape }}</h2>
       </div>
     {%- endif -%}
 

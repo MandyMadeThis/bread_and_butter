@@ -1,11 +1,10 @@
 <div class="page__content-wrapper">
+  {%- if section.settings.show_blog_name -%}
+    <div class="headingDecorative">
+      <h1 class="headingDecorative-heading">{{ blog.title }}</h1>
+    </div>
+  {%- endif -%}
   <div class="container">
-    {%- if section.settings.show_blog_name -%}
-      <div class="headingDecorative">
-        <h1 class="headingDecorative-heading">{{ blog.title }}</h1>
-      </div>
-    {%- endif -%}
-
     <div class="grid">
       {%- capture blog_articles -%}
         {%- paginate blog.articles by section.settings.articles_per_page -%}

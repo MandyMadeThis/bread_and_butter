@@ -1,9 +1,8 @@
 <div class="page__content-wrapper">
+  <div class="headingDecorative">
+    <h1 class="headingDecorative-heading">{{ 'customer.order.title' | t: order_number: order.name }}</h1>
+  </div>
   <div class="container">
-    <header class="headingDecorative">
-      <h1 class="headingDecorative-heading">{{ 'customer.order.title' | t: order_number: order.name }}</h1>
-    </header>
-
     <div class="grid grid--large">
       <div class="order__details grid__cell 7/10--lap-and-up">
         {% if order.cancelled %}

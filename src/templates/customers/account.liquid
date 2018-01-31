@@ -1,12 +1,11 @@
 <div class="page__content-wrapper">
+  <div class="headingDecorative">
+    <h1 class="headingDecorative-heading">{{ 'customer.account.title' | t }}</h1>
+  </div>
   <div class="container">
-    <header class="headingDecorative">
-      <h1 class="headingDecorative-heading">{{ 'customer.account.title' | t }}</h1>
-
-      <div class="page__action-button button-wrapper">
-        <a href="/account/logout" class="button button--small button--secondary">{{ 'customer.general.logout' | t }}</a>
-      </div>
-    </header>
+    <div class="page__action-button button-wrapper">
+      <a href="/account/logout" class="button button--small button--secondary">{{ 'customer.general.logout' | t }}</a>
+    </div>
 
     <div class="grid grid--large">
       <div class="customer__orders grid__cell 7/10--handheld-and-up">

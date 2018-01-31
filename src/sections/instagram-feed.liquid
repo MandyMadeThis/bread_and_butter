@@ -1,9 +1,7 @@
 <section class="section section-{{ section.id }}">
   {%- if section.settings.title != blank -%}
-    <div class="container">
-      <div class="headingDecorative">
-        <h2 class="headingDecorative-heading">{{ section.settings.title | escape }}</h2>
-      </div>
+    <div class="headingDecorative">
+      <h2 class="headingDecorative-heading">{{ section.settings.title | escape }}</h2>
     </div>
   {%- endif -%}
 

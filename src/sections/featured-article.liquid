@@ -8,13 +8,12 @@
 {%- endif -%}
 
 <section class="section section--positioned section-{{ section.id }}">
+{%- if section.settings.title != blank -%}
+  <div class="headingDecorative">
+    <h2 class="headingDecorative-heading">{{ section.settings.title | escape }}</h2>
+  </div>
+{%- endif -%}
   <div class="container">
-    {%- if section.settings.title != blank -%}
-      <div class="headingDecorative">
-        <h2 class="headingDecorative-heading">{{ section.settings.title | escape }}</h2>
-      </div>
-    {%- endif -%}
-
     {%- unless article.handle == blank -%}
       {%- capture article_details -%}
         <article class="article">

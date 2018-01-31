@@ -1,13 +1,12 @@
 {%- if section.settings.show_related_products and cart.item_count > 0 -%}
   <aside class="related-products">
     <div class="section">
+    {%- if section.settings.title != blank -%}
+      <div class="headingDecorative">
+        <h2 class="headingDecorative-heading">{{ section.settings.title | escape }}</h2>
+      </div>
+    {%- endif -%}
       <div class="container">
-        {%- if section.settings.title != blank -%}
-          <div class="headingDecorative">
-            <h2 class="headingDecorative-heading">{{ section.settings.title | escape }}</h2>
-          </div>
-        {%- endif -%}
-
         <div class="list-products grid grid--large grid--center" data-slides-count="{{ section.blocks.size }}">
           {%- for block in section.blocks -%}
             {%- assign product = all_products[block.settings.product] -%}

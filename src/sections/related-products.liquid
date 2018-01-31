@@ -10,11 +10,10 @@
 
   <aside class="related-products">
     <div class="section">
+      <div class="headingDecorative">
+        <h2 class="headingDecorative-heading">{{ 'product.general.related_products' | t }}</h2>
+      </div>
       <div class="container">
-        <div class="headingDecorative">
-          <h2 class="headingDecorative-heading">{{ 'product.general.related_products' | t }}</h2>
-        </div>
-
         {%- assign products_count = collection.products.size -%}
 
         {%- if product.metafields.sf_related_products.enabled == 1 -%}

@@ -1,11 +1,10 @@
 <section class="section section-{{ section.id }}">
+  {%- if section.settings.title != blank -%}
+    <div class="headingDecorative">
+      <h2 class="headingDecorative-heading">{{ section.settings.title | escape }}</h2>
+    </div>
+  {%- endif -%}
   <div class="container">
-    {%- if section.settings.title != blank -%}
-      <div class="headingDecorative">
-        <h2 class="headingDecorative-heading">{{ section.settings.title | escape }}</h2>
-      </div>
-    {%- endif -%}
-    
     <div class="container container--flex list-collections" data-slides-count="{{ section.blocks.size }}">
       {%- for block in section.blocks -%}
         {%- assign collection = collections[block.settings.collection] -%}
