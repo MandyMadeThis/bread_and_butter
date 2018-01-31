@@ -1,14 +1,16 @@
 {% assign heroImg = section.settings.hero_image %}
-{% if handle contains 'about' %}
-  {% assign heroImg = section.settings.hero_image_about %}
-{% elsif handle contains 'contact' %}
-  {% assign heroImg = section.settings.hero_image_contact %}
-{% elsif handle contains 'commercial-projects' %}
-  {% assign heroImg = settings.projects_img_2 %}
-{% elsif handle contains 'residential-projects' %}
-  {% assign heroImg = settings.projects_img_3 %}
-{% endif %}
-
+{%- case handle -%}
+  {%- when contains 'about' -%}
+    {% assign heroImg = section.settings.hero_image_about %}
+  {%- when contains 'contact' -%}
+    {% assign heroImg = section.settings.hero_image_contact %}
+  {%- when blogs[settings.projects_collection_1].handle -%}
+    {%- assign heroImg = settings.projects_collection_img_1.src -%}
+  {%- when blogs[settings.projects_collection_2].handle -%}
+    {%- assign heroImg = settings.projects_collection_img_2.src -%}
+  {%- when blogs[settings.projects_collection_3].handle -%}
+    {%- assign heroImg = settings.projects_collection_img_3.src -%}
+{%- endcase -%}
 <div class="hero" style="background-image: url({{ heroImg | img_url: '1920x500', crop: 'center' }});">
   <div class="hero-card">
     <svg id="breadandbutter_design_logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 212 209.2">
