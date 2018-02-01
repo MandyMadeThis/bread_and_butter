@@ -26,12 +26,13 @@
 @import "components/testimonials";
 @import "components/slideshow";
 @import "components/faq";
+@import "components/product-item";
 
 // STILL WORKING ON SEPERATNG THESE INTO COMPONENT FILES
 @import "components/still-needs-to-be-separated";
 
 //import any page specific styles
-// @import "pages/**/*";
+@import "pages/**/*";
 
 // import these last to ensure they are honoured.
 @import "initializers/utilityMixin";

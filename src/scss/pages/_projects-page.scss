@@ -1,0 +1,14 @@
+.projectsPage--projectsWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+  .imageBox {
+    margin-bottom: 25px;
+
+    @include av-mq('lap-and-up') {
+      margin-bottom: 0;
+    }
+  }
+}
+

@@ -1,0 +1,181 @@
+.product-item {
+  position: relative;
+  width: 100%;
+  font-size: 18px;
+  font-size: 1rem;
+  color: $heading-color;
+  text-align: center;
+  font-weight: 400;
+  background: $background;
+
+  a {color: $black;}
+}
+
+.product-item--push {
+  transition: all 0.25s ease;
+
+  .no-touchevents &:hover {
+    box-shadow: 0 20px 30px 0 rgba(0, 0, 0, 0.06);
+    transform: translateY(-8px);
+  }
+}
+
+.product-item--bordered {
+  background: $white;
+  border: $base-border;
+  box-shadow: 0 0 0 15px $white;
+  padding: 15px;
+}
+
+.product-item__labels {
+  position: absolute;
+  left: 0;
+  top: 18px;
+  pointer-events: none;
+}
+
+.product-item__image-container {
+  font-size: 0;
+  margin: 0;
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0;
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+}
+
+.product-item__image {
+  margin: 0 auto;
+}
+
+.product-item__image--constrained {
+  max-height: 250px;
+}
+
+.product-item__image--fill {
+  width: 100%;
+  max-height: none !important;
+}
+
+.product-item__link {
+  display: block;
+}
+
+.product-item__info {
+  padding: 22px 15px;
+}
+
+.product-item__vendor {
+  margin-bottom: 0.15em;
+}
+
+.product-item__title {
+  margin-bottom: 0.3em;
+}
+
+.product-item__title {
+  font-weight: 600;
+  font-size: 1.1em;
+}
+
+.product-item__price {
+  display: inline-block;
+}
+
+.product-item__price--old {
+  margin-left: 4px;
+  text-decoration: line-through;
+  color: $light-text-color;
+}
+
+.product-item__available-colors {
+  margin-top: 10px;
+}
+
+.product-item__color {
+  display: inline-block;
+  margin: 0 4px;
+  transform: scale(1);
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.3);
+  }
+}
+
+.product-item__see-more {
+  margin: 20px 0 6px 0;
+}
+
+@include av-mq("thumb") {
+  .product-item__image {
+    max-height: 260px;
+  }
+
+  /* On homepage and cart page, we are using a slideshow to display the collections */
+
+  .template-index .list-products,
+  .template-product .list-products,
+  .template-cart .list-products {
+    margin: 0 -25px;
+  }
+
+  .template-index .list-products .grid__cell,
+  .template-product .list-products .grid__cell,
+  .template-cart .list-products .grid__cell {
+    margin: 0 5px;
+    padding: 0;
+  }
+
+  .template-index .list-products .product-item,
+  .template-product .list-products .product-item,
+  .template-cart .list-products .grid__cell {
+    margin-bottom: 0;
+  }
+}
+
+
+@include av-mq("handheld") {
+  .product-item__image {
+    max-height: 325px;
+  }
+}
+
+
+@include av-mq("handheld-and-up") {
+  /* This allows to have tile that are the same height */
+
+  .list-products {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+  }
+
+  .list-products.grid--center {
+    justify-content: center;
+  }
+
+  .list-products > .grid__cell {
+    display: flex;
+    flex: 0 1 auto;
+  }
+
+  .list-products .product-item {
+    flex: 1 1 auto;
+  }
+
+  .product-item {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+
+@include av-mq("lap-and-up") {
+  .list-products {
+    margin-bottom: -32px;
+  }
+
+  .list-products > .grid__cell {
+    margin-bottom: 32px;
+  }
+}

@@ -1,10 +1,8 @@
 <div class="page__content-wrapper">
-  {%- if section.settings.show_blog_name -%}
+  <div class="container">
     <div class="headingDecorative">
       <h1 class="headingDecorative-heading">{{ blog.title }}</h1>
     </div>
-  {%- endif -%}
-  <div class="container">
     <div class="grid">
       {%- capture blog_articles -%}
         {%- paginate blog.articles by section.settings.articles_per_page -%}
@@ -21,10 +19,6 @@
 
                   <div class="article__content">
                     <div class="article__meta text--uppercase">
-                      {%- if section.settings.show_author_name -%}
-                        <span class="article__author article__meta-item">{{ 'blog.article.written_by' | t: author: article.user.first_name }}</span>
-                      {%- endif -%}
-
                       <time datetime="{{ article.published_at | date: '%Y-%m-%dT%T' }}" class="article__date article__meta-item">{{ article.published_at | date: format: 'month_day_year' }}</time>
 
                       {%- if article.comments_enabled? -%}
@@ -32,19 +26,19 @@
                       {%- endif -%}
                     </div>
 
-                    <h1 class="article__title h4">
-                      <a href="{{ article.url }}" class="link">{{ article.title }}</a>
-                    </h1>
-
-                    <div class="article__excerpt rte {% if article.image %}hidden-thumb{% endif %}">
+                      <a href="{{ article.url }}">
+                        <h2 class="article__title h4"><span class="link-underline">{{ article.title }}</span></h2>
+                      </a>
+                    
+                    <p class="article__excerpt rte{% if article.image %} hidden-thumb hidden-handheld{% endif %}">
                       {%- if article.excerpt != blank -%}
-                        {{ article.excerpt }}
+                        {{ article.excerpt | strip_html | truncate: 300 | append: ' ...' }}
                       {%- else -%}
-                        {{ article.content | strip_html | truncate: 350 }}
+                        {{ article.content | strip_html | truncate: 300 | append: ' ...' }}
                       {%- endif -%}
-                    </div>
+                    </p>
 
-                    <a href="{{ article.url }}" class="article__read-more link link--primary link--effect text--uppercase">{{ 'blog.article.continue_reading' | t }}</a>
+                    <a href="{{ article.url }}" class="article__read-more"><span class="link-underline">{{ 'blog.article.continue_reading' | t }}</span></a>
                   </div>
                 </article>
               </div>
@@ -64,29 +58,10 @@
           <aside class="blog-sidebar">
             {%- for block in section.blocks -%}
               {%- case block.type -%}
-                {%- when 'newsletter' -%}
-                  <div class="blog-sidebar__section blog-sidebar__newsletter accent-overlay" {{ block.shopify_attributes }} style="{% if block.settings.newsletter_background %}background-image: url({{ block.settings.newsletter_background | img_url: '400x200' }}){% endif %}">
-                    <h3 class="blog-sidebar__title text--uppercase">{{ 'blog.sidebar.subscribe_newsletter' | t }}</h3>
-
-                    {%- capture newsletter_form_action -%}/contact#shopify-section-{{ section.id }}{%- endcapture -%}
-
-                    {%- form 'customer', action: newsletter_form_action, class: 'blog-sidebar__newsletter-form' -%}
-                      {%- if form.posted_successfully? -%}
-                        <p class="alert alert--success">{{ 'blog.sidebar.newsletter_success' | t }}</p>
-                      {%- else -%}
-                        <input type="hidden" name="contact[tags]" value="newsletter">
-
-                        <div class="input-group">
-                          <input class="input-group__field form__input" type="email" value="{% if customer %}{{ customer.email }}{% endif %}" name="contact[email]" aria-label="{{ 'blog.sidebar.email_placeholder' | t }}" placeholder="{{ 'blog.sidebar.email_placeholder' | t }}" required="required">
-                          <button class="input-group__submit button button--secondary" name="commit" type="submit">{%- include 'icon' with 'next' -%}</button>
-                        </div>
-                      {%- endif -%}
-                    {%- endform -%}
-                  </div>
                 {%- when 'tags' -%}
                   {%- if blog.all_tags.size > 0 -%}
                     <div class="blog-sidebar__section blog-sidebar__section--padded" {{ block.shopify_attributes }}>
-                      <h3 class="blog-sidebar__title text--uppercase">{{ 'blog.sidebar.tags' | t }}</h3>
+                      <h3 class="blog-sidebar__title">{{ block.settings.sidebar_tags_heading }}</h3>
 
                       <ul class="blog-sidebar__tags list--unstyled">
                         {%- for tag in blog.all_tags -%}
@@ -107,7 +82,7 @@
 
                   {%- if social_media != blank -%}
                     <div class="blog-sidebar__section blog-sidebar__section--padded" {{ block.shopify_attributes }}>
-                      <h3 class="blog-sidebar__title text--uppercase">{{ 'blog.sidebar.follow_us' | t }}</h3>
+                      <h3 class="blog-sidebar__title">{{ block.settings.sidebar_social_heading }}</h3>
 
                       {{- social_media -}}
                     </div>
@@ -115,7 +90,7 @@
 
                 {%- when 'featured_articles' -%}
                   <div class="blog-sidebar__section blog-sidebar__section--padded" {{ block.shopify_attributes }}>
-                    <h3 class="blog-sidebar__title text--uppercase">{{ 'blog.sidebar.featured_articles' | t }}</h3>
+                    <h3 class="blog-sidebar__title">{{ block.settings.sidebar_article_heading }}</h3>
 
                     <ul class="blog-sidebar__featured-articles list--unstyled">
                       {%- for i in (1..4) -%}
@@ -133,7 +108,7 @@
 
                 {%- when 'featured_product' -%}
                   <div class="blog-sidebar__section blog-sidebar__section--padded" {{ block.shopify_attributes }}>
-                    <h3 class="blog-sidebar__title text--uppercase">{{ 'blog.sidebar.featured_product' | t }}</h3>
+                    <h3 class="blog-sidebar__title">{{ block.settings.sidebar_product_heading }}</h3>
 
                     {%- assign product_item = all_products[block.settings.featured_product] -%}
                     {%- include 'product-item', product: product_item, image_dimension: 'normal', show_color_swatch: false -%}
@@ -154,57 +129,29 @@
 {% schema %}
 {
   "name": "Blog page",
-  "max_blocks": 6,
   "settings": [
-    {
-      "type": "checkbox",
-      "id": "show_blog_name",
-      "label": "Show blog name",
-      "default": false
-    },
-    {
-      "type": "checkbox",
-      "id": "show_author_name",
-      "label": "Show author name",
-      "default": true
-    },
     {
       "type": "range",
       "id": "articles_per_page",
       "min": 2,
-      "max": 6,
+      "max":12,
       "step": 1,
       "label": "Posts per page",
-      "default": 2
+      "default": 12
     }
   ],
   "blocks": [
-    {
-      "type": "newsletter",
-      "name": "Newsletter",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "paragraph",
-          "content": "Any customers who sign up will have an account created for them in Shopify. [View customers](/admin/customers?query=&accepts_marketing=1)."
-        },
-        {
-          "type": "paragraph",
-          "content": "You can sync your customers with a newsletter service by installing their app."
-        },
-        {
-          "type": "image_picker",
-          "id": "newsletter_background",
-          "label": "Newsletter section background",
-          "info": "400 x 200 px .jpg recommended"
-        }
-      ]
-    },
     {
       "type": "tags",
       "name": "Tags",
       "limit": 1,
       "settings": [
+        {
+          "type": "text",
+          "id": "sidebar_tags_heading",
+          "label": "Sidebar Tags Heading",
+          "default": "Project Tags"
+        },
         {
           "type": "paragraph",
           "content": "You can add tags to your articles to more easily organize them."
@@ -219,6 +166,12 @@
         {
           "type": "paragraph",
           "content": "Make sure that you have filled your social media in the global settings."
+        },
+        {
+          "type": "text",
+          "id": "sidebar_social_heading",
+          "label": "Sidebar Social Heading",
+          "default": "Follow BandB Designs"
         }
       ]
     },
@@ -226,6 +179,12 @@
       "type": "featured_articles",
       "name": "Featured articles",
       "settings": [
+        {
+          "type": "text",
+          "id": "sidebar_article_heading",
+          "label": "Sidebar Article Heading",
+          "default": "Featured Projects"
+        },
         {
           "type": "article",
           "id": "featured_article_1",
@@ -253,6 +212,12 @@
       "name": "Featured product",
       "settings": [
         {
+          "type": "text",
+          "id": "sidebar_product_heading",
+          "label": "Sidebar Product Heading",
+          "default": "Product of the Month"
+        },
+        {
           "type": "product",
           "id": "featured_product",
           "label": "Product"
@@ -262,10 +227,6 @@
   ],
   "default": {
     "blocks": [
-      {
-        "type": "newsletter",
-        "settings": {}
-      },
       {
         "type": "tags",
         "settings": {}

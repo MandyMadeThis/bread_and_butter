@@ -14,7 +14,7 @@
       {%- for link in main_menu.links -%}
         <li class="header__link {% if link.links != blank %}header__link--need-extra-space{% endif %}" {% if link.links != blank %}aria-haspopup="true"{% endif %} tabindex>
           <a href="{{ link.url }}" class="header__link-anchor{% if link.active %} header__link-current {% endif %}"">
-            <span class="header__link-underline">{{- link.title | escape -}} {% if link.links != blank %}{% include 'icon' with 'dropdown-arrow' %}{% endif %}</span>
+            <span class="link-underline">{{- link.title | escape -}} {% if link.links != blank %}{% include 'icon' with 'dropdown-arrow' %}{% endif %}</span>
           </a>
 
           {%- if link.links != blank -%}

@@ -5,9 +5,16 @@
 .section-testimonials {
   margin: 0;
   padding: 80px 0;
+
+  .headingDecorative-heading {
+    background: $secondary-background;
+  }
 }
 
 .testimonials {
+  padding-left: 15px;
+  padding-right: 15px;
+  
   @include av-mq("lap-and-up") {
     justify-content: space-between;
     margin-top: 80px;

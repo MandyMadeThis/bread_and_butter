@@ -1,19 +1,26 @@
 {%- assign force_secondary_background = true -%}
 
 {%- if section.blocks.size > 0 -%}
-  <div class="container container--flex projectsPage--projectsWrapper">
-    {%- for block in section.blocks -%}
-    {% assign blog = blogs[block.settings.project_blog] %}
-      <a href="{{ blog.url }}" class="imageBox">
-        <div class="imageBox-inner">
-          <img src="{{ block.settings.project_img.src | img_url: '500x500', crop: 'center' }}" alt="{{ block.settings.project_img.alt }}" />
-          <div class="imageBox-textWrapper">
-            <h3>{{ blog.title }}</h3>
-          </div>
-        </div>
-      </a>
-    {%- endfor -%}
+<section class="section">
+  <div class="headingDecorative">
+    <h2 class="headingDecorative-heading">{{ settings.projects_page_h2 }}</h2>
   </div>
+  <div class="container">
+    <div class="projectsPage--projectsWrapper">
+      {%- for block in section.blocks -%}
+      {% assign blog = blogs[block.settings.project_blog] %}
+        <a href="{{ blog.url }}" class="imageBox">
+          <div class="imageBox-inner">
+            <img src="{{ block.settings.project_img.src | img_url: '500x500', crop: 'center' }}" alt="{{ block.settings.project_img.alt }}" />
+            <div class="imageBox-textWrapper">
+              <h3>{{ blog.title }}</h3>
+            </div>
+          </div>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
 {%- endif -%}
 
 {% schema %}

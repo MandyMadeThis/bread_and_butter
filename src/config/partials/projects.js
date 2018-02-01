@@ -6,6 +6,12 @@ module.exports = {
       content: 'Use this area to assign images to your projects collections (blogs). First choose the blog name and then assign an image to it. Make sure you have chosen the same three blogs as menu items the Navigation menu, for the Projects drop down menu.'
     },
     {
+      type: 'text',
+      label: 'Projects Page 2nd Headline',
+      id: 'projects_page_h2',
+      default: 'View our projects'
+    },
+    {
       type: 'header',
       content: 'Projects Collection #1'
     },

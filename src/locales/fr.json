@@ -41,16 +41,9 @@
       "prev": "Suivant"
     },
 
-    "newsletter": {
-      "input_placeholder": "Entrez votre email",
-      "submit": "S'abonner",
-      "success": "Votre email a été enregistré ! Nous vous tiendrons informé de nos nouveautés !"
-    },
-
     "popup": {
       "input_placeholder": "Votre email",
-      "submit": "Soumettre",
-      "newsletter_success": "Votre email a été enregistré ! Nous vous tiendrons informé de nos nouveautés !"
+      "submit": "Soumettre"
     },
 
     "social": {
@@ -71,12 +64,6 @@
       "title": "Ouverture imminente...",
       "store_owner": "Êtes-vous le gérant de la boutique ? Connectez-vous",
       "powered_by": "Cette boutique sera propulsée par"
-    },
-
-    "newsletter": {
-      "input_placeholder": "Entrez votre email",
-      "submit": "C'est parti",
-      "thank_you": "Votre email a été enregistré ! Nous vous tiendrons informé de nos nouveautés !"
     },
 
     "form": {
@@ -232,8 +219,6 @@
 
     "sidebar": {
       "email_placeholder": "Email",
-      "subscribe_newsletter": "Rejoignez-nous",
-      "newsletter_success": "Merci !",
       "tags": "Catégories",
       "follow_us": "Nous suivre",
       "featured_articles": "Articles à la une",

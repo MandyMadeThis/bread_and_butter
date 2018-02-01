@@ -1,5 +1,4 @@
 <!doctype html>
-
 <!--[if IE 9 ]><html class="no-js csscalc no-flexbox ie9" lang="{{ shop.locale }}"><![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="{{ shop.locale }}"><!--<![endif]-->
   <head>
@@ -33,7 +32,6 @@
     {{ 'modernizr.min.js' | asset_url | script_tag }}
 
     <script>
-      // This exposes several variables to the global scope, to be used in scripts
       window.shop = {
         template: {{ template | json }},
         currentPage: {{ current_page }},
@@ -67,14 +65,14 @@
 
   {%- assign template_handle = template | replace: '.', ' ' | truncatewords: 1, '' | handle | replace: '_', '-' -%}
 
-  <body class="BandB--v1 template-{{ template_handle }} {% if page.template_suffix != blank %}template-{{ template_handle }}-{{page.template_suffix}}{% endif %}">
+  <body class="template-{{ template_handle }}{% if page.template_suffix != blank %} template-{{ template_handle }}-{{page.template_suffix}}{% endif %}">
     {%- include 'svg-icons' -%}
 
     {%- section 'popup' -%}
 
     <div class="page__overlay"></div>
 
-    <div class="page__container {% if force_secondary_background %}page__container--secondary{% endif %}">
+    <div class="page__container{% if force_secondary_background %} page__container--secondary{% endif %}">
       {% comment %} Sections appear Sitewide: {% endcomment %}
       {%- section 'announcement' -%}
       {%- section 'header' -%}

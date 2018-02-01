@@ -26,25 +26,6 @@
           {{ section.settings.popup_content }}
         </div>
       {%- endif -%}
-
-      {%- if section.settings.popup_show_newsletter -%}
-        {%- form 'customer', action: '/contact#popup', class: 'modal__form' -%}
-        {%- if form.posted_successfully? -%}
-          <p class="alert alert--success">{{ 'layout.popup.newsletter_success' | t }}</p>
-        {%- else -%}
-          <input type="hidden" name="contact[tags]" value="newsletter">
-
-          <div class="input-group">
-            <input class="input-group__field input-group__field--secondary form__input" type="email" name="contact[email]" aria-label="{{ 'layout.popup.input_placeholder' | t }}" placeholder="{{ 'layout.popup.input_placeholder' | t }}">
-            <input class="input-group__submit button button--primary" type="submit" value="{{ 'layout.popup.submit' | t }}">
-
-            {%- if form.errors -%}
-              <p class="form__input-error">{{ form.errors.translated_fields['email'] }} {{ form.errors.messages['email'] }}</p>
-            {%- endif -%}
-          </div>
-        {%- endif -%}
-        {%- endform -%}
-      {%- endif -%}
     </div>
   </div>
 {%- endif -%}
@@ -71,11 +52,6 @@
       "id": "popup_content",
       "label": "Text",
       "default": "<p>You can use this popup to display some useful information to your customers.</p>"
-    },
-    {
-      "type": "checkbox",
-      "id": "popup_show_newsletter",
-      "label": "Show newsletter form"
     },
     {
       "type": "range",

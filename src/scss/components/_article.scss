@@ -11,10 +11,15 @@
         max-height: 600px;
       }
 
-      + .article__content {
-        margin: -115px 0 0 96px;
-      }
+      // + .article__content {
+      // }
     }
+  }
+}
+
+.article {
+  .template-blog & {
+    position: relative;
   }
 }
 
@@ -25,6 +30,7 @@
 
 .article__meta-item {
   display: inline-block;
+  color: $black;
 }
 
 .article__meta-item + .article__meta-item::before {
@@ -32,8 +38,7 @@
   content: '|';
   margin: 0 5px;
   letter-spacing: 0;
-  color: $light-text-color;
-
+  
   @include av-mq("lap-and-up") {
     margin: 0 15px;
   }
@@ -48,34 +53,26 @@
 
 .article__content {
   position: relative;
-  background: $background;
-}
+  background-color: $background;
 
-.article__image + .article__content {
-  margin: -45px 0 0 20px;
-  padding: 15px 20px 0 20px;
-
-  @include av-mq("handheld-and-up") {
-    margin: -65px 0 0 30px;
-    padding: 20px 30px 0 30px;
-  }
-
-  @include av-mq("lap-and-up") {
-    margin: -75px 0 0 70px;
-    padding: 65px 70px 0 70px;
+  .template-blog & {
+    border: $base-border;
+    box-shadow: 0 0 0 15px $white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 15px;
+    width: 85%;
   }
 }
 
 .article__title {
-  margin-bottom: 0.5em;
+  margin-bottom: 20px;
 }
 
 .article__excerpt {
-  margin-bottom: 1em;
-
-  @include av-mq("lap-and-up") {
-    margin-bottom: 1.9em;
-  }
+  margin-bottom: 20px;
 }
 
 .article__body {
@@ -95,7 +92,6 @@
 
     @include av-mq("lap-and-up") {
       display: inline-block;
-      position: -webkit-sticky;
       position: sticky;
       left: 0;
       top: 0;
@@ -126,6 +122,11 @@
 
 .article__read-more {
   display: inline-block;
+  text-transform: uppercase;
+  text-align: right;
+  float: right;
+  clear: both;
+  font-size: 13px;
 }
 
 .articles-list__item:not(:last-child) {

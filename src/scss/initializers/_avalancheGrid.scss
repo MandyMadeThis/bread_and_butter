@@ -72,10 +72,7 @@ $retina: "screen and (-webkit-min-device-pixel-ratio: 2), screen and (min-resolu
   }
 }
 
-/*------------------------------------
- *   grid LAYOUT
- *------------------------------------*/
-
+// grid LAYOUT
 .grid {
   display: block;
   list-style: none;
@@ -170,10 +167,7 @@ $retina: "screen and (-webkit-min-device-pixel-ratio: 2), screen and (min-resolu
 }
 
 
-/*------------------------------------*\
-    grid WIDTHS
-\*------------------------------------*/
-
+// GRID WIDTHS
 .\31\/2, .\32\/4, .\33\/6, .\34\/8, .\35\/10, .\36\/12 {
   width: 50%;
 }
@@ -663,7 +657,6 @@ $retina: "screen and (-webkit-min-device-pixel-ratio: 2), screen and (min-resolu
 }
 
 @media #{$lap} {
-
   .hidden-lap {
     display: none !important;
   }
@@ -861,7 +854,6 @@ $retina: "screen and (-webkit-min-device-pixel-ratio: 2), screen and (min-resolu
 }
 
 @media #{$desk} {
-
   .hidden-desk {
     display: none !important;
   }

@@ -1,3 +1,9 @@
+.template-blog {
+  .headingDecorative-heading {
+    background: $white;
+  }
+}
+
 .blog-sidebar {
   margin-left: 20px;
   @include av-mq('widescreen') {
@@ -21,27 +27,7 @@
 
 .blog-sidebar__title {
   margin-bottom: 1.2em;
-}
-
-.blog-sidebar__newsletter {
-  padding: 35px;
-
-  .blog-sidebar__title {
-    position: relative;
-    margin-bottom: 1.8em;
-    color: $background;
-  }
-
-  .input-group__submit {
-    padding-left: 20px;
-    padding-right: 20px;
-    line-height: 0;
-  }
-
-  .input-group__submit svg {
-    height: 10px;
-    width: 10px;
-  }
+  color: $black;
 }
 
 .blog-sidebar__tag:not(:last-child) {

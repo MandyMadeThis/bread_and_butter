@@ -1,0 +1,10 @@
+{%- assign collection_image = collection.image | default: collection.products.first.featured_image -%}
+
+<a href="{{ collection.url }}" class="imageBox collection-item" data-slide-index="{{ forloop.index0 }}">
+  <div class="imageBox-inner">
+    <img src="{{ collection_image | img_url: '500x500', crop: 'center' }}" alt="{{ collection_image.alt }}" />
+    <div class="imageBox-textWrapper">
+      <h3>{{ collection.title }}</h3>
+    </div>
+  </div>
+</a>

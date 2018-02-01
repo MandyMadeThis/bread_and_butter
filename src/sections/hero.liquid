@@ -1,8 +1,8 @@
 {% assign heroImg = section.settings.hero_image %}
 {%- case handle -%}
-  {%- when contains 'about' -%}
+  {%- when 'about' -%}
     {% assign heroImg = section.settings.hero_image_about %}
-  {%- when contains 'contact' -%}
+  {%- when 'contact' -%}
     {% assign heroImg = section.settings.hero_image_contact %}
   {%- when blogs[settings.projects_collection_1].handle -%}
     {%- assign heroImg = settings.projects_collection_img_1.src -%}

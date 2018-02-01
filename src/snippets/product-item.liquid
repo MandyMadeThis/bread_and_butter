@@ -1,29 +1,17 @@
-{%- assign image_size = '310x400' -%}
+{%- assign image_size = '310x310' -%}
 
 {%- case grid_items_per_row -%}
   {%- when '2' or 2 -%}
-    {%- if image_dimension == 'small' -%}
-      {%- assign image_size = '630x400' -%}
-    {%- elsif image_dimension == 'normal' -%}
-      {%- assign image_size = '630x500' -%}
-    {%- else -%}
-      {%- assign image_size = '630x600' -%}
+    {%- if image_dimension == 'small' or image_dimension == 'normal' -%}
+      {%- assign image_size = '630x630' -%}
     {%- endif -%}
   {%- when '3' or  3 -%}
-    {%- if image_dimension == 'small' -%}
-      {%- assign image_size = '410x350' -%}
-    {%- elsif image_dimension == 'normal' -%}
-      {%- assign image_size = '410x400' -%}
-    {%- else -%}
-      {%- assign image_size = '410x450' -%}
+    {%- if image_dimension == 'small' or image_dimension == 'normal' -%}
+      {%- assign image_size = '410x410' -%}
     {%- endif -%}
   {%- when '4' or 4 -%}
-    {%- if image_dimension == 'small' -%}
-      {%- assign image_size = '300x250' -%}
-    {%- elsif image_dimension == 'normal' -%}
+    {%- if image_dimension == 'small' or image_dimension == 'normal' -%}
       {%- assign image_size = '300x300' -%}
-    {%- else -%}
-      {%- assign image_size = '300x350' -%}
     {%- endif -%}
 {%- endcase -%}
 
@@ -58,9 +46,10 @@
   <figure class="product-item__image-container">
     <a href="{{ product.url | within: collection }}" class="product-item__link">
       <img class="product-item__image {% if image_dimension == 'fill_width' %}product-item__image--fill{% endif %} {% if template.name == 'blog' %}product-item__image--constrained{% endif %}"
-           src="{{ product.featured_image | img_url: image_size }}"
-           srcset="{{ product.featured_image | img_url: image_size }} 1x, {{ product.featured_image | img_url: image_size, scale: 2 }} 2x"
-           alt="{{ product.featured_image.alt }}">
+           src="{{ product.featured_image | img_url: image_size, crop: 'center' }}"
+           srcset="{{ product.featured_image | img_url: image_size, crop: 'center' }} 1x, {{ product.featured_image | img_url: image_size, crop: 'center', scale: 2 }} 2x"
+           alt="{{ product.featured_image.alt }}"
+       >
     </a>
   </figure>
 

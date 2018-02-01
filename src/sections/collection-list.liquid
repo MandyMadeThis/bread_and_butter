@@ -1,25 +1,19 @@
 <section class="section section-{{ section.id }}">
-  {%- if section.settings.title != blank -%}
-    <div class="headingDecorative">
-      <h2 class="headingDecorative-heading">{{ section.settings.title | escape }}</h2>
-    </div>
-  {%- endif -%}
   <div class="container">
+    {%- if section.settings.title != blank -%}
+      <div class="headingDecorative">
+        <h2 class="headingDecorative-heading">{{ section.settings.title | escape }}</h2>
+      </div>
+    {%- endif -%}
     <div class="container container--flex list-collections" data-slides-count="{{ section.blocks.size }}">
       {%- for block in section.blocks -%}
         {%- assign collection = collections[block.settings.collection] -%}
         
         {%- unless collection.empty? -%}
           {%- assign collection_image = collection.image | default: collection.products.first.featured_image -%}
-
-          <a href="{{ collection.url }}" class="imageBox collection-item" data-slide-index="{{ forloop.index0 }}">
-            <div class="imageBox-inner">
-              <img src="{{ collection_image | img_url: '500x500', crop: 'center' }}" alt="{{ collection_image.alt }}" />
-              <div class="imageBox-textWrapper">
-                <h3>{{ collection.title }}</h3>
-              </div>
-            </div>
-          </a>
+        
+        {% include 'collection-item' %}
+          
         {%- else -%}
           <a href="#" class="imageBox collection-item" data-slide-index="{{ forloop.index0 }}">
             <div class="imageBox-inner">

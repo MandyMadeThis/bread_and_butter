@@ -2,21 +2,46 @@
  * RTE (THOSE ARE USED TO STYLE ELEMENTS SUCH AS PRODUCT DESCRIPTION...)
  */
 
-.rte {
-  iframe {
-    max-width: 100%;
-  }
+ .rte {
+   iframe {
+     max-width: 100%;
+   }
 
-  blockquote {
-    @include av-mq('handheld-and-up') {
+   a:not(.button) {
+     color: $accent;
+
+     &:hover {
+       color: darken($accent, 15%);
+     }
+   }
+
+   p:not(:last-child),
+   ul:not(:last-child),
+   ol:not(:last-child),
+   img:not(:last-child) {
+     margin-bottom: 1.35em;
+   }
+
+   ul, ol {
+     margin-left: 1.35em;
+     padding-left: 0;
+     list-style-position: outside;
+   }
+
+   .table-wrapper:not(:last-child) {
+     margin: 2em 0 2.4em 0;
+   }
+
+   @include av-mq("handheld-and-up") {
+    blockquote {
       font-size: 30px;
-      font-size: 1.66667rem;
       line-height: 1.2;
     }
+   }
 
-    @include av-mq('desk') {
-      font-size: 48px;
-      font-size: 2.66667rem;
+   @include av-mq("desk") {
+    blockquote {
+      font-size: 40px;
     }
-  }
-}
+   }
+ }

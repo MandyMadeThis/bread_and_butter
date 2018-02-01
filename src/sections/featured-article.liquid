@@ -8,21 +8,17 @@
 {%- endif -%}
 
 <section class="section section--positioned section-{{ section.id }}">
-{%- if section.settings.title != blank -%}
-  <div class="headingDecorative">
-    <h2 class="headingDecorative-heading">{{ section.settings.title | escape }}</h2>
-  </div>
-{%- endif -%}
   <div class="container">
+    {%- if section.settings.title != blank -%}
+      <div class="headingDecorative">
+        <h2 class="headingDecorative-heading">{{ section.settings.title | escape }}</h2>
+      </div>
+    {%- endif -%}
     {%- unless article.handle == blank -%}
       {%- capture article_details -%}
         <article class="article">
           <div class="article__content">
             <div class="article__meta text--uppercase">
-              {%- if section.settings.show_author_name -%}
-                <span class="article__author article__meta-item">{{ 'blog.article.written_by' | t: author: article.user.first_name }}</span>
-              {%- endif -%}
-
               <time datetime="{{ article.published_at | date: '%Y-%m-%dT%T' }}" class="article__date article__meta-item">{{ article.published_at | date: format: 'month_day_year' }}</time>
             </div>
 
@@ -30,13 +26,13 @@
               <a href="{{ article.url }}" class="link">{{ article.title }}</a>
             </h1>
 
-            <div class="article__excerpt rte {% if article.image %}hidden-thumb{% endif %}">
+            <p class="article__excerpt rte {% if article.image %}hidden-thumb{% endif %}">
               {%- if article.excerpt != blank -%}
-                {{ article.excerpt }}
+                {{ article.excerpt | strip_html | truncate: 300 }}
               {%- else -%}
-                {{ article.content | strip_html | truncate: 350 }}
+                {{ article.content | strip_html | truncate: 300 }}
               {%- endif -%}
-            </div>
+            </p>
 
             <a href="{{ article.url }}" class="article__read-more link link--primary link--effect text--uppercase">{{ 'blog.article.continue_reading' | t }}</a>
           </div>
@@ -47,11 +43,6 @@
         <article class="article">
           <div class="article__content">
             <div class="article__meta text--uppercase">
-              {%- if section.settings.show_author_name -%}
-                {%- capture blog_author_name -%}{{ 'home_page.onboarding.article_author' | t }}{%- endcapture -%}
-                <span class="article__author article__meta-item">{{ 'blog.article.written_by' | t: author: blog_author_name }}</span>
-              {%- endif -%}
-
               <time datetime="{{ 'now' | date: '%Y-%m-%dT%T' }}" class="article__date article__meta-item">{{ 'now' | date: format: 'month_day_year' }}</time>
             </div>
 
@@ -59,9 +50,9 @@
               <a href="{{ article.url }}" class="link">{{ 'home_page.onboarding.article_title' | t }}</a>
             </h3>
 
-            <div class="article__excerpt rte">
+            <p class="article__excerpt rte">
               {{ 'home_page.onboarding.article_excerpt' | t }}
-            </div>
+            </p>
 
             <a href="{{ article.url }}" class="article__read-more link link--primary link--effect text--uppercase">{{ 'blog.article.continue_reading' | t }}</a>
           </div>
@@ -104,12 +95,6 @@
       "id": "title",
       "label": "Heading",
       "default": "Featured article"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_author_name",
-      "label": "Show author name",
-      "default": true
     },
     {
       "type": "image_picker",

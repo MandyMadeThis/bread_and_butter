@@ -1,11 +1,11 @@
 <div class="shopify-section__testimonials" id="shopify-section-{{ section.id }}">
   <section class="section section-{{ section.id }}">
-  {%- if section.settings.title != blank -%}
-    <div class="headingDecorative">
-      <h2 class="headingDecorative-heading">{{ section.settings.title | escape }}</h2>
-    </div>
-  {%- endif -%}
     <div class="container">
+      {%- if section.settings.title != blank -%}
+        <div class="headingDecorative">
+          <h2 class="headingDecorative-heading">{{ section.settings.title | escape }}</h2>
+        </div>
+      {%- endif -%}
       <div class="testimonials">
         {%- for block in section.blocks -%}
           <div class="testimonials__item" {{ block.shopify_attributes }}>

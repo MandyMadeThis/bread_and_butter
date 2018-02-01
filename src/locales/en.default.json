@@ -41,16 +41,9 @@
       "prev": "Previous"
     },
 
-    "newsletter": {
-      "input_placeholder": "Enter your e-mail",
-      "submit": "Subscribe",
-      "success": "Your email has been registered! You'll soon receive news from us!"
-    },
-
     "popup": {
       "input_placeholder": "Your email",
-      "submit": "Subscribe",
-      "newsletter_success": "Your email has been registered! You'll soon receive news from us!"
+      "submit": "Subscribe"
     },
 
     "social": {
@@ -71,12 +64,6 @@
       "title": "Opening soon...",
       "store_owner": "Are you the store owner? Login here",
       "powered_by": "This store will be powered by"
-    },
-
-    "newsletter": {
-      "input_placeholder": "Enter your email",
-      "submit": "Let me know",
-      "thank_you": "Your email has been registered! You'll soon receive news from us!"
     },
 
     "form": {
@@ -232,8 +219,6 @@
 
     "sidebar": {
       "email_placeholder": "Email",
-      "subscribe_newsletter": "Join our newsletter",
-      "newsletter_success": "Thank you!",
       "tags": "Categories",
       "follow_us": "Follow Us",
       "featured_articles": "Popular Posts",

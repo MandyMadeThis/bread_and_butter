@@ -1,5 +1,4 @@
 <section class="section section-{{ section.id }} promotion" {% if section.settings.image %}style="background-image: url({{ section.settings.image | img_url: '1200x' }})" {% endif %}>
-  <div class="promotion__overlay"></div>
   <div class="container">
     <p class="promotion__text h3 text--respect-break">{{ section.settings.title | escape }}</p>
   </div>

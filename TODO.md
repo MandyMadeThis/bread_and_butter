@@ -2,7 +2,6 @@ TODO:
 * Remove colours, typography, favicon, product grid, settings choices from codebase
 
 * Edit/Redesign template for articles - simple
-* Edit template for blogs(projects) landing - same as collection templates - squares with photo bg.
 * Edit product templates - If they have a certain tag, they'll get an "inquire" button/form, if not, regular sale
 * Edit Contact form/page
 
@@ -24,3 +23,5 @@ DONE:
 * Redesign Footer
 * Add images to settings for Projects - add these to Meganav
 * Fix project slider to include article featured image as slide image, when article is chosen.
+* Edit template for blogs(projects) landing - same as collection templates - squares with photo bg.
+* Edit/Redesign Blog Page w/sidebar item
