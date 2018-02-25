@@ -1,0 +1,21 @@
+/**
+ * RELATED PRODUCTS
+ */
+
+.template-product .related-products {
+  overflow: hidden;
+  background: $secondary-background;
+
+  @if $has-background-pattern {
+    background-image: url($background-pattern);
+    background-repeat: repeat;
+  }
+}
+
+.list-products {
+  margin-bottom: -25px;
+}
+
+.list-products > .grid__cell {
+  margin-bottom: 25px;
+}

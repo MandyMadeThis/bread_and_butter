@@ -144,7 +144,7 @@
       "increase_quantity": "Augmenter la quantité de 1",
       "decrease_quantity": "Diminuer la quantité de 1",
       "quantity": "Quantité",
-      "pre_order": "Précommander",
+      "custom_order": "Douane",
       "add_to_cart": "Ajouter",
       "sold_out": "En rupture",
       "unavailable": "Indisponible"

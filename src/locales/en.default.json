@@ -144,7 +144,7 @@
       "quantity": "Quantity",
       "increase_quantity": "Increase quantity by 1",
       "decrease_quantity": "Decrease quantity by 1",
-      "pre_order": "Pre-order",
+      "custom_order": "Custom order",
       "add_to_cart": "Add to cart",
       "sold_out": "Sold Out",
       "unavailable": "Unavailable"

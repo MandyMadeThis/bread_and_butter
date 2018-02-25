@@ -152,21 +152,29 @@
   }
 } 
 
-.header__secondary-nav .header__link {
-  position: relative;
-}
-
 .header__cart-count {
   position: absolute;
+  text-align: center;
   width: 100%;
-  bottom: 9px;
-  left: 0;
   text-align: center;
   font-size: 10px;
-  font-size: 0.55556rem;
   font-weight: 600;
-  color: $background;
-  line-height: 0;
+  color: $white;
+  line-height: 1;
+  transform: scale(1);
+  transition: transform 0.2s ease-in-out;
+
+  @include av-mq("lap-and-up") {
+    position: relative;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    top: -5px;
+    vertical-align: middle;
+    border-radius: 100%;
+    background: $accent;
+    line-height: 16px;
+  }
 }
 
 .header__cart-count-wrapper {
@@ -174,11 +182,6 @@
 
   &:hover .header__cart-count {
     transform: scale(1.15);
-  }
-
-  .header__cart-count {
-    transform: scale(1);
-    transition: transform 0.2s ease-in-out;
   }
 }
 
@@ -216,20 +219,11 @@
   .header__secondary-nav {
     flex: 1 0 auto;
     text-align: right;
-  }
 
-  .header__cart-count {
-    position: relative;
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    top: -5px;
-    vertical-align: middle;
-    text-align: center;
-    border-radius: 100%;
-    color: $background;
-    background: $accent;
-    line-height: 16px;
+    .header__link {
+      position: relative;
+      margin-right: 6px;
+    }
   }
 
   .header__link .icon-search {
@@ -272,5 +266,27 @@
 
   .header__secondary-nav {
     margin-left: 40px;
+  }
+}
+
+// CURRENCY SELECTOR
+.currency-selector {
+  
+  svg.icon-dropdown-arrow {
+    right: -6px;
+    width: 9px;
+    height: 9px;
+    vertical-align: baseline;
+  }
+
+  select {
+    height: auto;
+    padding-right: 16px;
+    border: none;
+    font-size: inherit;
+
+    &:focus {
+      outline: auto 5px -webkit-focus-ring-color;
+    }
   }
 }

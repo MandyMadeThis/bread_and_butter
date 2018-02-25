@@ -1,0 +1,46 @@
+/**
+ * QUANTITY SELECTOR
+ */
+
+.quantity-selector {
+  display: inline-block;
+  color: $heading-color;
+  white-space: nowrap;
+
+  a {
+    display: inline-block;
+    padding: 0 6px;
+
+    /* this allows to slightly increase the clickable area */
+    color: $light-text-color;
+
+    &:hover {
+      color: $heading-color;
+    }
+  }
+
+  svg {
+    stroke: currentColor;
+    stroke-width: 1px;
+    width: 14px;
+    height: 14px;
+  }
+}
+
+.quantity-selector__current-quantity {
+  display: inline-block;
+  width: 28px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+@include av-mq("desk") {
+  .quantity-selector svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .quantity-selector__current-quantity {
+    width: 48px;
+  }
+}

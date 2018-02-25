@@ -5,7 +5,7 @@ The logic is that if there are at least one feature set through the unique featu
 
 {%- assign has_unique_features = false -%}
 
-{%- for i in (1..6) -%}
+{%- for i in (1..3) -%}
   {%- assign metafield_option = 'feature_' | append: i | append: '_enabled' -%}
 
   {%- if product.metafields.sf_product_features[metafield_option] == 1 -%}
@@ -19,7 +19,7 @@ The logic is that if there are at least one feature set through the unique featu
     <div class="container">
       <div class="product-features__list grid grid--huge">
         {%- if has_unique_features -%}
-          {%- for i in (1..6) -%}
+          {%- for i in (1..3) -%}
             {%- assign metafield_show_option = 'feature_' | append: i | append: '_enabled' -%}
             {%- assign metafield_icon_option = 'feature_' | append: i | append: '_icon' -%}
             {%- assign metafield_title_option = 'feature_' | append: i | append: '_title' -%}
@@ -66,12 +66,8 @@ The logic is that if there are at least one feature set through the unique featu
 {% schema %}
 {
   "name": "Product features",
-  "max_blocks": 6,
+  "max_blocks": 3,
   "settings": [
-    {
-      "type": "paragraph",
-      "content": "You can add per-product features using our app SuperFields. [Learn more here](http://support.maestrooo.com/article/133-product-adding-per-product-features)."
-    }
   ],
   "blocks": [
     {
@@ -83,7 +79,7 @@ The logic is that if there are at least one feature set through the unique featu
           "id": "icon_name",
           "label": "Icon name",
           "info": "[Click here](https://fortawesome.github.io/Font-Awesome/icons/) to view the list of available icons. Example: bluetooth",
-          "default": "cog"
+          "default": "check"
         },
         {
           "type": "text",

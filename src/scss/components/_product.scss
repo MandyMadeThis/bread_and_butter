@@ -1,0 +1,399 @@
+.product__warning-wrapper {
+  padding: 15px;
+  background: $grey;
+  color: $white;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/**
+ * PRODUCT SLIDESHOW
+ */
+.product__slideshow {
+  margin-bottom: 50px;
+}
+
+.product__slide-image {
+  margin: 0 auto;
+  max-height: 315px;
+}
+
+.product__thumbnails {
+  margin-top: 18px;
+  text-align: center;
+}
+
+.product__thumbnail {
+  display: inline-block;
+  margin: 5px;
+  cursor: pointer;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.product__thumbnail--active {
+  opacity: 0.5;
+}
+
+.product__thumbnail-image {
+  max-width: 50px;
+  max-height: 50px;
+  vertical-align: middle;
+}
+
+@include av-mq("thumb") {
+  .product__slides {
+    margin: 0 -25px;
+  }
+}
+
+
+@include av-mq("handheld-and-up") {
+  .product__slide-image {
+    max-height: 500px;
+  }
+
+  .product__thumbnail {
+    margin: 10px 15px;
+  }
+
+  .product__thumbnail-image {
+    max-width: 80px;
+    max-height: 80px;
+  }
+}
+
+
+@include av-mq("lap-and-up") {
+  .product__details {
+    margin-left: 50px;
+    margin-bottom: 34px;
+  }
+}
+
+
+@media (min-height: 900px) {
+  .product__slide-image {
+    max-height: 600px;
+  }
+}
+
+@media (min-height: 950px) {
+  .product__slide-image {
+    max-height: 650px;
+  }
+}
+
+@media (min-height: 1100px) {
+  .product__slide-image {
+    max-height: 750px;
+  }
+}
+
+/**
+ * PRODUCT META
+ */
+
+.product__meta {
+  margin-bottom: 20px;
+  text-align: center;
+  color: $heading-color;
+}
+
+.product__brand {
+  margin-bottom: 2px;
+}
+
+.product__title {
+  margin-bottom: 8px;
+}
+
+.product__price {
+  margin-bottom: 0;
+  display: inline-block;
+}
+
+.product__price--old {
+  text-decoration: line-through;
+  margin-left: 18px;
+  color: $light-text-color;
+  font-weight: 400;
+}
+
+.product__review-badge {
+  margin-top: 14px;
+  font-size: 12px;
+  font-size: 0.66667rem;
+  color: $light-text-color;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.spr-badge-caption {
+  margin-left: 12px;
+  vertical-align: middle;
+}
+
+@include av-mq("lap-and-up") {
+  .product__meta {
+    margin-bottom: 35px;
+    text-align: left;
+  }
+
+  .product__prices,
+  .product__review-badge {
+    display: inline-block;
+  }
+
+  .product__review-badge {
+    float: right;
+    margin-top: 2px;
+  }
+}
+
+
+@include av-mq("desk") {
+  .product__brand {
+    margin-bottom: 12px;
+  }
+
+  .product__title {
+    margin: 0 0 16px -4px;
+  }
+
+  .product__review-badge {
+    margin-top: 10px;
+  }
+
+  .product__price {
+    font-size: 30px;
+    font-size: 1.66667rem;
+
+    /* The normal h4 size is slightly too big on desktop so we use a different size exceptionally */
+  }
+}
+
+
+/**
+ * COLOR SWATCH AND SIZE SELECTOR
+ */
+
+.color-swatch {
+  display: inline-block;
+  width: 42px;
+  height: 42px;
+  background-size: contain;
+  vertical-align: middle;
+}
+
+.color-swatch--white {
+  border: 2px solid $border-color;
+}
+
+.color-swatch--mini {
+  width: 11px;
+  height: 11px;
+  vertical-align: baseline;
+  border-width: 1px;
+}
+
+.product__available-colors {
+  margin-bottom: -10px;
+}
+
+.product__color {
+  position: relative;
+  margin: 0 10px 10px 0;
+  display: inline-block;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.product__color .color-swatch {
+  cursor: pointer;
+}
+
+.product__color--unavailable .color-swatch {
+  cursor: not-allowed;
+  opacity: 0.3;
+}
+
+.product__color--unavailable {
+  &::after,
+  &::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    width: 58px;
+    height: 2px;
+    background: $heading-color;
+  }
+
+  &::before {
+    left: 1px;
+    -webkit-transform: rotateZ(45deg);
+    transform: rotateZ(45deg);
+    -webkit-transform-origin: top left;
+    -ms-transform-origin: top left;
+    transform-origin: top left;
+  }
+
+  &::after {
+    right: 1px;
+    -webkit-transform: rotateZ(-45deg);
+    transform: rotateZ(-45deg);
+    -webkit-transform-origin: top right;
+    -ms-transform-origin: top right;
+    transform-origin: top right;
+  }
+}
+
+.color-swatch + svg {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  left: calc(50% - 7.5px);
+  top: calc(50% - 7.5px);
+  display: none;
+  color: #ffffff;
+  pointer-events: none;
+}
+
+.color-swatch--white + svg {
+  color: $heading-color;
+}
+
+.product__color input:checked ~ svg {
+  display: block;
+}
+
+.product__size {
+  display: inline-block;
+}
+
+.product__size-label {
+  display: block;
+  padding: 10px 16px;
+  font-size: 16px;
+  font-size: 0.88889rem;
+  font-weight: 600;
+  color: $heading-color;
+  cursor: pointer;
+
+  input:checked + & {
+    background: $heading-color;
+    color: $background;
+  }
+}
+
+.product__size--unavailable .product__size-label {
+  cursor: not-allowed;
+  text-decoration: line-through;
+  color: $light-text-color;
+}
+
+.product__color input[type="radio"],
+.product__size input[type="radio"] {
+  display: none;
+}
+
+/**
+ * PRODUCT FORM
+ */
+
+.product__description {
+  margin-bottom: 20px;
+}
+
+.product__tabs {
+  padding: 14px 0;
+}
+
+.product__form {
+  margin-bottom: 45px;
+}
+
+.product__form .form__control {
+  margin-bottom: 25px;
+}
+
+.product__form .quantity-selector__current-quantity {
+  width: 68px;
+}
+
+@include av-mq("pocket") {
+  /* On small devices, the form selectors are inline to win some space */
+
+  .product__details {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .product__form .form__control {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+
+  .product__form .form__label {
+    margin: 0;
+    min-width: 100px;
+    max-width: 100px;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+  }
+
+  .product__form .styled-select {
+    width: 100%;
+  }
+
+  .product__add-to-cart {
+    margin-top: 14px;
+    width: 100%;
+    font-size: 20px;
+    font-size: 1.11111rem;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}
+
+
+@include av-mq("handheld") {
+  .product__form .form__label {
+    min-width: 160px;
+    max-width: 160px;
+  }
+}
+
+
+@include av-mq("lap-and-up") {
+  .product__add-to-cart {
+    margin-top: 15px;
+    min-width: 235px;
+  }
+
+  /* On larger screen we want the selector to be able to be on the same line if there is enough space */
+  .product__variants {
+    margin-left: -30px;
+    margin-right: -30px;
+  }
+
+  .product__variants .form__control {
+    display: inline-block;
+    margin-left: 30px;
+    margin-right: 30px;
+    vertical-align: top;
+  }
+}
+
+
+@include av-mq("desk") {
+  .product__description {
+    margin-bottom: 65px;
+  }
+}

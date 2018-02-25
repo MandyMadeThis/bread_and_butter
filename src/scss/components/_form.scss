@@ -32,19 +32,19 @@
   }
 
   &::-webkit-input-placeholder {
-    color: $light-text-color;
+    color: $grey-light;
   }
 
   &::-moz-placeholder {
-    color: $light-text-color;
+    color: $grey-light;
   }
 
   &:-ms-input-placeholder {
-    color: $light-text-color;
+    color: $grey-light;
   }
 
   &::placeholder {
-    color: $light-text-color;
+    color: $grey-light;
   }
 }
 

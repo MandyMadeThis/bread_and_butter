@@ -1,9 +1,11 @@
 TODO: 
 * Remove colours, typography, favicon, product grid, settings choices from codebase
 
-* Edit/Redesign template for articles - simple
-* Edit product templates - If they have a certain tag, they'll get an "inquire" button/form, if not, regular sale
-* Edit Contact form/page
+* Make buttons have same look as imageBox when hovered. Green regular
+* Fix Collections page - Add collection's image as hero, remove grid/use flexbox, make product boxes square w/ price at bottom
+* Fix Share buttons on Articles page (make footer like)
+* Edit Contact form/page - Need Blake's answers
+
 
 * Continue Breaking down the theme.scss file (add undone brokendown code to one single .scss file for now)
 
@@ -25,3 +27,4 @@ DONE:
 * Fix project slider to include article featured image as slide image, when article is chosen.
 * Edit template for blogs(projects) landing - same as collection templates - squares with photo bg.
 * Edit/Redesign Blog Page w/sidebar item
+* Edit/Redesign template for articles - simple

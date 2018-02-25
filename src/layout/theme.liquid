@@ -44,7 +44,7 @@
 
       window.languages = {
         productLabelsOnSale: {{ 'product.labels.on_sale' | t | json }},
-        productFormAddToCart: {% if product.template_suffix == 'pre-order' %}{{ 'product.form.pre_order' | t | json }}{% else %}{{ 'product.form.add_to_cart' | t | json }}{% endif %},
+        productFormAddToCart: {% if product.template_suffix == 'custom-order' %}{{ 'product.form.custom_order' | t | json }}{% else %}{{ 'product.form.add_to_cart' | t | json }}{% endif %},
         productFormSoldOut: {{ 'product.form.sold_out' | t | json }},
         productFormUnavailable: {{ 'product.form.unavailable' | t | json }},
         cartEstimatedShipping: {{ 'cart.general.estimated_shipping' | t | json }},

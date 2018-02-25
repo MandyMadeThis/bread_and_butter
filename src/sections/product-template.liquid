@@ -175,8 +175,8 @@
 
               {%- if product.selected_or_first_available_variant.available -%}
                 <button type="submit" class="product__add-to-cart button button--primary">
-                  {%- if product.template_suffix == 'pre-order' -%}
-                    {{- 'product.form.pre_order' | t -}}
+                  {%- if product.template_suffix == 'custom-order' -%}
+                    {{- 'product.form.custom_order' | t -}}
                   {%- else -%}
                     {{- 'product.form.add_to_cart' | t -}}
                   {%- endif -%}
@@ -185,6 +185,12 @@
                 <button type="submit" class="product__add-to-cart button button--secondary" disabled="disabled">{{ 'product.form.sold_out' | t }}</button>
               {%- endif -%}
             </form>
+
+            {%- if product.template_suffix == 'custom-order' -%}
+              <div class="product__warning-wrapper">
+                {{- section.settings.custom_order_warning_text -}}
+              </div>
+            {%- endif -%}
 
             {%- if product.description != blank -%}
               <div class="product__description rte">
@@ -238,8 +244,14 @@
 
 {% schema %}
 {
-  "name": "Product page",
+  "name": "Product pages",
   "settings": [
+    {
+       "type": "richtext",
+       "id": "custom_order_warning_text",
+       "label": "Custom order Warning Text",
+       "default": "<p>Add a paragraph here that explains how <strong>custom order products work</strong>. Perhaps you take a downpayment and then contact the customer to get specifics and quote. Not sure what you want to do for these products?</p>"
+    },
     {
       "type": "checkbox",
       "id": "allow_selecting_sold_out_variants",
@@ -301,10 +313,6 @@
       "type": "page",
       "id": "tab_page_2_handle",
       "label": "Second page"
-    },
-    {
-      "type": "paragraph",
-      "content": "BandB also allows you to add specific tabs for a given product only. [Learn more about this feature](http://support.maestrooo.com/article/83-product-adding-different-tabs-per-product)."
     },
     {
       "type": "header",
